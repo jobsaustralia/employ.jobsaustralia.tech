@@ -12,8 +12,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
+<div id="header">
+        <div id="topBar"> 
+            <ul class="toptitle">
+                <li><h1>jobsaustralia.tech</h1></li>
+            </ul>
+            </div>
+         </div>
+          <!--//header--> 
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -77,9 +86,19 @@
         </nav>
 
         @yield('content')
-    </div>
-
-    <!-- Scripts -->
+        
+   <!--footer-->
+            <div id="footer">
+                <ul class="footernav">
+		<li><a href="{{ url('/gettingStarted') }}">Getting Started</a></li>
+                 <li><a href="{{ url('/aboutus') }}">About Us</a></li>
+                </ul>
+                <h5 class="footer">© 2017 </h5>
+                <h5 class="footer">This Site has been made for educational purposes by students of RMIT University for the Capstone Programing Project</h5>
+                </div>
+                <!--//footer--> 
+    </div>                       
+         <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
