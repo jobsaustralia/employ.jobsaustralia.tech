@@ -8,7 +8,7 @@
 
         <!-- Panel 1 -->
             <div class="panel panel-default">
-                <div class="panel-heading"> <i class="fa fa-briefcase" aria-hidden="true" style="font-size: 30px"></i> Welcome!</div>
+                <div class="panel-heading"> <i class="fa fa-briefcase" aria-hidden="true" style="font-size: 30px"></i><b> WELCOME!</b></div>
 
                 <div class="panel-body">
                     <p> Jobsaustralia.tech is a job-matching website based in Melbourne, Australia focusing in the field of Information Technology, Computer Science and Software Engineering.</p>
@@ -17,7 +17,7 @@
 
         <!-- Panel 2 -->
             <div class="panel panel-default">
-                <div class="panel-heading"> <i class="fa fa-users" aria-hidden="true" style="font-size: 30px"></i> We're Here For You</div>
+                <div class="panel-heading"> <i class="fa fa-users" aria-hidden="true" style="font-size: 30px"></i><b> WE'RE HERE FOR YOU </b></div>
 
                 <div class="panel-body">
                     <p> Help you to get access to a niche audience, meaning less irrelevant resumes clogging up your inbox.</p>
@@ -29,7 +29,7 @@
 
             <!-- Panel 3 -->
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-compass" aria-hidden="true" style="font-size: 30px"></i> The Guideline</div>
+                <div class="panel-heading"><i class="fa fa-compass" aria-hidden="true" style="font-size: 30px"></i><b> THE GUIDELINE </b></div>
                 <div class="panel-body">
                 <p> <b>Step 1:</b> Register yourself with jobaustralia.tech. </p>
                 <p> <b>Step 2:</b> Creat your own profile.</p>
