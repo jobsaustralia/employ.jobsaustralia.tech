@@ -18,9 +18,9 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
-                <h4><a>Post A Job</a></h4>
-                <h4><a>View applicants</a></h4>
-                <h4><a>Edit your profile</a></h4>
+                <h1><a href="#">Post A Job</a></h1>
+                <h1><a href="#">View applicants</a></h1>
+                <h1><a href="#">Edit your profile</a></h1>
             </div>
         </div>
     </div>
