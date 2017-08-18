@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
++<div id="header">
+ +        <div id="topBar"> 
+ +            <ul class="toptitle">
+ +                <li><h1>jobsaustralia.tech</h1></li>
+ +            </ul>
+ +            </div>
+ +         </div>
+ +          <!--//header--> 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
