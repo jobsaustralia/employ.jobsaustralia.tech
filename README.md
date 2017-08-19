@@ -10,14 +10,19 @@ Job match-making for employers in the Australian IT sector - written in Laravel 
 * Melissa Nguyen
 * Kim Luu
 
-## Instructions for setup:
 
-The following links can be referred to for more information regarding setup.
+## Setup instructions
 
-## Laravel:
+Setup your development environment following [the official requirements](https://laravel.com/docs/5.4/installation).
 
-https://laravel.com/docs/5.4/installation
+Our Linux setup instructions are [here](https://github.com/jobsaustralia/scripts-conf-and-docs/blob/master/docs/ubuntu-setup.txt#L38).
 
-## Vultr:
+**Clone the repository**
 
-https://www.vultr.com/docs/
+`git clone https://github.com/jobsaustralia/employ.jobsaustralia.tech.git`
+
+`cd jobsaustralia.tech`
+
+**Install**
+
+`composer install`
