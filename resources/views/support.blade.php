@@ -23,12 +23,23 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3> Job Posting </h3>
-                    <p><b>I forgot my password. What could I do ?</b></p>
-                    <p> Don't worry, it happens to everyone. Click the ‘Forgot Your Password ?’ link at the sign in section to enter your email and we'll send you a link to reset your password.</p>
+                    <p><b>I am a new user. How do I post an ad ?</b></p>
+                    <p> Before posting your jobs, you will need to create an Employer account with a username and password.</p>
                     <p><b>How do I update my information ?</b></p>
-                    <p> Once you have logged in to your account, click on the drop down arrow next to your name in the top right of the page, and select Settings.</p>
+                    <p> Your ad will appear online right after you finish updating</p>
                 </div>
             </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3> Technical Issues </h3>
+                    <p><b>Getting an error message or having trouble loading a page ?</b></p>
+                    <p> Try clearing your browsing history following these instructions -> http://www.refreshyourcache.com/en/home/</p>
+                    <p><b>Tried everything and still having trouble ?</b></p>
+                    <p> Fill in the form to let us know what is going on. Be sure to include as much information about the issue as you can, including: your operating system, web browser and version, anti-virus software you have installed and the page that you encountered the error on.</p>
+                </div>
+            </div>
+
 
 
 
