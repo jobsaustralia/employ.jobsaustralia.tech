@@ -217,11 +217,14 @@ class RegisterController extends Controller
         else{
             $hasScala = "false";
         }
+        if($data['hours'] == "casual" || $data['hours'] == "fulltime" || $data['hours'] == "parttime"){
+            $hours = $data['hours'];
+        }
 
         return Job::create([
             'title' => $data['title'],
             'description' => $data['decsription'],
-            'hours' => $data['hours'],
+            'hours' => $hours,
             'salary' => $data['salary'],
             'availablefrom' => $data['availablefrom'],
             'location' => $data['location'],
