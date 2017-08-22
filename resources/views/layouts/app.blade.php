@@ -12,11 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-=======
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
->>>>>>> origin/master
 </head>
 <body>
     <div id="app">
