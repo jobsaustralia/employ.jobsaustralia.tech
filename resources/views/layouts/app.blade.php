@@ -48,6 +48,11 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            <li>
+                                <a href="{{ route('post') }}">
+                                    Post a Job
+                                </a>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -73,6 +78,8 @@
                                 </ul>
                             </li>
                         @endif
+                            <li><a href="{{ route('support') }}">Support</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -86,5 +93,6 @@
     </div>                       
          <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
