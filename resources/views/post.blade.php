@@ -5,11 +5,6 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-body">
-                    You're using JobsAustralia.tech as an <em>Employer</em>. <a href="https://jobsaustralia.tech/register">Change to Job Seeker</a>.
-                </div>
-            </div>
-            <div class="panel panel-default">
                 <div class="panel-heading">	Post a job</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
