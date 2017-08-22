@@ -22,6 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/post', function () {
-    //return view('post');
-    echo "Hello";
+    return view('post');
 });
