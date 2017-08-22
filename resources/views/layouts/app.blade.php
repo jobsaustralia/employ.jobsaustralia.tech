@@ -12,7 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<<<<<<< HEAD
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+=======
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+>>>>>>> origin/master
 </head>
 <body>
     <div id="app">
@@ -78,9 +82,12 @@
         </nav>
 
         @yield('content')
-    </div>
-
-    <!-- Scripts -->
+        <br><br>
+        <footer>
+            <p>Copyright © JobsAustralia.tech 2017 &bull; <a href="https://github.com/jobsaustralia/">GitHub</a> &bull; <a href="LICENSE">License</a></p>
+        </footer>
+    </div>                       
+         <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
