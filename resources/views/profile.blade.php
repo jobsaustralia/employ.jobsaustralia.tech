@@ -5,18 +5,24 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ Auth::user()->name }}'s Profile</div>
+                <div class="panel-heading">{{ Auth::user()->name }}'s Employer Profile</div>
 
                 <div class="panel-body">
                     <p>Name: {{ Auth::user()->name }}</p>
                     <p>Email: {{ Auth::user()->email }}</p>
                     <p>
-                        <a href="#">Change password.</a>
+                        <button id="change-password">
+                            Change password
+                        </button>
+
+                        <p id="change-password-message" style="display: none;">To change your password, Logout and select "Forgot Your Password".</p>
                     </p>
                     <p>
-                        <a href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();"> 
+                        <button id="confirm-delete"> 
                             Delete account.
-                        </a>
+                        </button>
+
+                        <p id="confirm-delete-prompt" style="display: none;">Confirm deletion: <a href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">I really want to delete my account.</a></p>
 
                         <form id="delete-form" action="{{ route('delete') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
