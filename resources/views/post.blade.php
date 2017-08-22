@@ -10,32 +10,32 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">Register as an Employer</div>
+                <div class="panel-heading">	Post a job</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Company Name</label>
+                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <label for="title" class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('title'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('title') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                            <label for="description" class="col-md-4 control-label">Company Description</label>
+                            <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required autofocus>
-
-                                @if ($errors->has('descriptione'))
+									<textarea id="description" name="description" rows="5" cols="30" class="form-control" value="{{ old('description') }}" required autofocus>
+									</textarea>
+                                @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
                                     </span>
@@ -43,46 +43,85 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('hours') ? ' has-error' : '' }}">
+                            <label for="hours" class="col-md-4 control-label">Hours</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+							<select class="form-control" value="{{ old('description') }}">
+							<option disabled selected value>Please select an option</option>
+							<option value="fulltime">Full-Time</option>
+							<option value="parttime">Part-Time</option>
+							<option value="casual">Casual</option>
+							</select>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('hours'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('hours') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+						
+						<div class="form-group{{ $errors->has('salary') ? ' has-error' : '' }}">
+                            <label for="salary" class="col-md-4 control-label">Salary</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="salary" type="text" class="form-control" name="salary" value="{{ old('salary') }}" required autofocus>
 
-                                @if ($errors->has('password'))
+                                @if ($errors->has('salary'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('salary') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                        
+						<div class="form-group{{ $errors->has('availablefrom') ? ' has-error' : '' }}">
+                            <label for="availablefrom" class="col-md-4 control-label">Available From</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+								<input id="availablefrom" type="date" name="availablefrom" min="2017-08-01" max="2018-12-31" class="form-control" value="{{ old('description') }}" required autofocus>
+                             
+                                @if ($errors->has('availablefrom'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('availablefrom') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+						<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                            <label for="location" class="col-md-4 control-label">Location</label>
+
+                            <div class="col-md-6">
+                                <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" required autofocus>
+
+                                @if ($errors->has('location'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('location') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+						<div class="form-group{{ $errors->has('startdate') ? ' has-error' : '' }}">
+                            <label for="startdate" class="col-md-4 control-label">Start Date</label>
+
+                            <div class="col-md-6">
+								<input id="startdate" type="date" name="startdate" min="2017-08-01" max="2018-12-31" class="form-control" value="{{ old('description') }}" required autofocus>
+                             
+                                @if ($errors->has('startdate'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('startdate') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Post
                                 </button>
                             </div>
                         </div>
