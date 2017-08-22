@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Notifications\Notifiable;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Job extends Authenticatable
 {
@@ -16,5 +16,5 @@ class Job extends Authenticatable
      */
     protected $fillable = ['title', 'description', 'hours', 'salary', 'availablefrom', 'location', 'startdate', 'java', 'python', 'c', 'csharp', 'cplus', 'php', 'html', 'css', 'javascript', 'sql', 'unix', 'winserver', 'windesktop', 'linuxdesktop', 'macosdesktop', 'pearl', 'bash', 'batch', 'cisco', 'office', 'r', 'go', 'ruby', 'asp', 'scala'];
 
-    protected $table = 'employers';
+    protected $table = 'jobs';
 }

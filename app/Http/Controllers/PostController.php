@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Job;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+//use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -36,7 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -54,7 +54,6 @@ class RegisterController extends Controller
             'availablefrom' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'startdate' => 'required|string|max:255'
-
         ]);
     }
 
@@ -217,6 +216,8 @@ class RegisterController extends Controller
         else{
             $hasScala = "false";
         }
+
+        /* Hours Condition */
         if($data['hours'] == "casual" || $data['hours'] == "fulltime" || $data['hours'] == "parttime"){
             $hours = $data['hours'];
         }
