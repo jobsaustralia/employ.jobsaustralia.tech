@@ -15,12 +15,20 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/support', function (){
+    return view('support');
+});
+
+Route::get('/contact', function (){
+    return view('contact');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
-Route::get('/post', function () {
-    return view('post');
-});
+Route::post('/delete', 'Auth\DeleteController@delete')->name('delete');
+
+Route::get('/post', 'PostController@index')->name('post');
