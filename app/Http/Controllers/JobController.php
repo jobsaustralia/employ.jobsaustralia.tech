@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Job;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-//use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
-class PostController extends Controller
+class JobController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -256,5 +256,14 @@ class PostController extends Controller
             'asp' => $hasASP,
             'scala' => $hasScala
         ]);
+    }
+    /**
+     * Show post page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('post');
     }
 }
