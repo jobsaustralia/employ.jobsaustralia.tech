@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/about', function (){
+    return view('about');
+})->name('about');
+
 Route::get('/support', function (){
     return view('support');
 })->name('support');
@@ -31,4 +35,4 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::post('/delete', 'Auth\DeleteController@delete')->name('delete');
 
-Route::get('/post', 'PostController@index')->name('post');
+Route::get('/post', 'JobController@index')->name('post');
