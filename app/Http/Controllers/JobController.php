@@ -9,25 +9,6 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    //use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -40,14 +21,14 @@ class JobController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @param  array  $request
+     * @return \App\Job
      */
-    protected function validator(array $data)
+    protected function create(Request $request)
     {
-        return Validator::make($data, [
+        $this->validate($request, [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'salary' => 'required|string|regex:/^[0-9]*$/|max:255',
@@ -55,162 +36,153 @@ class JobController extends Controller
             'location' => 'required|string|max:255',
             'startdate' => 'required|string|max:255'
         ]);
-    }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
         /* Skill Conditions */
-        if(array_key_exists('java', $data)){
+        if(array_key_exists('java', $request)){
             $hasJava = "true";
         }
         else{
             $hasJava = "false";
         }
-        if(array_key_exists('python', $data)){
+        if(array_key_exists('python', $request)){
             $hasPython = "true";
         }
         else{
             $hasPython = "false";
         }
-        if(array_key_exists('c', $data)){
+        if(array_key_exists('c', $request)){
             $hasC = "true";
         }
         else{
             $hasC = "false";
         }
-        if(array_key_exists('csharp', $data)){
+        if(array_key_exists('csharp', $request)){
             $hasCSharp = "true";
         }
         else{
             $hasCSharp = "false";
         }
-        if(array_key_exists('cplus', $data)){
+        if(array_key_exists('cplus', $request)){
             $hasCPlus = "true";
         }
         else{
             $hasCPlus = "false";
         }
-        if(array_key_exists('php', $data)){
+        if(array_key_exists('php', $request)){
             $hasPHP = "true";
         }
         else{
             $hasPHP = "false";
         }
-        if(array_key_exists('html', $data)){
+        if(array_key_exists('html', $request)){
             $hasHTML = "true";
         }
         else{
             $hasHTML = "false";
         }
-        if(array_key_exists('css', $data)){
+        if(array_key_exists('css', $request)){
             $hasCSS = "true";
         }
         else{
             $hasCSS = "false";
         }
-        if(array_key_exists('javascript', $data)){
+        if(array_key_exists('javascript', $request)){
             $hasJavaScript = "true";
         }
         else{
             $hasJavaScript = "false";
         }
-        if(array_key_exists('sql', $data)){
+        if(array_key_exists('sql', $request)){
             $hasSQL = "true";
         }
         else{
             $hasSQL = "false";
         }
-        if(array_key_exists('unix', $data)){
+        if(array_key_exists('unix', $request)){
             $hasUNIX = "true";
         }
         else{
             $hasUNIX = "false";
         }
-        if(array_key_exists('winserver', $data)){
+        if(array_key_exists('winserver', $request)){
             $hasWinServer = "true";
         }
         else{
             $hasWinServer = "false";
         }
-        if(array_key_exists('windesktop', $data)){
+        if(array_key_exists('windesktop', $request)){
             $hasWinDesktop= "true";
         }
         else{
             $hasWinDesktop = "false";
         }
-        if(array_key_exists('linuxdesktop', $data)){
+        if(array_key_exists('linuxdesktop', $request)){
             $hasLinuxDesktop = "true";
         }
         else{
             $hasLinuxDesktop = "false";
         }
-        if(array_key_exists('macosdesktop', $data)){
+        if(array_key_exists('macosdesktop', $request)){
             $hasMacOsDesktop = "true";
         }
         else{
             $hasMacOsDesktop = "false";
         }
-        if(array_key_exists('pearl', $data)){
+        if(array_key_exists('pearl', $request)){
             $hasPearl = "true";
         }
         else{
             $hasPearl = "false";
         }
-        if(array_key_exists('bash', $data)){
+        if(array_key_exists('bash', $request)){
             $hasBash = "true";
         }
         else{
             $hasBash = "false";
         }
-        if(array_key_exists('batch', $data)){
+        if(array_key_exists('batch', $request)){
             $hasBatch = "true";
         }
         else{
             $hasBatch = "false";
         }
-        if(array_key_exists('cisco', $data)){
+        if(array_key_exists('cisco', $request)){
             $hasCisco = "true";
         }
         else{
             $hasCisco = "false";
         }
-        if(array_key_exists('office', $data)){
+        if(array_key_exists('office', $request)){
             $hasOffice = "true";
         }
         else{
             $hasOffice= "false";
         }
-        if(array_key_exists('r', $data)){
+        if(array_key_exists('r', $request)){
             $hasR = "true";
         }
         else{
             $hasR = "false";
         }
-        if(array_key_exists('go', $data)){
+        if(array_key_exists('go', $request)){
             $hasGo = "true";
         }
         else{
             $hasGo = "false";
         }
-        if(array_key_exists('ruby', $data)){
+        if(array_key_exists('ruby', $request)){
             $hasRuby = "true";
         }
         else{
             $hasRuby = "false";
         }
-        if(array_key_exists('asp', $data)){
+        if(array_key_exists('asp', $request)){
             $hasASP = "true";
         }
         else{
             $hasASP = "false";
         }
-        if(array_key_exists('scala', $data)){
+        if(array_key_exists('scala', $request)){
             $hasScala = "true";
         }
         else{
@@ -218,18 +190,18 @@ class JobController extends Controller
         }
 
         /* Hours Condition */
-        if($data['hours'] == "casual" || $data['hours'] == "fulltime" || $data['hours'] == "parttime"){
-            $hours = $data['hours'];
+        if($request['hours'] == "casual" || $request['hours'] == "fulltime" || $request['hours'] == "parttime"){
+            $hours = $request['hours'];
         }
 
-        return Job::create([
-            'title' => $data['title'],
-            'description' => $data['decsription'],
+        Job::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
             'hours' => $hours,
-            'salary' => $data['salary'],
-            'availablefrom' => $data['availablefrom'],
-            'location' => $data['location'],
-            'startdate' => $data['startdate'],
+            'salary' => $request['salary'],
+            'availablefrom' => $request['availablefrom'],
+            'location' => $request['location'],
+            'startdate' => $request['startdate'],
             'java' => $hasJava,
             'python' => $hasPython,
             'c' => $hasC,
@@ -256,6 +228,8 @@ class JobController extends Controller
             'asp' => $hasASP,
             'scala' => $hasScala
         ]);
+
+        return redirect('/home');
     }
     /**
      * Show post page.

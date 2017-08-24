@@ -1,5 +1,7 @@
 <?php
 
+use App\Job;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +12,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* GET Routes */
 
 Route::get('/', function () {
     return view('index');
@@ -27,12 +31,24 @@ Route::get('/contact', function (){
     return view('contact');
 })->name('contact');
 
-Auth::routes();
+Route::get('/api/jobs', function (){
+	return Job::all();
+});
+
+/* GET Controller Routes */
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
-Route::post('/delete', 'Auth\DeleteController@delete')->name('delete');
-
 Route::get('/post', 'JobController@index')->name('post');
+
+/* POST Controller Routes*/
+
+Route::post('/submit', 'JobController@create')->name('post-submit');
+
+/* Authentication Routes */
+
+Auth::routes();
+
+Route::post('/delete', 'Auth\DeleteController@delete')->name('delete');

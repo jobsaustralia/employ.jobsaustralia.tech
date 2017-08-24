@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">	Post a job ad</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('post-submit') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -42,12 +42,12 @@
                             <label for="hours" class="col-md-4 control-label">Hours</label>
 
                             <div class="col-md-6">
-							<select class="form-control" value="{{ old('description') }}">
-							<option disabled selected value>Please select an option</option>
-							<option value="fulltime">Full-Time</option>
-							<option value="parttime">Part-Time</option>
-							<option value="casual">Casual</option>
-							</select>
+    							<select id="hours" name="hours" class="form-control" value="{{ old('hours') }}">
+        							<option disabled selected value>Please select an option</option>
+        							<option value="fulltime">Full-Time</option>
+        							<option value="parttime">Part-Time</option>
+        							<option value="casual">Casual</option>
+    							</select>
 
                                 @if ($errors->has('hours'))
                                     <span class="help-block">
