@@ -50,6 +50,9 @@ class CreateJobsTable extends Migration
             $table->boolean('asp');
             $table->boolean('scala');
 
+            $table->integer('employerid')->unsigned();
+            $table->foreign('employerid')->references('id')->on('employers');
+
             $table->timestamps();
         });
     }
