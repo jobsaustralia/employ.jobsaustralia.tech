@@ -38,155 +38,155 @@ class JobController extends Controller
         ]);
 
         /* Skill Conditions */
-        if(array_key_exists('java', $request)){
-            $hasJava = "true";
+        if(isset($request['java'])){
+            $hasJava = "1";
         }
         else{
-            $hasJava = "false";
+            $hasJava = "0";
         }
-        if(array_key_exists('python', $request)){
-            $hasPython = "true";
-        }
-        else{
-            $hasPython = "false";
-        }
-        if(array_key_exists('c', $request)){
-            $hasC = "true";
+        if(isset($request['python'])){
+            $hasPython = "1";
         }
         else{
-            $hasC = "false";
+            $hasPython = "0";
         }
-        if(array_key_exists('csharp', $request)){
-            $hasCSharp = "true";
-        }
-        else{
-            $hasCSharp = "false";
-        }
-        if(array_key_exists('cplus', $request)){
-            $hasCPlus = "true";
+        if(isset($request['c'])){
+            $hasC = "1";
         }
         else{
-            $hasCPlus = "false";
+            $hasC = "0";
         }
-        if(array_key_exists('php', $request)){
-            $hasPHP = "true";
-        }
-        else{
-            $hasPHP = "false";
-        }
-        if(array_key_exists('html', $request)){
-            $hasHTML = "true";
+        if(isset($request['csharp'])){
+            $hasCSharp = "1";
         }
         else{
-            $hasHTML = "false";
+            $hasCSharp = "0";
         }
-        if(array_key_exists('css', $request)){
-            $hasCSS = "true";
-        }
-        else{
-            $hasCSS = "false";
-        }
-        if(array_key_exists('javascript', $request)){
-            $hasJavaScript = "true";
+        if(isset($request['cplus'])){
+            $hasCPlus = "1";
         }
         else{
-            $hasJavaScript = "false";
+            $hasCPlus = "0";
         }
-        if(array_key_exists('sql', $request)){
-            $hasSQL = "true";
-        }
-        else{
-            $hasSQL = "false";
-        }
-        if(array_key_exists('unix', $request)){
-            $hasUNIX = "true";
+        if(isset($request['php'])){
+            $hasPHP = "1";
         }
         else{
-            $hasUNIX = "false";
+            $hasPHP = "0";
         }
-        if(array_key_exists('winserver', $request)){
-            $hasWinServer = "true";
-        }
-        else{
-            $hasWinServer = "false";
-        }
-        if(array_key_exists('windesktop', $request)){
-            $hasWinDesktop= "true";
+        if(isset($request['html'])){
+            $hasHTML = "1";
         }
         else{
-            $hasWinDesktop = "false";
+            $hasHTML = "0";
         }
-        if(array_key_exists('linuxdesktop', $request)){
-            $hasLinuxDesktop = "true";
-        }
-        else{
-            $hasLinuxDesktop = "false";
-        }
-        if(array_key_exists('macosdesktop', $request)){
-            $hasMacOsDesktop = "true";
+        if(isset($request['css'])){
+            $hasCSS = "1";
         }
         else{
-            $hasMacOsDesktop = "false";
+            $hasCSS = "0";
         }
-        if(array_key_exists('pearl', $request)){
-            $hasPearl = "true";
-        }
-        else{
-            $hasPearl = "false";
-        }
-        if(array_key_exists('bash', $request)){
-            $hasBash = "true";
+        if(isset($request['javascript'])){
+            $hasJavaScript = "1";
         }
         else{
-            $hasBash = "false";
+            $hasJavaScript = "0";
         }
-        if(array_key_exists('batch', $request)){
-            $hasBatch = "true";
-        }
-        else{
-            $hasBatch = "false";
-        }
-        if(array_key_exists('cisco', $request)){
-            $hasCisco = "true";
+        if(isset($request['sql'])){
+            $hasSQL = "1";
         }
         else{
-            $hasCisco = "false";
+            $hasSQL = "0";
         }
-        if(array_key_exists('office', $request)){
-            $hasOffice = "true";
-        }
-        else{
-            $hasOffice= "false";
-        }
-        if(array_key_exists('r', $request)){
-            $hasR = "true";
+        if(isset($request['unix'])){
+            $hasUNIX = "1";
         }
         else{
-            $hasR = "false";
+            $hasUNIX = "0";
         }
-        if(array_key_exists('go', $request)){
-            $hasGo = "true";
-        }
-        else{
-            $hasGo = "false";
-        }
-        if(array_key_exists('ruby', $request)){
-            $hasRuby = "true";
+        if(isset($request['winserver'])){
+            $hasWinServer = "1";
         }
         else{
-            $hasRuby = "false";
+            $hasWinServer = "0";
         }
-        if(array_key_exists('asp', $request)){
-            $hasASP = "true";
-        }
-        else{
-            $hasASP = "false";
-        }
-        if(array_key_exists('scala', $request)){
-            $hasScala = "true";
+        if(isset($request['windesktop'])){
+            $hasWinDesktop= "1";
         }
         else{
-            $hasScala = "false";
+            $hasWinDesktop = "0";
+        }
+        if(isset($request['linuxdesktop'])){
+            $hasLinuxDesktop = "1";
+        }
+        else{
+            $hasLinuxDesktop = "0";
+        }
+        if(isset($request['macosdesktop'])){
+            $hasMacOsDesktop = "1";
+        }
+        else{
+            $hasMacOsDesktop = "0";
+        }
+        if(isset($request['pearl'])){
+            $hasPearl = "1";
+        }
+        else{
+            $hasPearl = "0";
+        }
+        if(isset($request['bash'])){
+            $hasBash = "1";
+        }
+        else{
+            $hasBash = "0";
+        }
+        if(isset($request['batch'])){
+            $hasBatch = "1";
+        }
+        else{
+            $hasBatch = "0";
+        }
+        if(isset($request['cisco'])){
+            $hasCisco = "1";
+        }
+        else{
+            $hasCisco = "0";
+        }
+        if(isset($request['office'])){
+            $hasOffice = "1";
+        }
+        else{
+            $hasOffice= "0";
+        }
+        if(isset($request['r'])){
+            $hasR = "1";
+        }
+        else{
+            $hasR = "0";
+        }
+        if(isset($request['go'])){
+            $hasGo = "1";
+        }
+        else{
+            $hasGo = "0";
+        }
+        if(isset($request['ruby'])){
+            $hasRuby = "1";
+        }
+        else{
+            $hasRuby = "0";
+        }
+        if(isset($request['asp'])){
+            $hasASP = "1";
+        }
+        else{
+            $hasASP = "0";
+        }
+        if(isset($request['scala'])){
+            $hasScala = "1";
+        }
+        else{
+            $hasScala = "0";
         }
 
         /* Hours Condition */
