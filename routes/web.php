@@ -47,6 +47,8 @@ Route::get('/post', 'JobController@index')->name('post');
 
 Route::post('/submit', 'JobController@create')->name('post-submit');
 
+Route::post('/enquire', 'ContactController@send')->name('enquire');
+
 /* Authentication Routes */
 
 Auth::routes();
