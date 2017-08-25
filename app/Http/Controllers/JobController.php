@@ -226,7 +226,8 @@ class JobController extends Controller
             'go' => $hasGo,
             'ruby' => $hasRuby,
             'asp' => $hasASP,
-            'scala' => $hasScala
+            'scala' => $hasScala,
+            'employerid' => Auth::user()->id
         ]);
 
         return redirect('/home');
