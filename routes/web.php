@@ -35,6 +35,10 @@ Route::get('/api/jobs', function (){
 	return Job::all();
 });
 
+Route::get('/edit', function (){
+    return view('edit');
+})->name('edit');
+
 /* GET Controller Routes */
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -48,6 +52,8 @@ Route::get('/post', 'JobController@index')->name('post');
 Route::post('/submit', 'JobController@create')->name('post-submit');
 
 Route::post('/enquire', 'ContactController@send')->name('enquire');
+
+Route::post('/update', 'ProfileController@updateProfile')->name('update');
 
 /* Authentication Routes */
 
