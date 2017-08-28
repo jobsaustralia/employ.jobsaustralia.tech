@@ -32,10 +32,11 @@ class ProfileController extends Controller
  //update logged in user profie
     public function updateProfile(Request $request)
   {
+    $user = $request->user();
     /* Validate incoming data */
     $this->validate($request, [
         'name' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
-        'email' => 'required|string|email|max:255|unique:users'
+        'email' => 'required|string|email|max:255|unique:employers,email,' . $user->id
     ]);
 
     //You can get a User's current ID like this.
