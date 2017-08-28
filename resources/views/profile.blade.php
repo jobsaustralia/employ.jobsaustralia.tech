@@ -17,8 +17,9 @@
 
                         <p id="change-password-message" style="display: none;">To change your password, Logout and select "Forgot Your Password".</p>
                     </p>
+                    <a href="edit">Edit your profile</a>
                     <p>
-                        <button id="confirm-delete"> 
+                        <button id="confirm-delete">
                             Delete account.
                         </button>
 
