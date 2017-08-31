@@ -51,7 +51,7 @@ class CreateJobsTable extends Migration
             $table->boolean('scala');
 
             $table->integer('employerid')->unsigned();
-            $table->foreign('employerid')->references('id')->on('employers');
+            $table->foreign('employerid')->references('id')->on('employers')->onDelete('cascade');
 
             $table->timestamps();
         });
