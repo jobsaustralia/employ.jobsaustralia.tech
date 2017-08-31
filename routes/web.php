@@ -31,10 +31,6 @@ Route::get('/contact', function (){
     return view('contact');
 })->name('contact');
 
-Route::get('/api/jobs', function (){
-	return Job::all();
-});
-
 Route::get('/edit', function (){
     return view('edit');
 })->name('edit');

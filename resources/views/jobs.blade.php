@@ -13,8 +13,8 @@
                     <p>Hours: {{ Auth::user()->hours }}</p>
                     <p>Salary: {{ Auth::user()->salary }}</p>
                     <p>Available From: {{ Auth::user()->availablefrom }}</p>
-					<p>Location: {{ Auth::user()->location }}</p>
-					<p>Start Date: {{ Auth::user()->startdate }}</p>
+                    <p>Location: {{ Auth::user()->location }}</p>
+                    <p>Start Date: {{ Auth::user()->startdate }}</p>
                    
                 </div>
             </div>

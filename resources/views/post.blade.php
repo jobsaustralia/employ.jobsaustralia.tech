@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">	Post a job ad</div>
+                <div class="panel-heading">    Post a job ad</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('post-submit') }}">
                         {{ csrf_field() }}
@@ -30,8 +30,8 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-									<textarea id="description" name="description" rows="5" cols="30" class="form-control" value="{{ old('description') }}" required>
-									</textarea>
+                                    <textarea id="description" name="description" rows="5" cols="30" class="form-control" value="{{ old('description') }}" required>
+                                    </textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
@@ -45,12 +45,12 @@
                             <label for="hours" class="col-md-4 control-label">Hours</label>
 
                             <div class="col-md-6">
-    							<select id="hours" name="hours" class="form-control" value="{{ old('hours') }}" required>
-        							<option disabled selected value>Please select an option</option>
-        							<option value="fulltime">Full-Time</option>
-        							<option value="parttime">Part-Time</option>
-        							<option value="casual">Casual</option>
-    							</select>
+                                <select id="hours" name="hours" class="form-control" value="{{ old('hours') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+                                    <option value="fulltime">Full-Time</option>
+                                    <option value="parttime">Part-Time</option>
+                                    <option value="casual">Casual</option>
+                                </select>
 
                                 @if ($errors->has('hours'))
                                     <span class="help-block">
@@ -61,7 +61,7 @@
                         </div>
 
                         <!-- Salary -->
-						<div class="form-group{{ $errors->has('salary') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('salary') ? ' has-error' : '' }}">
                             <label for="salary" class="col-md-4 control-label">Salary</label>
 
                             <div class="col-md-6">
@@ -76,11 +76,11 @@
                         </div>
 
                         <!-- Start Date -->
-						<div class="form-group{{ $errors->has('startdate') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('startdate') ? ' has-error' : '' }}">
                             <label for="startdate" class="col-md-4 control-label">Start Date</label>
 
                             <div class="col-md-6">
-								<input id="startdate" type="date" name="startdate" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYears(2)->format('Y-m-d') }}" class="form-control" value="{{ old('startdate') }}" required>
+                                <input id="startdate" type="date" name="startdate" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYears(2)->format('Y-m-d') }}" class="form-control" value="{{ old('startdate') }}" required>
                              
                                 @if ($errors->has('startdate'))
                                     <span class="help-block">
@@ -132,10 +132,10 @@
                                 @endif
                             </div>
                         </div>
-						
-						<hr>
+                        
+                        <hr>
 
-						<h4 align="center">Skills</h4>
+                        <h4 align="center">Skills</h4>
 
                         <p align="center">Please select the skills an employee must possess.</p>
 
@@ -538,8 +538,8 @@
                                 @endif
                             </div>
                         </div>
-						
-						<hr>
+                        
+                        <hr>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
