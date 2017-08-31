@@ -31,13 +31,13 @@ class JobController extends Controller
     protected function create(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
             'description' => 'required|string|max:255',
-            'salary' => 'required|string|regex:/^[0-9]*$/|max:255',
             'hours' => 'required|string|in:fulltime,parttime,casual',
-            'availablefrom' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
-            'startdate' => 'required|string|max:255'
+            'salary' => 'required|integer|min:0|max:20000000',
+            'startdate' => 'required|string|min:10|max:10',
+            'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
+            'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
             'java' => 'required|boolean',
             'python' => 'required|boolean',
             'c' => 'required|boolean',
@@ -70,9 +70,9 @@ class JobController extends Controller
             'description' => $request['description'],
             'hours' => $hours,
             'salary' => $request['salary'],
-            'availablefrom' => $request['availablefrom'],
-            'location' => $request['location'],
             'startdate' => $request['startdate'],
+            'state' => $request['location'],
+            'city' => $request['city'],
             'java' => $request['java'],
             'python' => $request['python'],
             'c' => $request['c'],
@@ -97,7 +97,7 @@ class JobController extends Controller
             'go' => $request['go'],
             'ruby' => $request['ruby'],
             'asp' => $request['asp'],
-            'scala' => $request['scala']
+            'scala' => $request['scala'],
             'employerid' => Auth::user()->id
         ]);
 

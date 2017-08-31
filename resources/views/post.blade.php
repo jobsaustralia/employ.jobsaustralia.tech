@@ -10,11 +10,12 @@
                     <form class="form-horizontal" method="POST" action="{{ route('post-submit') }}">
                         {{ csrf_field() }}
 
+                        <!-- Title -->
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+                                <input id="title" type="text" class="form-control" name="title" pattern="[a-zA-Z ]+" value="{{ old('title') }}" required autofocus>
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -24,11 +25,12 @@
                             </div>
                         </div>
 
+                        <!-- Description -->
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-									<textarea id="description" name="description" rows="5" cols="30" class="form-control" value="{{ old('description') }}" required autofocus>
+									<textarea id="description" name="description" rows="5" cols="30" class="form-control" value="{{ old('description') }}" required>
 									</textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -38,11 +40,12 @@
                             </div>
                         </div>
 
+                        <!-- Hours -->
                         <div class="form-group{{ $errors->has('hours') ? ' has-error' : '' }}">
                             <label for="hours" class="col-md-4 control-label">Hours</label>
 
                             <div class="col-md-6">
-    							<select id="hours" name="hours" class="form-control" value="{{ old('hours') }}">
+    							<select id="hours" name="hours" class="form-control" value="{{ old('hours') }}" required>
         							<option disabled selected value>Please select an option</option>
         							<option value="fulltime">Full-Time</option>
         							<option value="parttime">Part-Time</option>
@@ -56,12 +59,13 @@
                                 @endif
                             </div>
                         </div>
-						
+
+                        <!-- Salary -->
 						<div class="form-group{{ $errors->has('salary') ? ' has-error' : '' }}">
                             <label for="salary" class="col-md-4 control-label">Salary</label>
 
                             <div class="col-md-6">
-                                <input id="salary" type="text" class="form-control" name="salary" value="{{ old('salary') }}" required autofocus>
+                                <input id="salary" type="number" min="0" max="20000000" class="form-control" name="salary" value="{{ old('salary') }}" required>
 
                                 @if ($errors->has('salary'))
                                     <span class="help-block">
@@ -70,44 +74,60 @@
                                 @endif
                             </div>
                         </div>
-                        
-						<div class="form-group{{ $errors->has('availablefrom') ? ' has-error' : '' }}">
-                            <label for="availablefrom" class="col-md-4 control-label">Available From</label>
 
-                            <div class="col-md-6">
-								<input id="availablefrom" type="date" name="availablefrom" min="2017-08-01" max="2018-12-31" class="form-control" value="{{ old('description') }}" required autofocus>
-                             
-                                @if ($errors->has('availablefrom'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('availablefrom') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-						
-						<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            <label for="location" class="col-md-4 control-label">Location</label>
-
-                            <div class="col-md-6">
-                                <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" required autofocus>
-
-                                @if ($errors->has('location'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('location') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-						
+                        <!-- Start Date -->
 						<div class="form-group{{ $errors->has('startdate') ? ' has-error' : '' }}">
                             <label for="startdate" class="col-md-4 control-label">Start Date</label>
 
                             <div class="col-md-6">
-								<input id="startdate" type="date" name="startdate" min="2017-08-01" max="2018-12-31" class="form-control" value="{{ old('description') }}" required autofocus>
+								<input id="startdate" type="date" name="startdate" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYears(2)->format('Y-m-d') }}" class="form-control" value="{{ old('startdate') }}" required>
                              
                                 @if ($errors->has('startdate'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('startdate') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Location: State -->
+                        <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+                            <label for="state" class="col-md-4 control-label">State/Territory</label>
+
+                            <div class="col-md-6">
+                                <select id="state" name="state" class="form-control" value="{{ old('state') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+                                    <option value="vic">Victoria</option>
+                                    <option value="nsw">New South Wales</option>
+                                    <option value="qld">Queensland</option>
+                                    <option value="wa">Western Australia</option>
+                                    <option value="sa">South Australia</option>
+                                    <option value="tas">Tasmania</option>
+                                    <option value="act">Australian Capital Territory</option>
+                                    <option value="nt">Northern Teritory</option>
+                                    <option value="oth">Other Australian Region</option>
+                                </select>
+
+                                @if ($errors->has('state'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('state') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Location: City -->
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-4 control-label">City</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control" name="city" pattern="[a-zA-Z ]+" value="{{ old('city') }}" required>
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -125,7 +145,7 @@
 
                             <div class="col-md-1">
                                 <input id="java-hidden" type="hidden" class="form-control" name="java" value="0">
-                                <input id="java" type="checkbox" class="form-control" name="java" value="{{ old('java', 1) }}" autofocus>
+                                <input id="java" type="checkbox" class="form-control" name="java" value="{{ old('java', 1) }}">
                             
                                 @if ($errors->has('java'))
                                     <span class="help-block">
@@ -141,7 +161,7 @@
 
                             <div class="col-md-1">
                                 <input id="python-hidden" type="hidden" class="form-control" name="python" value="0">
-                                <input id="python" type="checkbox" class="form-control" name="python" value="{{ old('python', 1) }}" autofocus>
+                                <input id="python" type="checkbox" class="form-control" name="python" value="{{ old('python', 1) }}">
 
                                 @if ($errors->has('python'))
                                     <span class="help-block">
@@ -157,7 +177,7 @@
 
                             <div class="col-md-1">
                                 <input id="c-hidden" type="hidden" class="form-control" name="c" value="0">
-                                <input id="c" type="checkbox" class="form-control" name="c" value="{{ old('c', 1) }}" autofocus>
+                                <input id="c" type="checkbox" class="form-control" name="c" value="{{ old('c', 1) }}">
                             
                                 @if ($errors->has('c'))
                                     <span class="help-block">
@@ -173,7 +193,7 @@
 
                             <div class="col-md-1">
                                 <input id="csharp-hidden" type="hidden" class="form-control" name="csharp" value="0">
-                                <input id="csharp" type="checkbox" class="form-control" name="csharp" value="{{ old('csharp', 1) }}" autofocus>
+                                <input id="csharp" type="checkbox" class="form-control" name="csharp" value="{{ old('csharp', 1) }}">
                             
                                 @if ($errors->has('csharp'))
                                     <span class="help-block">
@@ -189,7 +209,7 @@
 
                             <div class="col-md-1">
                                 <input id="cplus-hidden" type="hidden" class="form-control" name="cplus" value="0">
-                                <input id="cplus" type="checkbox" class="form-control" name="cplus" value="{{ old('cplus', 1) }}" autofocus>
+                                <input id="cplus" type="checkbox" class="form-control" name="cplus" value="{{ old('cplus', 1) }}">
                             
                                 @if ($errors->has('cplus'))
                                     <span class="help-block">
@@ -205,7 +225,7 @@
 
                             <div class="col-md-1">
                                 <input id="php-hidden" type="hidden" class="form-control" name="php" value="0">
-                                <input id="php" type="checkbox" class="form-control" name="php" value="{{ old('php', 1) }}" autofocus>
+                                <input id="php" type="checkbox" class="form-control" name="php" value="{{ old('php', 1) }}">
                             
                                 @if ($errors->has('php'))
                                     <span class="help-block">
@@ -221,7 +241,7 @@
                             <label for="html" class="col-md-4 control-label">HTML</label>
 
                             <div class="col-md-1">
-                                <input id="html" type="checkbox" class="form-control" name="html" value="{{ old('html', 1) }}" autofocus>
+                                <input id="html" type="checkbox" class="form-control" name="html" value="{{ old('html', 1) }}">
                             
                                 @if ($errors->has('html'))
                                     <span class="help-block">
@@ -237,7 +257,7 @@
 
                             <div class="col-md-1">
                                 <input id="css-hidden" type="hidden" class="form-control" name="css" value="0">
-                                <input id="css" type="checkbox" class="form-control" name="css" value="{{ old('css', 1) }}" autofocus>
+                                <input id="css" type="checkbox" class="form-control" name="css" value="{{ old('css', 1) }}">
                             
                                 @if ($errors->has('css'))
                                     <span class="help-block">
@@ -253,7 +273,7 @@
 
                             <div class="col-md-1">
                                 <input id="javascript-hidden" type="hidden" class="form-control" name="javascript" value="0">
-                                <input id="javascript" type="checkbox" class="form-control" name="javascript" value="{{ old('javascript', 1) }}" autofocus>
+                                <input id="javascript" type="checkbox" class="form-control" name="javascript" value="{{ old('javascript', 1) }}">
                             
                                 @if ($errors->has('javascript'))
                                     <span class="help-block">
@@ -269,7 +289,7 @@
 
                             <div class="col-md-1">
                                 <input id="sql-hidden" type="hidden" class="form-control" name="sql" value="0">
-                                <input id="sql" type="checkbox" class="form-control" name="sql" value="{{ old('sql', 1) }}" autofocus>
+                                <input id="sql" type="checkbox" class="form-control" name="sql" value="{{ old('sql', 1) }}">
                             
                                 @if ($errors->has('sql'))
                                     <span class="help-block">
@@ -285,7 +305,7 @@
 
                             <div class="col-md-1">
                                 <input id="unix-hidden" type="hidden" class="form-control" name="unix" value="0">
-                                <input id="unix" type="checkbox" class="form-control" name="unix" value="{{ old('unix', 1) }}" autofocus>
+                                <input id="unix" type="checkbox" class="form-control" name="unix" value="{{ old('unix', 1) }}">
                             
                                 @if ($errors->has('unix'))
                                     <span class="help-block">
@@ -301,7 +321,7 @@
 
                             <div class="col-md-1">
                                 <input id="winserver-hidden" type="hidden" class="form-control" name="winserver" value="0">
-                                <input id="winserver" type="checkbox" class="form-control" name="winserver" value="{{ old('winserver', 1) }}" autofocus>
+                                <input id="winserver" type="checkbox" class="form-control" name="winserver" value="{{ old('winserver', 1) }}">
                             
                                 @if ($errors->has('winserver'))
                                     <span class="help-block">
@@ -317,7 +337,7 @@
 
                             <div class="col-md-1">
                                 <input id="windesktop-hidden" type="hidden" class="form-control" name="windesktop" value="0">
-                                <input id="windesktop" type="checkbox" class="form-control" name="windesktop" value="{{ old('windesktop', 1) }}" autofocus>
+                                <input id="windesktop" type="checkbox" class="form-control" name="windesktop" value="{{ old('windesktop', 1) }}">
                             
                                 @if ($errors->has('windesktop'))
                                     <span class="help-block">
@@ -333,7 +353,7 @@
 
                             <div class="col-md-1">
                                 <input id="linuxdesktop-hidden" type="hidden" class="form-control" name="linuxdesktop" value="0">
-                                <input id="linuxdesktop" type="checkbox" class="form-control" name="linuxdesktop" value="{{ old('linuxdesktop', 1) }}" autofocus>
+                                <input id="linuxdesktop" type="checkbox" class="form-control" name="linuxdesktop" value="{{ old('linuxdesktop', 1) }}">
                             
                                 @if ($errors->has('linuxdesktop'))
                                     <span class="help-block">
@@ -349,7 +369,7 @@
 
                             <div class="col-md-1">
                                 <input id="macosdesktop-hidden" type="hidden" class="form-control" name="macosdesktop" value="0">
-                                <input id="macosdesktop" type="checkbox" class="form-control" name="macosdesktop" value="{{ old('macosdesktop', 1) }}" autofocus>
+                                <input id="macosdesktop" type="checkbox" class="form-control" name="macosdesktop" value="{{ old('macosdesktop', 1) }}">
                             
                                 @if ($errors->has('macosdesktop'))
                                     <span class="help-block">
@@ -365,7 +385,7 @@
 
                             <div class="col-md-1">
                                 <input id="pearl-hidden" type="hidden" class="form-control" name="pearl" value="0">
-                                <input id="pearl" type="checkbox" class="form-control" name="pearl" value="{{ old('pearl', 1) }}" autofocus>
+                                <input id="pearl" type="checkbox" class="form-control" name="pearl" value="{{ old('pearl', 1) }}">
                             
                                 @if ($errors->has('pearl'))
                                     <span class="help-block">
@@ -381,7 +401,7 @@
 
                             <div class="col-md-1">
                                 <input id="bash-hidden" type="hidden" class="form-control" name="bash" value="0">
-                                <input id="bash" type="checkbox" class="form-control" name="bash" value="{{ old('bash', 1) }}" autofocus>
+                                <input id="bash" type="checkbox" class="form-control" name="bash" value="{{ old('bash', 1) }}">
                             
                                 @if ($errors->has('bash'))
                                     <span class="help-block">
@@ -397,7 +417,7 @@
 
                             <div class="col-md-1">
                                 <input id="batch-hidden" type="hidden" class="form-control" name="batch" value="0">
-                                <input id="batch" type="checkbox" class="form-control" name="batch" value="{{ old('batch', 1) }}" autofocus>
+                                <input id="batch" type="checkbox" class="form-control" name="batch" value="{{ old('batch', 1) }}">
                             
                                 @if ($errors->has('batch'))
                                     <span class="help-block">
@@ -413,7 +433,7 @@
 
                             <div class="col-md-1">
                                 <input id="cisco-hidden" type="hidden" class="form-control" name="cisco" value="0">
-                                <input id="cisco" type="checkbox" class="form-control" name="cisco" value="{{ old('cisco', 1) }}" autofocus>
+                                <input id="cisco" type="checkbox" class="form-control" name="cisco" value="{{ old('cisco', 1) }}">
                             
                                 @if ($errors->has('cisco'))
                                     <span class="help-block">
@@ -429,7 +449,7 @@
 
                             <div class="col-md-1">
                                 <input id="office-hidden" type="hidden" class="form-control" name="office" value="0">
-                                <input id="office" type="checkbox" class="form-control" name="office" value="{{ old('office', 1) }}" autofocus>
+                                <input id="office" type="checkbox" class="form-control" name="office" value="{{ old('office', 1) }}">
                             
                                 @if ($errors->has('office'))
                                     <span class="help-block">
@@ -445,7 +465,7 @@
 
                             <div class="col-md-1">
                                 <input id="r-hidden" type="hidden" class="form-control" name="r" value="0">
-                                <input id="r" type="checkbox" class="form-control" name="r" value="{{ old('r', 1) }}" autofocus>
+                                <input id="r" type="checkbox" class="form-control" name="r" value="{{ old('r', 1) }}">
                             
                                 @if ($errors->has('r'))
                                     <span class="help-block">
@@ -461,7 +481,7 @@
 
                             <div class="col-md-1">
                                 <input id="go-hidden" type="hidden" class="form-control" name="go" value="0">
-                                <input id="go" type="checkbox" class="form-control" name="go" value="{{ old('go', 1) }}" autofocus>
+                                <input id="go" type="checkbox" class="form-control" name="go" value="{{ old('go', 1) }}">
                             
                                 @if ($errors->has('go'))
                                     <span class="help-block">
@@ -477,7 +497,7 @@
 
                             <div class="col-md-1">
                                 <input id="ruby-hidden" type="hidden" class="form-control" name="ruby" value="0">
-                                <input id="ruby" type="checkbox" class="form-control" name="ruby" value="{{ old('ruby', 1) }}" autofocus>
+                                <input id="ruby" type="checkbox" class="form-control" name="ruby" value="{{ old('ruby', 1) }}">
                             
                                 @if ($errors->has('ruby'))
                                     <span class="help-block">
@@ -493,7 +513,7 @@
 
                             <div class="col-md-1">
                                 <input id="asp-hidden" type="hidden" class="form-control" name="asp" value="0">
-                                <input id="asp" type="checkbox" class="form-control" name="asp" value="{{ old('asp', 1) }}" autofocus>
+                                <input id="asp" type="checkbox" class="form-control" name="asp" value="{{ old('asp', 1) }}">
                             
                                 @if ($errors->has('asp'))
                                     <span class="help-block">
@@ -509,7 +529,7 @@
 
                             <div class="col-md-1">
                                 <input id="scala-hidden" type="hidden" class="form-control" name="scala" value="0">
-                                <input id="scala" type="checkbox" class="form-control" name="scala" value="{{ old('scala', 1) }}" autofocus>
+                                <input id="scala" type="checkbox" class="form-control" name="scala" value="{{ old('scala', 1) }}">
                             
                                 @if ($errors->has('scala'))
                                     <span class="help-block">
