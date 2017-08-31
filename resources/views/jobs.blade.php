@@ -3,21 +3,23 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div id="profile" class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"></div>
+        <div class="col-md-8 col-md-offset-2">
+            <h3><i class="fa fa-briefcase" aria-hidden="true"></i> Your Jobs</h3><br>
+            @if ($jobs)
+                @foreach($jobs as $job)
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ $job->title }}</div>
 
-                <div class="panel-body">
-                    <p>Job Title: {{ Auth::user()->title }}</p>
-                    <p>Description: {{ Auth::user()->description }}</p>
-                    <p>Hours: {{ Auth::user()->hours }}</p>
-                    <p>Salary: {{ Auth::user()->salary }}</p>
-                    <p>Available From: {{ Auth::user()->availablefrom }}</p>
-                    <p>Location: {{ Auth::user()->location }}</p>
-                    <p>Start Date: {{ Auth::user()->startdate }}</p>
-                   
+                    <div class="panel-body">
+                        {{ $job->description }}
+
+                        <hr>
+
+                        <p><strong>Hours:</strong> {{ $job->hours }}</p>
+                    </div>
                 </div>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>

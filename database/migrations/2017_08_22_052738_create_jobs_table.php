@@ -17,7 +17,7 @@ class CreateJobsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('description');
-            $table->integer('hours');
+            $table->string('hours');
             $table->integer('salary');
             $table->string('startdate');
             $table->string('state');

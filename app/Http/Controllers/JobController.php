@@ -68,10 +68,10 @@ class JobController extends Controller
         Job::create([
             'title' => $request['title'],
             'description' => $request['description'],
-            'hours' => $hours,
+            'hours' => $request['hours'],
             'salary' => $request['salary'],
             'startdate' => $request['startdate'],
-            'state' => $request['location'],
+            'state' => $request['state'],
             'city' => $request['city'],
             'java' => $request['java'],
             'python' => $request['python'],
@@ -101,8 +101,9 @@ class JobController extends Controller
             'employerid' => Auth::user()->id
         ]);
 
-        return Redirect::route('/jobs');
+        return Redirect::route('jobs');
     }
+
     /**
      * Show post page.
      *
@@ -111,5 +112,17 @@ class JobController extends Controller
     public function index()
     {
         return view('post');
+    }
+
+    /**
+     * Show job page with jobs posted by user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function display()
+    {
+        $jobs = Job::where('employerid', Auth::user()->id)->get();
+
+        return view('jobs')->with(compact('jobs'));
     }
 }

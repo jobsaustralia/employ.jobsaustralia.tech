@@ -43,6 +43,8 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/post', 'JobController@index')->name('post');
 
+Route::get('/jobs', 'JobController@display')->name('jobs');
+
 /* POST Controller Routes*/
 
 Route::post('/submit', 'JobController@create')->name('post-submit');
