@@ -19,16 +19,5 @@ class DeleteController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Delete account.
-     *
-     * @return void
-     */
-    public function delete()
-    {
-        $id = Auth::user()->id;   
-        User::destroy($id);
-
-        return redirect()->route('home');
-    }
+    
 }
