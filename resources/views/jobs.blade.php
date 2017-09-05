@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h3><i class="fa fa-briefcase" aria-hidden="true"></i> Your Jobs</h3><br>
-            @if ($jobs)
+            @if (count($jobs) > 0)
                 @foreach($jobs as $job)
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ $job->title }}</div>
@@ -38,6 +38,20 @@
                     </div>
                 </div>
                 @endforeach
+            @else
+                <!-- No jobs div. Used to display message when employer has no active jobs. -->
+                <div align="center">
+                    <br><br>
+                    <p><i style="font-size: 200px" class="fa fa-ship " aria-hidden="true"></i></p>
+                    <br>
+                    <h2>No Jobs Found.</h2>
+                    <p>This page will display your active jobs.</p>
+                    <br>
+                    <p>
+                        <a href="{{ route('post') }}" class="btn btn-primary">Post a job</a>
+                    </p>
+                    <br><br>
+                </div>
             @endif
         </div>
     </div>
