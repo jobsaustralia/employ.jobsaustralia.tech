@@ -34,8 +34,6 @@ Route::get('/contact', function (){
 
 /* GET Controller Routes */
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
@@ -61,7 +59,12 @@ Auth::routes();
 /* API Routes */
 
 Route::get('/api/user', function(){
-	return Auth::user();
+	if(Auth::user() != null){
+		return Auth::user();
+	}
+	else{
+		return "You are not logged in!";
+	}
 });
 
 Route::get('/api/jobs/{state}', 'JobController@getJobs')->name('getJobs');
