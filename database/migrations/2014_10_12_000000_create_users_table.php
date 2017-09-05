@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,16 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
             $table->string('title');
-            $table->string('description');
-            $table->string('hours');
-<<<<<<< HEAD
-            $table->string('salary');
-            $table->string('availablefrom');
-            $table->string('location');
-            $table->string('state');
-=======
-            $table->integer('salary');
->>>>>>> origin/master
-            $table->string('startdate');
+            $table->string('sector');
             $table->string('state');
             $table->string('city');
-
+            $table->integer('experience');
+            
             /* Skills */
             $table->boolean('java');
             $table->boolean('python');
@@ -57,9 +50,8 @@ class CreateJobsTable extends Migration
             $table->boolean('asp');
             $table->boolean('scala');
 
-            $table->integer('employerid')->unsigned();
-            $table->foreign('employerid')->references('id')->on('employers')->onDelete('cascade');
-
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -71,6 +63,6 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('users');
     }
 }

@@ -31,21 +31,19 @@ Route::get('/contact', function (){
     return view('contact');
 })->name('contact');
 
-Route::get('/api/jobs', function (){
-	return Job::all();
-});
-
-Route::get('/edit', function (){
-    return view('edit');
-})->name('edit');
-
 /* GET Controller Routes */
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
+Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
+
+Route::post('/profile/delete', 'ProfileController@delete')->name('delete');
+
 Route::get('/post', 'JobController@index')->name('post');
+
+Route::get('/jobs', 'JobController@display')->name('jobs');
 
 /* POST Controller Routes*/
 
@@ -58,5 +56,3 @@ Route::post('/update', 'ProfileController@updateProfile')->name('update');
 /* Authentication Routes */
 
 Auth::routes();
-
-Route::post('/delete', 'Auth\DeleteController@delete')->name('delete');
