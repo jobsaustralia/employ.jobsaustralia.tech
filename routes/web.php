@@ -1,6 +1,7 @@
 <?php
 
-use App\Job;
+use Auth;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,13 +40,13 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
 
-Route::post('/profile/delete', 'ProfileController@delete')->name('delete');
-
 Route::get('/post', 'JobController@index')->name('post');
 
 Route::get('/jobs', 'JobController@display')->name('jobs');
 
 /* POST Controller Routes*/
+
+Route::post('/profile/delete', 'ProfileController@delete')->name('delete');
 
 Route::post('/submit', 'JobController@create')->name('post-submit');
 
@@ -56,3 +57,11 @@ Route::post('/update', 'ProfileController@updateProfile')->name('update');
 /* Authentication Routes */
 
 Auth::routes();
+
+/* API Routes */
+
+Route::get('/api/user', function(){
+	return Auth::user();
+});
+
+Route::get('/api/jobs/{state}', 'JobController@getJobs')->name('getJobs');

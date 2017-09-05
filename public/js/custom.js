@@ -19,7 +19,7 @@ function toggleTeamDisplay(){
 }
 
 function randomiseTeam(){
-    function shuffle(a) {
+    function shuffle(a){
         var j, x, i;
         for (i = a.length; i; i--) {
             j = Math.floor(Math.random() * i);

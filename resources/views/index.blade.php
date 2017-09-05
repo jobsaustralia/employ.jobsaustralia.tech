@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
 
 
-        <!-- Panel 1 -->
+            <!-- Panel 1 -->
             <div class="panel panel-default">
                 <div class="panel-heading"> <i class="fa fa-briefcase" aria-hidden="true" style="font-size: 30px"></i><b> WELCOME!</b></div>
 
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-        <!-- Panel 2 -->
+            <!-- Panel 2 -->
             <div class="panel panel-default">
                 <div class="panel-heading"> <i class="fa fa-users" aria-hidden="true" style="font-size: 30px"></i><b> WE'RE HERE FOR YOU </b></div>
 

@@ -26,8 +26,6 @@ class ContactController extends Controller
     public function send(Request $request)
     { 
         
-        //echo $request['name'];
-
-        //return redirect()->route('home');
+        // Nothing here yet.
     }
 }
