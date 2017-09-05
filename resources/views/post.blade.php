@@ -99,6 +99,30 @@
                             </div>
                         </div>
 						
+                        <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+                            <label for="state" class="col-md-4 control-label">State</label>
+
+                            <div class="col-md-6">
+                                <select id="state" name="state" class="form-control" value="{{ old('state') }}">
+                                    <option disabled selected value>State/Territory</option>
+                                    <option value="vic">Victoria</option>
+                                    <option value="nsw">New South Wales</option>
+                                    <option value="tas">Tasmania</option>
+                                    <option value="wa">Western Australia</option>
+                                    <option value="sa">South Australia</option>
+                                    <option value="qld">Queensland</option>
+                                    <option value="act">Australian Capital Territory</option>
+                                    <option value="nt">Northern Territory</option>
+                                </select>
+
+                                @if ($errors->has('state'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('state') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+
 						<div class="form-group{{ $errors->has('startdate') ? ' has-error' : '' }}">
                             <label for="startdate" class="col-md-4 control-label">Start Date</label>
 
