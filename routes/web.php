@@ -37,7 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
-Route::get('/profile/edit', 'ProfileController@editIndex')->name('edit');
+Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
 
 Route::post('/profile/delete', 'ProfileController@delete')->name('delete');
 
