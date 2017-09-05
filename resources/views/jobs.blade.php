@@ -19,15 +19,17 @@
 						<p><strong>Location:</strong> {{ $job->location }}</p>
 						<p><strong>Start Date:</strong> {{ $job->startdate }}</p>
 						
+						<hr>
+						
 						 <p>
                         <button class="btn btn-primary">
-                            Edit
+                            Edit job
                         </button>
                     </p>
 					
 					 <p>
                         <button class="btn btn-primary">
-                            Delete
+                            Delete job
                         </button>
                     </p>
 					
