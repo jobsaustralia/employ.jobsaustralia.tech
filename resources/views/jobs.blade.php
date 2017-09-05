@@ -11,11 +11,26 @@
                     <div class="panel-heading">{{ $job->title }}</div>
 
                     <div class="panel-body">
-                        {{ $job->description }}
-
-                        <hr>
-
-                        <p><strong>Hours:</strong> {{ $job->hours }}</p>
+						
+                        <p><strong>Description:</strong> {{ $job->description }}</p>
+						<p><strong>Hours:</strong> {{ $job->hours }}</p>
+						<p><strong>Salary:</strong> {{ $job->salary }}</p>
+						<p><strong>Available From:</strong> {{ $job->availablefrom }}</p>
+						<p><strong>Location:</strong> {{ $job->location }}</p>
+						<p><strong>Start Date:</strong> {{ $job->startdate }}</p>
+						
+						 <p>
+                        <button class="btn btn-primary">
+                            Edit
+                        </button>
+                    </p>
+					
+					 <p>
+                        <button class="btn btn-primary">
+                            Delete
+                        </button>
+                    </p>
+					
                     </div>
                 </div>
                 @endforeach
