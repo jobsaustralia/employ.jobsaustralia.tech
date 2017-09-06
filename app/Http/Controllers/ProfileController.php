@@ -72,6 +72,6 @@ class ProfileController extends Controller
         $id = Auth::user()->id;   
         User::destroy($id);
 
-        return  Redirect::route('home');
+        return  Redirect::route('index');
     }
 }
