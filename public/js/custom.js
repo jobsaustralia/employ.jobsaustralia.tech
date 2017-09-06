@@ -57,6 +57,7 @@ function randomiseTeam(){
 
 if(document.getElementById("profile") !== null){
     document.getElementById("confirm-delete").addEventListener("click", toggleDisplay);
+    document.getElementById("really-confirm-delete").addEventListener("click", toggleDisplay);
     document.getElementById("change-password").addEventListener("click", toggleDisplay);
 }
 else if(document.getElementById("team") !== null){
