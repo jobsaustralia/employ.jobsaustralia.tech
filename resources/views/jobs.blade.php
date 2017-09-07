@@ -11,7 +11,7 @@
                     <div class="panel-heading">{{ $job->title }}</div>
 
                     <div class="panel-body">
-                        
+
                         <p><strong>Description:</strong> {{ $job->description }}</p>
 
                         <hr>
@@ -21,15 +21,15 @@
                         <p><strong>Start Date:</strong> {{ $job->startdate }}</p>
                         <p><strong>State:</strong> {{ $job->state }}</p>
                         <p><strong>City:</strong> {{ $job->city }}</p>
-                        
+
                         <hr>
-                        
+
                         <p>
-                            <button class="btn btn-primary">
+                            <a href="{{route('displayEditJob',$job->id)}}" class="btn btn-primary">
                                 Edit job
-                            </button>
+                            </a>
                         </p>
-                        
+
                         <p>
                             <button class="btn btn-primary">
                                 Delete job
