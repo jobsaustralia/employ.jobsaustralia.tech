@@ -43,6 +43,10 @@ Route::get('/post', 'JobController@index')->name('post');
 
 Route::get('/jobs', 'JobController@display')->name('jobs');
 
+Route::get('/job/{id}', 'JobController@showEditJobForm')->name('displayEditJob');
+
+
+
 /* POST Controller Routes*/
 
 Route::post('/profile/delete', 'ProfileController@delete')->name('delete');
@@ -52,6 +56,8 @@ Route::post('/submit', 'JobController@create')->name('post-submit');
 Route::post('/enquire', 'ContactController@send')->name('enquire');
 
 Route::post('/update', 'ProfileController@updateProfile')->name('update');
+
+Route::post('/job/{id}', 'JobController@storeEditedJob')->name('saveEditedJob');
 
 /* Authentication Routes */
 
