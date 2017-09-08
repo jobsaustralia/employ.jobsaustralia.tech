@@ -81,6 +81,28 @@ class ProfileController extends Controller
         return Auth::user();
     }
 
+    public function getJobSeeker($id){
+        $user = JobSeeker::findOrFail($id);
+        $employer = Auth::user();
+
+        $applications = Application::where('userid', $user->id)->get();
+
+        $flag = true;
+        foreach($applications as $application){
+            if(User::findOrFail($application->employerid) != $employer){
+                $flag = false;
+                break;
+            }
+        }
+
+        if($flag == true){
+            return $user;
+        }
+        else{
+            return null;
+        }
+    }
+
     public function getExperience($id){
         $user = JobSeeker::findOrFail($id);
         $employer = Auth::user();

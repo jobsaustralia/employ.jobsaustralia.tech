@@ -242,4 +242,16 @@ class JobController extends Controller
 
         return $jobs;
     }
+
+    public function getJob($id){
+        $employer = Auth::user();
+        $job = Job::findOrFail($id);
+
+        if(User::findOrFail($job->employerid) == $employer){
+            return $job;
+        }
+        else{
+            return null;
+        }
+    }
 }

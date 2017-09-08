@@ -72,11 +72,17 @@ Auth::routes();
 /* Return currently authenticated user. */
 Route::get('/api/user', 'ProfileController@getUser')->name('getUser');
 
-/* Return any user's experience by user ID. */
-Route::get('/api/user/{id}/experience', 'ProfileController@getExperience')->name('getExperience');
+/* Return any job seeker by ID. */
+Route::get('/api/jobseeker/{id}', 'ProfileController@getJobSeeker')->name('getJobSeeker');
+
+/* Return any job seeker's experience by user ID. */
+Route::get('/api/jobseeker/{id}/experience', 'ProfileController@getExperience')->name('getExperience');
 
 /* Return jobs by state. */
 Route::get('/api/jobs/{state}', 'JobController@getJobs')->name('getJobs');
+
+/* Return job by ID. */
+Route::get('/api/job/{id}', 'JobController@getJob')->name('getJob');
 
 /* Return applicants to a job by job ID. */
 Route::get('/api/applicants/job/{id}', 'ApplicationController@getApplicants')->name('getApplicants');
