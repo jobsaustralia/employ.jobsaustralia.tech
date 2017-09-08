@@ -63,6 +63,6 @@ if(document.getElementById("profile") !== null){
 else if(document.getElementById("team") !== null){
     document.addEventListener('DOMContentLoaded', randomiseTeam);
 }
-else if(document.getElementById("jobs") !== null){
+else if(document.getElementById("job") !== null){
     document.getElementById("delete-job").addEventListener("click", toggleDisplay);
 }
