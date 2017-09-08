@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h3><i class="fa fa-briefcase" aria-hidden="true"></i> Your Jobs</h3><br>
             @if (count($jobs) > 0)
+                <div id="jobs" style="display: none;"></div>
                 @foreach($jobs as $job)
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ $job->title }}</div>
@@ -38,10 +39,20 @@
                         </p>
 
                         <p>
-                            <button class="btn btn-primary">
+                            <button id="delete-job" class="btn btn-primary">
                                 Delete job
                             </button>
                         </p>
+
+                        <p id="delete-job-content" style="display: none;">
+                            Confirm deletion: <a class="text-warning" href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">I really want to delete this job.</a>
+                        </p>
+
+                        <form id="delete-form" action="{{ route('deleteJob') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+
+                            <input type="hidden" name="id" value="{{ $job->id }}" />
+                        </form>
                     </div>
                 </div>
                 @endforeach

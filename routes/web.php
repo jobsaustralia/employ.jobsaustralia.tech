@@ -61,6 +61,8 @@ Route::post('/update', 'ProfileController@update')->name('update');
 
 Route::post('/job/update', 'JobController@updateJob')->name('updateJob');
 
+Route::post('/job/delete', 'JobController@delete')->name('deleteJob');
+
 
 /* Authentication Routes */
 

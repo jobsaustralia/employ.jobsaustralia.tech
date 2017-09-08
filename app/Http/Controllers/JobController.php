@@ -214,4 +214,17 @@ class JobController extends Controller{
             return Redirect::route('index');
         }
     }
+
+    /* Delete job. */
+    public function delete(Request $request){
+        $id = $request['id'];
+        $job = Job::findOrFail($id);
+        $employer = Auth::user();
+
+        if(User::findOrFail($job->employerid) == $employer){
+            Job::destroy($id);
+        }
+
+        return  Redirect::route('jobs');
+    }
 }
