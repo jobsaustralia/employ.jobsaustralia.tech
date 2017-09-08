@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
 use App\User;
-use App\JobSeeker;
-use App\Application;
+
+use Auth;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller{

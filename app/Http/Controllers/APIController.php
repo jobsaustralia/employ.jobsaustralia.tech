@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
+use App\Job;
+use App\JobSeeker;
 use App\User;
 
 use Auth;
