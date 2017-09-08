@@ -1,6 +1,6 @@
 # employ.jobsaustralia.tech
 
-Job match-making for employers in the Australian IT sector - written in Laravel 5.4.
+Job match-making for employers in the Australian IT sector - written in Laravel 5.5.
 
 ## Contributors
 
