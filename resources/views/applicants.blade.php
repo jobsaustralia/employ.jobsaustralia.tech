@@ -6,6 +6,9 @@
         <div class="col-md-8 col-md-offset-2">
             <h3><i class="fa fa-briefcase" aria-hidden="true"></i> Applicants for <strong> {{ $title }} </strong></h3><br>
 
+            <!-- Job ID for use by match.js -->
+            <input id="jobID" type="hidden" value="{{ $id }}" />
+
             <!-- NoScript div. Used to display message about JavaScript being disabled, or not working. -->
             <div id="noscript" align="center">
                 <br><br>

@@ -46,6 +46,29 @@ function printApplicant(name, message, percentageMatch){
 
 /* Function to perform matchmaking. */
 function match(){
+    /* Get ID of job from document. */
+    var jobID = document.getElementById("jobID").value;
+
+    /* Get job. */
+    $.getJSON("/api/job/" + jobID, function(job){
+        // Handle job.
+    })
+    .then(function(){
+
+        /* Get applicants to job. */
+        $.getJSON("/api/applicants/job/" + jobID, function(applicants){
+            var i;
+            for(i = 0; i < applicants.length; i++){
+                // Handle applicants.
+            }
+        })
+        .then(function(){
+            // The API URL to get a job seeker by ID is /api/jobseeker/{id}. I made an API for experience, but I'm not sure if it's needed considering experience will be returned using this API.
+            // Good luck.
+        });
+    });
+
+    /* Dummy call to function to print dummy applicant. */
     printApplicant("Bob", "Hey, I'm Bob. You should hire me.", 98);
 }
 
