@@ -46,6 +46,8 @@ Route::get('/jobs', 'JobController@display')->name('jobs');
 
 Route::get('/job/edit/{id}', 'JobController@displayEditJob')->name('displayEditJob');
 
+Route::get('/job/{id}/applicants', 'ApplicationController@index')->name('applicants');
+
 
 /* POST Controller Routes*/
 

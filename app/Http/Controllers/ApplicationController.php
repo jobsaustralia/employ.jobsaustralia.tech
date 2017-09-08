@@ -25,6 +25,18 @@ class ApplicationController extends Controller
         $this->middleware('auth');
     }
 
+    public function index($id){
+        $employer = Auth::user();
+        $job = Job::findOrFail($id);
+
+        if(User::findOrFail($job->employerid) == $employer){
+            return view('applicants', ["id"=>$job->id, "title"=>$job->title]);
+        }
+        else{
+            return Redirect::route('jobs');
+        }
+    }
+
     /**
      * Apply for job.
      *

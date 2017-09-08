@@ -24,7 +24,7 @@
                         <hr>
 
                         <p>
-                            <a class="btn btn-primary">
+                            <a href="{{route('applicants', $job->id)}}" class="btn btn-primary">
                                 View applicants
                             </a>
                         </p>
