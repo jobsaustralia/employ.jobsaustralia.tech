@@ -40,16 +40,16 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
 
-Route::get('/post', 'JobController@index')->name('post');
+Route::get('/post', 'JobController@indexPost')->name('post');
 
-Route::get('/jobs', 'JobController@display')->name('jobs');
+Route::get('/jobs', 'JobController@indexJobs')->name('jobs');
 
-Route::get('/job/edit/{id}', 'JobController@displayEditJob')->name('displayEditJob');
+Route::get('/job/edit/{id}', 'JobController@indexEdit')->name('displayEditJob');
 
 Route::get('/job/{id}/applicants', 'ApplicationController@index')->name('applicants');
 
 
-/* POST Controller Routes*/
+/* POST Controller Routes */
 
 Route::post('/profile/delete', 'ProfileController@delete')->name('delete');
 
@@ -57,7 +57,7 @@ Route::post('/submit', 'JobController@create')->name('post-submit');
 
 Route::post('/enquire', 'ContactController@send')->name('enquire');
 
-Route::post('/update', 'ProfileController@updateProfile')->name('update');
+Route::post('/update', 'ProfileController@update')->name('update');
 
 Route::post('/job/update', 'JobController@updateJob')->name('updateJob');
 
@@ -70,19 +70,19 @@ Auth::routes();
 /* API Routes */
 
 /* Return currently authenticated user. */
-Route::get('/api/user', 'ProfileController@getUser')->name('getUser');
+Route::get('/api/user', 'APIController@getUser')->name('getUser');
 
 /* Return any job seeker by ID. */
-Route::get('/api/jobseeker/{id}', 'ProfileController@getJobSeeker')->name('getJobSeeker');
+Route::get('/api/jobseeker/{id}', 'APIController@getJobSeeker')->name('getJobSeeker');
 
 /* Return any job seeker's experience by user ID. */
-Route::get('/api/jobseeker/{id}/experience', 'ProfileController@getExperience')->name('getExperience');
+Route::get('/api/jobseeker/{id}/experience', 'APIController@getExperience')->name('getExperience');
 
 /* Return jobs by state. */
-Route::get('/api/jobs/{state}', 'JobController@getJobs')->name('getJobs');
+Route::get('/api/jobs/{state}', 'APIController@getJobs')->name('getJobs');
 
 /* Return job by ID. */
-Route::get('/api/job/{id}', 'JobController@getJob')->name('getJob');
+Route::get('/api/job/{id}', 'APIController@getJob')->name('getJob');
 
 /* Return applicants to a job by job ID. */
-Route::get('/api/applicants/job/{id}', 'ApplicationController@getApplicants')->name('getApplicants');
+Route::get('/api/applicants/job/{id}', 'APIController@getApplicants')->name('getApplicants');

@@ -4,32 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\User;
+
 use Auth;
+
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
-class JobController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
+class JobController extends Controller{
+
+    /* Create a new controller instance. */
+    public function __construct(){
         $this->middleware('auth');
     }
 
-    /**
-     * Create a new job.
-     *
-     * @param  Illuminate\Http\Request  $request
-     * @return Illuminate\Support\Facades\Redirect
-     */
-    protected function create(Request $request)
-    {
+    /* Create job. */
+    protected function create(Request $request){
         $this->validate($request, [
             'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
             'description' => 'required|string|max:255',
@@ -104,23 +95,13 @@ class JobController extends Controller
         return Redirect::route('jobs');
     }
 
-    /**
-     * Show post job page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    /* Display post job page, if authorised. */
+    public function indexPost(){
         return view('post');
     }
 
-    /**
-     * Show edit job page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function displayEditJob($id)
-    {
+    /* Display edit job page. */
+    public function indexEdit($id){
         $job = Job::findOrFail($id);
         $user = User::findOrFail($job->employerid);
 
@@ -132,14 +113,8 @@ class JobController extends Controller
         }
     }
 
-    /**
-     * Show edit job page.
-     *
-     * @return Illuminate\Support\Facades\Redirect
-     * @param  Illuminate\Http\Request  $request
-     */
-    public function updateJob(Request $request)
-    {
+    /* Update job, if authorised. */
+    public function updateJob(Request $request){
         $id = $request['jobid'];
         $job = Job::findOrFail($id);
         $user = User::findOrFail($job->employerid);
@@ -219,39 +194,24 @@ class JobController extends Controller
         return Redirect::route('jobs');
     }
 
-    /**
-     * Show job page with jobs posted by user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function display()
-    {
+    /* Display posted jobs page. */
+    public function indexJobs(){
+        $employer = Auth::user();
         $jobs = Job::where('employerid', Auth::user()->id)->get();
 
-        return view('jobs')->with(compact('jobs'));
-    }
+        $flag = true;
+        foreach($jobs as $job){
+            if(User::findOrFail($job->employerid) != $employer){
+                $flag = false;
+                break;
+            }
+        }
 
-    /**
-     * Return all jobs by filter for API.
-     *
-     * @param  $state
-     * @return \Illuminate\Http\Response
-     */
-    public function getJobs($state){
-        $jobs = Job::where('state', $state)->get();
-
-        return $jobs;
-    }
-
-    public function getJob($id){
-        $employer = Auth::user();
-        $job = Job::findOrFail($id);
-
-        if(User::findOrFail($job->employerid) == $employer){
-            return $job;
+        if($flag == true){
+            return view('jobs')->with(compact('jobs'));
         }
         else{
-            return null;
+            return Redirect::route('index');
         }
     }
 }

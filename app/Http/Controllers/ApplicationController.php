@@ -2,29 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Job;
 use App\Application;
+use App\Job;
 use App\JobSeeker;
 use App\User;
+
+use Auth;
+
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
-class ApplicationController extends Controller
-{
+class ApplicationController extends Controller{
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
+    /* Create a new controller instance. */
+    public function __construct(){
         $this->middleware('auth');
     }
 
+    /* Display applicants view. */
     public function index($id){
         $employer = Auth::user();
         $job = Job::findOrFail($id);
@@ -37,12 +34,7 @@ class ApplicationController extends Controller
         }
     }
 
-    /**
-     * Apply for job.
-     *
-     * @param  Illuminate\Http\Request  $request
-     * @return Illuminate\Support\Facades\Redirect
-     */
+    /* Apply for job. */
     public function apply(Request $request)
     {
         $this->validate($request, [
@@ -61,19 +53,5 @@ class ApplicationController extends Controller
         ]);
 
         return Redirect::route('matches');
-    }
-
-    public function getApplicants($id){
-        $employer = Auth::user();
-        $applications = Application::where('jobid', $id)->get();
-        $applicants = array();
-
-        foreach($applications as $application){
-            if(User::findOrFail($application->employerid) == $employer){
-                array_push($applicants, JobSeeker::findOrFail($application->userid));
-            }
-        }
-
-        return $applicants;
     }
 }
