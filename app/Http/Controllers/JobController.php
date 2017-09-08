@@ -121,7 +121,7 @@ class JobController extends Controller
      */
     public function displayEditJob($id)
     {
-    	$job = Job::findOrFail($id);
+        $job = Job::findOrFail($id);
         $user = User::findOrFail($job->employerid);
 
         if($user == Auth::user()){
@@ -229,5 +229,17 @@ class JobController extends Controller
         $jobs = Job::where('employerid', Auth::user()->id)->get();
 
         return view('jobs')->with(compact('jobs'));
+    }
+
+    /**
+     * Return all jobs by filter for API.
+     *
+     * @param  $state
+     * @return \Illuminate\Http\Response
+     */
+    public function getJobs($state){
+        $jobs = Job::where('state', $state)->get();
+
+        return $jobs;
     }
 }

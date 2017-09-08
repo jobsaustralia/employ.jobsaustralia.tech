@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\JobSeeker;
+use App\Application;
 use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
@@ -73,5 +75,30 @@ class ProfileController extends Controller
         User::destroy($id);
 
         return  Redirect::route('index');
+    }
+
+    public function getUser(){
+        return Auth::user();
+    }
+
+    public function getExperience($id){
+        $user = JobSeeker::findOrFail($id);
+        $employer = Auth::user();
+        $applications = Application::where('userid', $user->id)->get();
+
+        $flag = true;
+        foreach($applications as $application){
+            if(User::findOrFail($application->employerid) != $employer){
+                $flag = false;
+                break;
+            }
+        }
+
+        if($flag == true){
+            return $user->experience;
+        }
+        else{
+            return null;
+        }
     }
 }
