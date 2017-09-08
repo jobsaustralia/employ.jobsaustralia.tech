@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
-class ProfileController extends Controller{
+class APIController extends Controller{
 
     /* Create a new controller instance. */
     public function __construct(){
