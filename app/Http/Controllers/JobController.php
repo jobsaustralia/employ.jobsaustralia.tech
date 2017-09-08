@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\User;
 use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +12,6 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -114,86 +114,110 @@ class JobController extends Controller
         return view('post');
     }
 
-    //show Edit job form
-    public function showEditJobForm($id){
-    	$jobData = Job::find($id);
-    	return view('edit_job', compact('jobData'));
+    /**
+     * Show edit job page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function displayEditJob($id)
+    {
+    	$job = Job::findOrFail($id);
+        $user = User::findOrFail($job->employerid);
+
+        if($user == Auth::user()){
+            return view('edit-job', compact('job'));
+        }
+        else{
+            return Redirect::route('jobs');
+        }
     }
 
-    //store Edited job data
-public function storeEditedJob(Request $request, $id){
-  $this->validate($request, [
-    'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
-    'description' => 'required|string|max:255',
-    'hours' => 'required|string|in:fulltime,parttime,casual',
-    'salary' => 'required|integer|min:0|max:20000000',
-    'startdate' => 'required|string|min:10|max:10',
-    'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
-    'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
-    'java' => 'required|boolean',
-    'python' => 'required|boolean',
-    'c' => 'required|boolean',
-    'csharp' => 'required|boolean',
-    'cplus' => 'required|boolean',
-    'php' => 'required|boolean',
-    'html' => 'required|boolean',
-    'css' => 'required|boolean',
-    'javascript' => 'required|boolean',
-    'sql' => 'required|boolean',
-    'unix' => 'required|boolean',
-    'winserver' => 'required|boolean',
-    'windesktop' => 'required|boolean',
-    'linuxdesktop' => 'required|boolean',
-    'macosdesktop' => 'required|boolean',
-    'pearl' => 'required|boolean',
-    'bash' => 'required|boolean',
-    'batch' => 'required|boolean',
-    'cisco' => 'required|boolean',
-    'office' => 'required|boolean',
-    'r' => 'required|boolean',
-    'go' =>'required|boolean',
-    'ruby' => 'required|boolean',
-    'asp' => 'required|boolean',
-    'scala' => 'required|boolean',
-    ]);
+    /**
+     * Show edit job page.
+     *
+     * @return Illuminate\Support\Facades\Redirect
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function updateJob(Request $request)
+    {
+        $id = $request['jobid'];
+        $job = Job::findOrFail($id);
+        $user = User::findOrFail($job->employerid);
 
-  Job::where('id',$id)->update([
-    'title'=>$request->title,
-    'description'=>$request->description,
-    'hours' =>$request->hours,
-    'salary' => $request->salary,
-    'startdate' =>$request->startdate,
-    'state' =>$request->state,
-    'city' =>$request->city,
-    'java' =>$request->java,
-    'python' =>$request->python,
-    'c' =>$request->c,
-    'csharp' =>$request->csharp,
-    'cplus' =>$request->cplus,
-    'php' =>$request->php,
-    'html' =>$request->html,
-    'css' =>$request->css,
-    'javascript' =>$request->javascript,
-    'sql' =>$request->sql,
-    'unix' =>$request->unix,
-    'winserver' =>$request->winserver,
-    'windesktop' =>$request->windesktop,
-    'linuxdesktop' =>$request->linuxdesktop,
-    'macosdesktop' =>$request->macosdesktop,
-    'pearl' =>$request->pearl,
-    'bash' =>$request->bash,
-    'batch' =>$request->batch,
-    'cisco' =>$request->cisco,
-    'office' =>$request->office,
-    'r' =>$request->r,
-    'go' =>$request->go,
-    'ruby' =>$request->ruby,
-    'asp' =>$request->asp,
-    'scala' =>$request->scala
-     ]);
+        if($user == Auth::user()){
+            $this->validate($request, [
+                'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
+                'description' => 'required|string|max:255',
+                'hours' => 'required|string|in:fulltime,parttime,casual',
+                'salary' => 'required|integer|min:0|max:20000000',
+                'startdate' => 'required|string|min:10|max:10',
+                'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
+                'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
+                'java' => 'required|boolean',
+                'python' => 'required|boolean',
+                'c' => 'required|boolean',
+                'csharp' => 'required|boolean',
+                'cplus' => 'required|boolean',
+                'php' => 'required|boolean',
+                'html' => 'required|boolean',
+                'css' => 'required|boolean',
+                'javascript' => 'required|boolean',
+                'sql' => 'required|boolean',
+                'unix' => 'required|boolean',
+                'winserver' => 'required|boolean',
+                'windesktop' => 'required|boolean',
+                'linuxdesktop' => 'required|boolean',
+                'macosdesktop' => 'required|boolean',
+                'pearl' => 'required|boolean',
+                'bash' => 'required|boolean',
+                'batch' => 'required|boolean',
+                'cisco' => 'required|boolean',
+                'office' => 'required|boolean',
+                'r' => 'required|boolean',
+                'go' =>'required|boolean',
+                'ruby' => 'required|boolean',
+                'asp' => 'required|boolean',
+                'scala' => 'required|boolean'
+            ]);
 
-  return redirect()->route('jobs');
-}
+            $job->update([
+                'title'=>$request->title,
+                'description'=>$request->description,
+                'hours' =>$request->hours,
+                'salary' => $request->salary,
+                'startdate' =>$request->startdate,
+                'state' =>$request->state,
+                'city' =>$request->city,
+                'java' =>$request->java,
+                'python' =>$request->python,
+                'c' =>$request->c,
+                'csharp' =>$request->csharp,
+                'cplus' =>$request->cplus,
+                'php' =>$request->php,
+                'html' =>$request->html,
+                'css' =>$request->css,
+                'javascript' =>$request->javascript,
+                'sql' =>$request->sql,
+                'unix' =>$request->unix,
+                'winserver' =>$request->winserver,
+                'windesktop' =>$request->windesktop,
+                'linuxdesktop' =>$request->linuxdesktop,
+                'macosdesktop' =>$request->macosdesktop,
+                'pearl' =>$request->pearl,
+                'bash' =>$request->bash,
+                'batch' =>$request->batch,
+                'cisco' =>$request->cisco,
+                'office' =>$request->office,
+                'r' =>$request->r,
+                'go' =>$request->go,
+                'ruby' =>$request->ruby,
+                'asp' =>$request->asp,
+                'scala' =>$request->scala
+            ]);
+        }
+
+        return Redirect::route('jobs');
+    }
 
     /**
      * Show job page with jobs posted by user.

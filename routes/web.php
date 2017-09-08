@@ -33,6 +33,7 @@ Route::get('/terms', function (){
     return view('terms');
 })->name('terms');
 
+
 /* GET Controller Routes */
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
@@ -43,8 +44,7 @@ Route::get('/post', 'JobController@index')->name('post');
 
 Route::get('/jobs', 'JobController@display')->name('jobs');
 
-Route::get('/job/{id}', 'JobController@showEditJobForm')->name('displayEditJob');
-
+Route::get('/job/edit/{id}', 'JobController@displayEditJob')->name('displayEditJob');
 
 
 /* POST Controller Routes*/
@@ -57,21 +57,24 @@ Route::post('/enquire', 'ContactController@send')->name('enquire');
 
 Route::post('/update', 'ProfileController@updateProfile')->name('update');
 
-Route::post('/job/{id}', 'JobController@storeEditedJob')->name('saveEditedJob');
+Route::post('/job/update', 'JobController@updateJob')->name('updateJob');
+
 
 /* Authentication Routes */
 
 Auth::routes();
 
+
 /* API Routes */
 
-Route::get('/api/user', function(){
-	if(Auth::user() != null){
-		return Auth::user();
-	}
-	else{
-		return "You are not logged in!";
-	}
-});
+/* Return currently authenticated user. */
+Route::get('/api/user', 'ProfileController@getUser')->name('getUser');
 
+/* Return any user's experience by user ID. */
+Route::get('/api/user/{id}/experience', 'ProfileController@getExperience')->name('getExperience');
+
+/* Return jobs by state. */
 Route::get('/api/jobs/{state}', 'JobController@getJobs')->name('getJobs');
+
+/* Return applicants to a job by job ID. */
+Route::get('/api/applicants/job/{id}', 'ApplicationController@getApplicants')->name('getApplicants');

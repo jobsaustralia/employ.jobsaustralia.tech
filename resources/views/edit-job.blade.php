@@ -5,17 +5,19 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">    Edit job</div>
+                <div class="panel-heading">Edit job</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{route('saveEditedJob',$jobData->id)}}">
+                    <form class="form-horizontal" method="POST" action="{{ route('updateJob') }}">
                         {{ csrf_field() }}
+
+                        <input type="hidden" name="jobid" value="{{ $job->id }}" />
 
                         <!-- Title -->
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" pattern="[a-zA-Z ]+" value="{{$jobData->title}}" required autofocus>
+                                <input id="title" type="text" class="form-control" name="title" pattern="[a-zA-Z ]+" value="{{$job->title}}" required autofocus>
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -30,7 +32,7 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                    <textarea id="description" name="description" rows="5" cols="30" class="form-control" required>{{{$jobData->description}}}
+                                    <textarea id="description" name="description" rows="5" cols="30" class="form-control" required>{{{$job->description}}}
                                     </textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -45,11 +47,10 @@
                             <label for="hours" class="col-md-4 control-label">Hours</label>
 
                             <div class="col-md-6">
-                                <select id="hours" name="hours" class="form-control" value="{{$jobData->hours}}" required>
-                                    <option disabled selected value>{{$jobData->hours}}</option>
-                                    <option value="fulltime">Full-Time</option>
-                                    <option value="parttime">Part-Time</option>
-                                    <option value="casual">Casual</option>
+                                <select id="hours" name="hours" class="form-control" value="{{$job->hours}}" required>
+                                    <option value="fulltime" @if ($job->hours == "fulltime") selected @endif >Full-Time</option>
+                                    <option value="parttime" @if ($job->hours == "parttime") selected @endif >Part-Time</option>
+                                    <option value="casual" @if ($job->hours == "casual") selected @endif >Casual</option>
                                 </select>
 
                                 @if ($errors->has('hours'))
@@ -65,7 +66,7 @@
                             <label for="salary" class="col-md-4 control-label">Salary</label>
 
                             <div class="col-md-6">
-                                <input id="salary" type="number" min="0" max="20000000" class="form-control" name="salary" value="{{$jobData->salary}}" required>
+                                <input id="salary" type="number" min="0" max="20000000" class="form-control" name="salary" value="{{$job->salary}}" required>
 
                                 @if ($errors->has('salary'))
                                     <span class="help-block">
@@ -80,7 +81,7 @@
                             <label for="startdate" class="col-md-4 control-label">Start Date</label>
 
                             <div class="col-md-6">
-                                <input id="startdate" type="date" name="startdate" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYears(2)->format('Y-m-d') }}" class="form-control" value="{{$jobData->startdate}}" required>
+                                <input id="startdate" type="date" name="startdate" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYears(2)->format('Y-m-d') }}" class="form-control" value="{{$job->startdate}}" required>
 
                                 @if ($errors->has('startdate'))
                                     <span class="help-block">
@@ -97,17 +98,16 @@
                             <label for="state" class="col-md-4 control-label">State/Territory</label>
 
                             <div class="col-md-6">
-                                <select id="state" name="state" class="form-control" value="{{$jobData->state}}" required>
-                                    <option disabled selected value>{{$jobData->state}}</option>
-                                    <option value="vic">Victoria</option>
-                                    <option value="nsw">New South Wales</option>
-                                    <option value="qld">Queensland</option>
-                                    <option value="wa">Western Australia</option>
-                                    <option value="sa">South Australia</option>
-                                    <option value="tas">Tasmania</option>
-                                    <option value="act">Australian Capital Territory</option>
-                                    <option value="nt">Northern Teritory</option>
-                                    <option value="oth">Other Australian Region</option>
+                                <select id="state" name="state" class="form-control" value="{{$job->state}}" required>
+                                    <option value="vic" @if ($job->state == "vic") selected @endif >Victoria</option>
+                                    <option value="nsw" @if ($job->state == "nsw") selected @endif >New South Wales</option>
+                                    <option value="qld" @if ($job->state == "qld") selected @endif >Queensland</option>
+                                    <option value="wa" @if ($job->state == "wa") selected @endif >Western Australia</option>
+                                    <option value="sa" @if ($job->state == "sa") selected @endif >South Australia</option>
+                                    <option value="tas" @if ($job->state == "tas") selected @endif >Tasmania</option>
+                                    <option value="act" @if ($job->state == "act") selected @endif >Australian Capital Territory</option>
+                                    <option value="nt" @if ($job->state == "nt") selected @endif >Northern Teritory</option>
+                                    <option value="oth" @if ($job->state == "oth") selected @endif >Other Australian Region</option>
                                 </select>
 
                                 @if ($errors->has('state'))
@@ -123,7 +123,7 @@
                             <label for="city" class="col-md-4 control-label">City</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" pattern="[a-zA-Z ]+" value="{{$jobData->city}}" required>
+                                <input id="city" type="text" class="form-control" name="city" pattern="[a-zA-Z ]+" value="{{$job->city}}" required>
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -145,7 +145,7 @@
 
                             <div class="col-md-1">
                               <input id="java-hidden" type="hidden" class="form-control" name="java" value="0">
-                              <input id="java" type="checkbox" class="form-control" name="java" value="{{ old('$jobData->java', 1) }}" @if(old('java',$jobData->java)=="1") checked @endif>
+                              <input id="java" type="checkbox" class="form-control" name="java" value="{{ old('$job->java', 1) }}" @if(old('java',$job->java)=="1") checked @endif>
 
 
 
@@ -164,7 +164,7 @@
 
                             <div class="col-md-1">
                                 <input id="python-hidden" type="hidden" class="form-control" name="python" value="0">
-                                <input id="python" type="checkbox" class="form-control" name="python" value="{{ old('$jobData->python', 1) }}" @if(old('python',$jobData->python)=="1") checked @endif>
+                                <input id="python" type="checkbox" class="form-control" name="python" value="{{ old('$job->python', 1) }}" @if(old('python',$job->python)=="1") checked @endif>
 
                                 @if ($errors->has('python'))
                                     <span class="help-block">
@@ -180,7 +180,7 @@
 
                             <div class="col-md-1">
                                 <input id="c-hidden" type="hidden" class="form-control" name="c" value="0">
-                                <input id="c" type="checkbox" class="form-control" name="c" value="{{ old('$jobData->c', 1) }}" @if(old('c',$jobData->c)=="1") checked @endif>
+                                <input id="c" type="checkbox" class="form-control" name="c" value="{{ old('$job->c', 1) }}" @if(old('c',$job->c)=="1") checked @endif>
 
                                 @if ($errors->has('c'))
                                     <span class="help-block">
@@ -196,7 +196,7 @@
 
                             <div class="col-md-1">
                                 <input id="csharp-hidden" type="hidden" class="form-control" name="csharp" value="0">
-                                <input id="csharp" type="checkbox" class="form-control" name="csharp" value="{{ old('$jobData->csharp', 1) }}" @if(old('csharp',$jobData->csharp)=="1") checked @endif>
+                                <input id="csharp" type="checkbox" class="form-control" name="csharp" value="{{ old('$job->csharp', 1) }}" @if(old('csharp',$job->csharp)=="1") checked @endif>
 
                                 @if ($errors->has('csharp'))
                                     <span class="help-block">
@@ -212,7 +212,7 @@
 
                             <div class="col-md-1">
                                 <input id="cplus-hidden" type="hidden" class="form-control" name="cplus" value="0">
-                                <input id="cplus" type="checkbox" class="form-control" name="cplus" value="{{ old('$jobData->cplus', 1) }}" @if(old('cplus',$jobData->cplus)=="1") checked @endif>
+                                <input id="cplus" type="checkbox" class="form-control" name="cplus" value="{{ old('$job->cplus', 1) }}" @if(old('cplus',$job->cplus)=="1") checked @endif>
 
                                 @if ($errors->has('cplus'))
                                     <span class="help-block">
@@ -228,7 +228,7 @@
 
                             <div class="col-md-1">
                                 <input id="php-hidden" type="hidden" class="form-control" name="php" value="0">
-                                <input id="php" type="checkbox" class="form-control" name="php" value="{{ old('$jobData->php', 1) }}" @if(old('php',$jobData->php)=="1") checked @endif>
+                                <input id="php" type="checkbox" class="form-control" name="php" value="{{ old('$job->php', 1) }}" @if(old('php',$job->php)=="1") checked @endif>
 
                                 @if ($errors->has('php'))
                                     <span class="help-block">
@@ -244,7 +244,7 @@
                             <label for="html" class="col-md-4 control-label">HTML</label>
 
                             <div class="col-md-1">
-                                <input id="html" type="checkbox" class="form-control" name="html" value="{{ old('$jobData->html', 1) }}" @if(old('html',$jobData->html)=="1") checked @endif>
+                                <input id="html" type="checkbox" class="form-control" name="html" value="{{ old('$job->html', 1) }}" @if(old('html',$job->html)=="1") checked @endif>
 
                                 @if ($errors->has('html'))
                                     <span class="help-block">
@@ -260,7 +260,7 @@
 
                             <div class="col-md-1">
                                 <input id="css-hidden" type="hidden" class="form-control" name="css" value="0">
-                                <input id="css" type="checkbox" class="form-control" name="css" value="{{ old('$jobData->css', 1) }}" @if(old('css',$jobData->css)=="1") checked @endif>
+                                <input id="css" type="checkbox" class="form-control" name="css" value="{{ old('$job->css', 1) }}" @if(old('css',$job->css)=="1") checked @endif>
 
                                 @if ($errors->has('css'))
                                     <span class="help-block">
@@ -276,7 +276,7 @@
 
                             <div class="col-md-1">
                                 <input id="javascript-hidden" type="hidden" class="form-control" name="javascript" value="0">
-                                <input id="javascript" type="checkbox" class="form-control" name="javascript" value="{{ old('$jobData->javascript', 1) }}" @if(old('javascript',$jobData->javascript)=="1") checked @endif>
+                                <input id="javascript" type="checkbox" class="form-control" name="javascript" value="{{ old('$job->javascript', 1) }}" @if(old('javascript',$job->javascript)=="1") checked @endif>
 
                                 @if ($errors->has('javascript'))
                                     <span class="help-block">
@@ -292,7 +292,7 @@
 
                             <div class="col-md-1">
                                 <input id="sql-hidden" type="hidden" class="form-control" name="sql" value="0">
-                                <input id="sql" type="checkbox" class="form-control" name="sql" value="{{ old('$jobData->sql', 1) }}" @if(old('sql',$jobData->sql)=="1") checked @endif>
+                                <input id="sql" type="checkbox" class="form-control" name="sql" value="{{ old('$job->sql', 1) }}" @if(old('sql',$job->sql)=="1") checked @endif>
 
                                 @if ($errors->has('sql'))
                                     <span class="help-block">
@@ -308,7 +308,7 @@
 
                             <div class="col-md-1">
                                 <input id="unix-hidden" type="hidden" class="form-control" name="unix" value="0">
-                                <input id="unix" type="checkbox" class="form-control" name="unix" value="{{ old('$jobData->unix', 1) }}" @if(old('unix',$jobData->unix)=="1") checked @endif>
+                                <input id="unix" type="checkbox" class="form-control" name="unix" value="{{ old('$job->unix', 1) }}" @if(old('unix',$job->unix)=="1") checked @endif>
 
                                 @if ($errors->has('unix'))
                                     <span class="help-block">
@@ -324,7 +324,7 @@
 
                             <div class="col-md-1">
                                 <input id="winserver-hidden" type="hidden" class="form-control" name="winserver" value="0">
-                                <input id="winserver" type="checkbox" class="form-control" name="winserver" value="{{ old('$jobData->winserver', 1) }}" @if(old('winserver',$jobData->winserver)=="1") checked @endif>
+                                <input id="winserver" type="checkbox" class="form-control" name="winserver" value="{{ old('$job->winserver', 1) }}" @if(old('winserver',$job->winserver)=="1") checked @endif>
 
                                 @if ($errors->has('winserver'))
                                     <span class="help-block">
@@ -340,7 +340,7 @@
 
                             <div class="col-md-1">
                                 <input id="windesktop-hidden" type="hidden" class="form-control" name="windesktop" value="0">
-                                <input id="windesktop" type="checkbox" class="form-control" name="windesktop" value="{{ old('$jobData->windesktop', 1) }}" @if(old('windesktop',$jobData->windesktop)=="1") checked @endif>
+                                <input id="windesktop" type="checkbox" class="form-control" name="windesktop" value="{{ old('$job->windesktop', 1) }}" @if(old('windesktop',$job->windesktop)=="1") checked @endif>
 
                                 @if ($errors->has('windesktop'))
                                     <span class="help-block">
@@ -356,7 +356,7 @@
 
                             <div class="col-md-1">
                                 <input id="linuxdesktop-hidden" type="hidden" class="form-control" name="linuxdesktop" value="0">
-                                <input id="linuxdesktop" type="checkbox" class="form-control" name="linuxdesktop" value="{{ old('$jobData->linuxdesktop', 1) }}" @if(old('linuxdesktop',$jobData->linuxdesktop)=="1") checked @endif>
+                                <input id="linuxdesktop" type="checkbox" class="form-control" name="linuxdesktop" value="{{ old('$job->linuxdesktop', 1) }}" @if(old('linuxdesktop',$job->linuxdesktop)=="1") checked @endif>
 
                                 @if ($errors->has('linuxdesktop'))
                                     <span class="help-block">
@@ -372,7 +372,7 @@
 
                             <div class="col-md-1">
                                 <input id="macosdesktop-hidden" type="hidden" class="form-control" name="macosdesktop" value="0">
-                                <input id="macosdesktop" type="checkbox" class="form-control" name="macosdesktop" value="{{ old('$jobData->macosdesktop', 1) }}" @if(old('macosdesktop',$jobData->macosdesktop)=="1") checked @endif>
+                                <input id="macosdesktop" type="checkbox" class="form-control" name="macosdesktop" value="{{ old('$job->macosdesktop', 1) }}" @if(old('macosdesktop',$job->macosdesktop)=="1") checked @endif>
 
                                 @if ($errors->has('macosdesktop'))
                                     <span class="help-block">
@@ -388,7 +388,7 @@
 
                             <div class="col-md-1">
                                 <input id="pearl-hidden" type="hidden" class="form-control" name="pearl" value="0">
-                                <input id="pearl" type="checkbox" class="form-control" name="pearl" value="{{ old('$jobData->pearl', 1) }}" @if(old('pearl',$jobData->pearl)=="1") checked @endif>
+                                <input id="pearl" type="checkbox" class="form-control" name="pearl" value="{{ old('$job->pearl', 1) }}" @if(old('pearl',$job->pearl)=="1") checked @endif>
 
                                 @if ($errors->has('pearl'))
                                     <span class="help-block">
@@ -404,7 +404,7 @@
 
                             <div class="col-md-1">
                                 <input id="bash-hidden" type="hidden" class="form-control" name="bash" value="0">
-                                <input id="bash" type="checkbox" class="form-control" name="bash" value="{{ old('$jobData->bash', 1) }}" @if(old('bash',$jobData->bash)=="1") checked @endif>
+                                <input id="bash" type="checkbox" class="form-control" name="bash" value="{{ old('$job->bash', 1) }}" @if(old('bash',$job->bash)=="1") checked @endif>
 
                                 @if ($errors->has('bash'))
                                     <span class="help-block">
@@ -420,7 +420,7 @@
 
                             <div class="col-md-1">
                                 <input id="batch-hidden" type="hidden" class="form-control" name="batch" value="0">
-                                <input id="batch" type="checkbox" class="form-control" name="batch" value="{{ old('$jobData->batch', 1) }}" @if(old('batch',$jobData->batch)=="1") checked @endif>
+                                <input id="batch" type="checkbox" class="form-control" name="batch" value="{{ old('$job->batch', 1) }}" @if(old('batch',$job->batch)=="1") checked @endif>
 
                                 @if ($errors->has('batch'))
                                     <span class="help-block">
@@ -436,7 +436,7 @@
 
                             <div class="col-md-1">
                                 <input id="cisco-hidden" type="hidden" class="form-control" name="cisco" value="0">
-                                <input id="cisco" type="checkbox" class="form-control" name="cisco" value="{{ old('$jobData->cisco', 1) }}" @if(old('cisco',$jobData->cisco)=="1") checked @endif>
+                                <input id="cisco" type="checkbox" class="form-control" name="cisco" value="{{ old('$job->cisco', 1) }}" @if(old('cisco',$job->cisco)=="1") checked @endif>
 
                                 @if ($errors->has('cisco'))
                                     <span class="help-block">
@@ -452,7 +452,7 @@
 
                             <div class="col-md-1">
                                 <input id="office-hidden" type="hidden" class="form-control" name="office" value="0">
-                                <input id="office" type="checkbox" class="form-control" name="office" value="{{ old('$jobData->office', 1) }}" @if(old('office',$jobData->office)=="1") checked @endif>
+                                <input id="office" type="checkbox" class="form-control" name="office" value="{{ old('$job->office', 1) }}" @if(old('office',$job->office)=="1") checked @endif>
 
                                 @if ($errors->has('office'))
                                     <span class="help-block">
@@ -468,7 +468,7 @@
 
                             <div class="col-md-1">
                                 <input id="r-hidden" type="hidden" class="form-control" name="r" value="0">
-                                <input id="r" type="checkbox" class="form-control" name="r" value="{{ old('$jobData->r', 1) }}" @if(old('r',$jobData->r)=="1") checked @endif>
+                                <input id="r" type="checkbox" class="form-control" name="r" value="{{ old('$job->r', 1) }}" @if(old('r',$job->r)=="1") checked @endif>
 
                                 @if ($errors->has('r'))
                                     <span class="help-block">
@@ -484,7 +484,7 @@
 
                             <div class="col-md-1">
                                 <input id="go-hidden" type="hidden" class="form-control" name="go" value="0">
-                                <input id="go" type="checkbox" class="form-control" name="go" value="{{ old('$jobData->go', 1) }}" @if(old('go',$jobData->go)=="1") checked @endif>
+                                <input id="go" type="checkbox" class="form-control" name="go" value="{{ old('$job->go', 1) }}" @if(old('go',$job->go)=="1") checked @endif>
 
                                 @if ($errors->has('go'))
                                     <span class="help-block">
@@ -500,7 +500,7 @@
 
                             <div class="col-md-1">
                                 <input id="ruby-hidden" type="hidden" class="form-control" name="ruby" value="0">
-                                <input id="ruby" type="checkbox" class="form-control" name="ruby" value="{{ old('$jobData->ruby', 1) }}" @if(old('ruby',$jobData->ruby)=="1") checked @endif>
+                                <input id="ruby" type="checkbox" class="form-control" name="ruby" value="{{ old('$job->ruby', 1) }}" @if(old('ruby',$job->ruby)=="1") checked @endif>
 
                                 @if ($errors->has('ruby'))
                                     <span class="help-block">
@@ -516,7 +516,7 @@
 
                             <div class="col-md-1">
                                 <input id="asp-hidden" type="hidden" class="form-control" name="asp" value="0">
-                                <input id="asp" type="checkbox" class="form-control" name="asp" value="{{ old('$jobData->asp', 1) }}" @if(old('asp',$jobData->asp)=="1") checked @endif>
+                                <input id="asp" type="checkbox" class="form-control" name="asp" value="{{ old('$job->asp', 1) }}" @if(old('asp',$job->asp)=="1") checked @endif>
 
                                 @if ($errors->has('asp'))
                                     <span class="help-block">
@@ -532,7 +532,7 @@
 
                             <div class="col-md-1">
                                 <input id="scala-hidden" type="hidden" class="form-control" name="scala" value="0">
-                                <input id="scala" type="checkbox" class="form-control" name="scala" value="{{ old('$jobData->scala', 1) }}" @if(old('scala',$jobData->scala)=="1") checked @endif>
+                                <input id="scala" type="checkbox" class="form-control" name="scala" value="{{ old('$job->scala', 1) }}" @if(old('scala',$job->scala)=="1") checked @endif>
 
                                 @if ($errors->has('scala'))
                                     <span class="help-block">
