@@ -36,32 +36,32 @@ Route::get('/terms', function (){
 
 /* GET Controller Routes */
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
-
-Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
-
-Route::get('/post', 'JobController@indexPost')->name('post');
-
-Route::get('/jobs', 'JobController@indexJobs')->name('jobs');
-
 Route::get('/job/edit/{id}', 'JobController@indexEdit')->name('displayEditJob');
 
 Route::get('/job/{id}/applicants', 'ApplicationController@index')->name('applicants');
 
+Route::get('/jobs', 'JobController@indexJobs')->name('jobs');
+
+Route::get('/post', 'JobController@indexPost')->name('post');
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
+
+Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
+
 
 /* POST Controller Routes */
+
+Route::post('/enquire', 'ContactController@send')->name('enquire');
+
+Route::post('/job/delete', 'JobController@delete')->name('deleteJob');
+
+Route::post('/job/update', 'JobController@updateJob')->name('updateJob');
 
 Route::post('/profile/delete', 'ProfileController@delete')->name('delete');
 
 Route::post('/submit', 'JobController@create')->name('post-submit');
 
-Route::post('/enquire', 'ContactController@send')->name('enquire');
-
 Route::post('/update', 'ProfileController@update')->name('update');
-
-Route::post('/job/update', 'JobController@updateJob')->name('updateJob');
-
-Route::post('/job/delete', 'JobController@delete')->name('deleteJob');
 
 
 /* Authentication Routes */

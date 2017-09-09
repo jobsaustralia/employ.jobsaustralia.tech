@@ -10,9 +10,6 @@ use App\User;
 use Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 
 class APIController extends Controller{
 
