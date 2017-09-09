@@ -20,14 +20,17 @@ class APIController extends Controller{
 
     /* Get applicants for a Job by Job ID, if authorised. */
     public function getApplicants($id){
-        $employer = Auth::user();
-        $applications = Application::where('jobid', $id)->get();
-        $applicants = array();
 
+        /* Get employer from currently authenticated user. */
+        $employer = Auth::user();
+
+        /* Get applications where jobid matches $id and employerid matches the employer. */
+        $applications = Application::where('jobid', $id)->where('employerid', $employer->id)->get();
+
+        /* Populate array of job seekers by ID from $applications. */
+        $applicants = array();
         foreach($applications as $application){
-            if(User::findOrFail($application->employerid) == $employer){
-                array_push($applicants, JobSeeker::findOrFail($application->userid));
-            }
+            array_push($applicants, JobSeeker::findOrFail($application->userid));
         }
 
         return $applicants;
@@ -42,14 +45,16 @@ class APIController extends Controller{
 
     /* Get a specific Job by ID, if authorised. */
     public function getJob($id){
+
+        /* Get employer from currently authenticated user. */
         $employer = Auth::user();
+
+        /* Get job by ID. */
         $job = Job::findOrFail($id);
 
+        /* Only return job if owned by employer. */
         if(User::findOrFail($job->employerid) == $employer){
             return $job;
-        }
-        else{
-            return null;
         }
     }
 
@@ -60,46 +65,37 @@ class APIController extends Controller{
 
     /* Get Job Seeker by ID, if authorised. */
     public function getJobSeeker($id){
-        $user = JobSeeker::findOrFail($id);
+
+        /* Get employer from currently authenticated user. */
         $employer = Auth::user();
 
-        $applications = Application::where('userid', $user->id)->get();
+        /* Get job seeker by ID. */
+        $jobseeker = JobSeeker::findOrFail($id);
 
-        $flag = true;
-        foreach($applications as $application){
-            if(User::findOrFail($application->employerid) != $employer){
-                $flag = false;
-                break;
-            }
-        }
+        /* Count applications where userid matches the job seeker and employerid matches the employer. */
+        $applications = Application::where('userid', $jobseeker->id)->where('employerid', $employer->id)->get()->count();
 
-        if($flag == true){
-            return $user;
-        }
-        else{
-            return null;
-        }
+        /* Return job seeker if applications count exceed zero (eg. job seeker has applied to job owned by employer). */
+        if($applications > 0){
+            return $jobseeker;
+        }  
     }
 
     /* Get the experience of a Job Seeker by ID, if authorised. */
     public function getExperience($id){
-        $user = JobSeeker::findOrFail($id);
+
+        /* Get employer from currently authenticated user. */
         $employer = Auth::user();
-        $applications = Application::where('userid', $user->id)->get();
 
-        $flag = true;
-        foreach($applications as $application){
-            if(User::findOrFail($application->employerid) != $employer){
-                $flag = false;
-                break;
-            }
-        }
+        /* Get job seeker by ID. */
+        $jobseeker = JobSeeker::findOrFail($id);
 
-        if($flag == true){
-            return $user->experience;
-        }
-        else{
-            return null;
+        /* Count applications where userid matches the job seeker and employerid matches the employer. */
+        $applications = Application::where('userid', $jobseeker->id)->where('employerid', $employer->id)->get()->count();
+
+        /* Return job seeker experience if applications count exceed zero (eg. job seeker has applied to job owned by employer). */
+        if($applications > 0){
+            return $jobseeker->experience;
         }
     }
 }
