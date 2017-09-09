@@ -197,22 +197,10 @@ class JobController extends Controller{
     /* Display posted jobs page. */
     public function indexJobs(){
         $employer = Auth::user();
-        $jobs = Job::where('employerid', Auth::user()->id)->get();
 
-        $flag = true;
-        foreach($jobs as $job){
-            if(User::findOrFail($job->employerid) != $employer){
-                $flag = false;
-                break;
-            }
-        }
+        $jobs = Job::where('employerid', $employer->id)->get();
 
-        if($flag == true){
-            return view('jobs')->with(compact('jobs'));
-        }
-        else{
-            return Redirect::route('index');
-        }
+        return view('jobs')->with(compact('jobs'));
     }
 
     /* Delete job. */
