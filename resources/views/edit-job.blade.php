@@ -569,7 +569,7 @@
                     <br>
 
                     <p align="center">
-                        <button id="delete-job" class="btn btn-warning">
+                        <button id="delete-job" class="btn btn-danger">
                             Delete job
                         </button>
                     </p>
@@ -577,7 +577,7 @@
                     <br>
 
                     <p id="delete-job-content" style="display: none;" align="center">
-                        Confirm deletion: <a class="text-warning" href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">I really want to delete this job.</a>
+                        Confirm deletion: <a class="text-danger" href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">I really want to delete this job.</a>
                     </p>
 
                     <form id="delete-form" action="{{ route('deleteJob') }}" method="POST" style="display: none;">
