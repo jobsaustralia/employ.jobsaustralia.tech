@@ -6,6 +6,7 @@ use App\Job;
 use App\User;
 
 use Auth;
+use Uuid;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -57,6 +58,7 @@ class JobController extends Controller{
         ]);
 
         Job::create([
+            'id' => Uuid::generate(),
             'title' => $request['title'],
             'description' => $request['description'],
             'hours' => $request['hours'],
