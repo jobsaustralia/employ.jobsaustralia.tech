@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Application;
 use App\Job;
 use App\User;
 
@@ -31,26 +30,5 @@ class ApplicationController extends Controller{
         else{
             return Redirect::route('jobs');
         }
-    }
-
-    /* Apply for job. */
-    public function apply(Request $request)
-    {
-        $this->validate($request, [
-            'jobid' => 'required|integer|exists:jobs,id',
-            'message' => 'required|string'
-        ]);
-
-        $id = $request['jobid'];
-        $job = Job::findOrFail($id);
-
-        Application::create([
-            'userid' => Auth::user()->id,
-            'employerid' => $job->employerid,
-            'jobid' => $id,
-            'message' => $request['message'],
-        ]);
-
-        return Redirect::route('matches');
     }
 }
