@@ -98,4 +98,19 @@ class APIController extends Controller{
             return $jobseeker->experience;
         }
     }
+
+    /* Get the message on an Application by ID, if authorised. */
+    public function getMessage($id){
+
+        /* Get employer from currently authenticated user. */
+        $employer = Auth::user();
+
+        /* Get application by ID. */
+        $application = Application::findOrFail($id);
+
+        /* Return message if application was to employer. */
+        if($application->employerid == $employer->id){
+            return $application->message;
+        }
+    }
 }
