@@ -15,9 +15,9 @@
                         <p>{{ $job->description }}</p>
 
                         <hr>
-
+						<p><strong>Term:</strong> @if ($job->term == "fixed") Fixed @elseif ($job->term == "permanent") Permanent @endif </p>
                         <p><strong>Hours:</strong> @if ($job->hours == "fulltime") Full time @elseif ($job->hours == "parttime") Part time @elseif ($job->hours == "casual") Casual @endif </p>
-                        <p><strong>Salary:</strong> {{ $job->salary }}</p>
+                        <p><strong>Salary:</strong> {{ $job->salary }} per @if ( $job->rate == "week") week @elseif ($job->rate == "fortnight") fortnight @elseif ($job->rate == "month") month @elseif ($job->rate == "year") year @endif</p>
                         <p><strong>Start Date:</strong> {{ $job->startdate }}</p>
                         <p><strong>Location:</strong> {{ $job->city }}, @if ($job->state == "vic") Victoria @elseif ($job->state == "nsw") New South Wales @elseif ($job->state == "qld") Queensland @elseif ($job->state == "wa") Western Australia @elseif ($job->state == "sa") South Australia @elseif ($job->state == "tas") Tasmania @elseif ($job->state == "act") Australian Capital Territory @elseif ($job->state == "nt") Northern Territory @elseif ($job->state == "oth") Other Australian Region @endif </p>
 

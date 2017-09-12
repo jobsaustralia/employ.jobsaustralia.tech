@@ -39,6 +39,25 @@
                                 @endif
                             </div>
                         </div>
+						
+						<!-- Term -->
+                        <div class="form-group{{ $errors->has('term') ? ' has-error' : '' }}">
+                            <label for="term" class="col-md-4 control-label">Term</label>
+
+                            <div class="col-md-6">
+                                <select id="term" name="term" class="form-control" value="{{ old('term') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+                                    <option value="fixed">Fixed</option>
+                                    <option value="permanent">Permanent</option>
+                                </select>
+
+                                @if ($errors->has('term'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('term') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <!-- Hours -->
                         <div class="form-group{{ $errors->has('hours') ? ' has-error' : '' }}">
@@ -49,7 +68,6 @@
                                     <option disabled selected value>Please select an option</option>
                                     <option value="fulltime">Full-Time</option>
                                     <option value="parttime">Part-Time</option>
-                                    <option value="casual">Casual</option>
                                 </select>
 
                                 @if ($errors->has('hours'))
@@ -65,7 +83,7 @@
                             <label for="salary" class="col-md-4 control-label">Salary</label>
 
                             <div class="col-md-6">
-                                <input id="salary" type="number" min="0" max="20000000" class="form-control" name="salary" value="{{ old('salary') }}" required>
+                                <input id="salary" type="number" min="18" max="20000000" class="form-control" name="salary" value="{{ old('salary') }}" required>
 
                                 @if ($errors->has('salary'))
                                     <span class="help-block">
@@ -75,7 +93,28 @@
                             </div>
                         </div>
 
-                        <!-- Start Date -->
+                        <!-- Rate -->
+                        <div class="form-group{{ $errors->has('rate') ? ' has-error' : '' }}">
+                            <label for="rate" class="col-md-4 control-label">Rate</label>
+
+                            <div class="col-md-6">
+                                <select id="rate" name="rate" class="form-control" value="{{ old('rate') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+									<option value="week">Week</option>
+                                    <option value="fortnight">Fortnight</option>
+									<option value="month">Month</option>
+                                    <option value="year">Year</option>
+                                </select>
+
+                                @if ($errors->has('rate'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rate') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+						<!-- Start Date -->
                         <div class="form-group{{ $errors->has('startdate') ? ' has-error' : '' }}">
                             <label for="startdate" class="col-md-4 control-label">Start Date</label>
 

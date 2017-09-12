@@ -15,7 +15,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>JobsAustalia.tech Employers</title>
+    <title>JobsAustralia.tech Employers</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -46,7 +46,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        JobsAustalia.tech Employers
+                        JobsAustralia.tech Employers
                     </a>
                 </div>
 
