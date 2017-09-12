@@ -36,7 +36,9 @@ class RegisterController extends Controller{
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:employers',
-            'password' => 'required|string|min:6|confirmed',
+            'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
+            'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
+            'password' => 'required|string|min:6|confirmed'
         ]);
     }
 
@@ -46,7 +48,9 @@ class RegisterController extends Controller{
             'id' => Uuid::generate(),
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'state' => $data['state'],
+            'city' => $data['city'],
+            'password' => bcrypt($data['password'])
         ]);
     }
 }
