@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "160dd439c4f946f82df588bd4a88c61d",
+    "content-hash": "10bea7073b678159ef45db11e5e4b6db",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1886,31 +1886,31 @@
         },
         {
             "name": "webpatser/laravel-uuid",
-            "version": "3.0.1",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webpatser/laravel-uuid.git",
-                "reference": "9c9bd4344f4aa78326b34a324d8a208e65c8221f"
+                "reference": "c87d5c631938edad7aae96d27881e3ea3de23d80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webpatser/laravel-uuid/zipball/9c9bd4344f4aa78326b34a324d8a208e65c8221f",
-                "reference": "9c9bd4344f4aa78326b34a324d8a208e65c8221f",
+                "url": "https://api.github.com/repos/webpatser/laravel-uuid/zipball/c87d5c631938edad7aae96d27881e3ea3de23d80",
+                "reference": "c87d5c631938edad7aae96d27881e3ea3de23d80",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": ">=5.3.0"
             },
             "require-dev": {
-                "fzaninotto/faker": "~1.4",
-                "phpunit/phpunit": "~6.0"
+                "fzaninotto/faker": "1.5.*",
+                "phpunit/phpunit": "4.7.*"
+            },
+            "suggest": {
+                "paragonie/random_compat": "A random_bytes Php 5.x polyfill."
             },
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Webpatser\\Uuid\\UuidServiceProvider"
-                    ],
                     "aliases": {
                         "Uuid": "Webpatser\\Uuid\\Uuid"
                     }
@@ -1936,38 +1936,38 @@
             "keywords": [
                 "UUID RFC4122"
             ],
-            "time": "2017-09-03T23:32:05+00:00"
+            "time": "2017-09-10T21:34:32+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
-            "version": "1.1.0",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda"
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
-                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8e884e78f9f0eb1329e445619e04456e64d8051d",
+                "reference": "8e884e78f9f0eb1329e445619e04456e64d8051d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": ">=5.3,<8.0-DEV"
             },
             "require-dev": {
                 "athletic/athletic": "~0.1.8",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpunit/phpunit": "^6.2.3",
-                "squizlabs/php_codesniffer": "^3.0.2"
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -1992,7 +1992,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-07-22T11:58:36+00:00"
+            "time": "2015-06-14T21:17:01+00:00"
         },
         {
             "name": "filp/whoops",
