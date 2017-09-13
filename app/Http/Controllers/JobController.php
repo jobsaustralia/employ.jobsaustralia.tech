@@ -109,10 +109,23 @@ class JobController extends Controller{
     /* Display edit job page. */
     public function indexEdit($id){
         $job = Job::findOrFail($id);
-        $user = User::findOrFail($job->employerid);
+        $user = Auth::user();
 
-        if($user == Auth::user()){
+        if($job->employerid == $user->id){
             return view('edit-job', compact('job'));
+        }
+        else{
+            return Redirect::route('jobs');
+        }
+    }
+
+    /* Display delete job page. */
+    public function indexDelete($id){
+        $job = Job::findOrFail($id);
+        $user = Auth::user();
+
+        if($job->employerid == $user->id){
+            return view('delete-job', compact('job'));
         }
         else{
             return Redirect::route('jobs');
@@ -123,9 +136,9 @@ class JobController extends Controller{
     public function updateJob(Request $request){
         $id = $request['jobid'];
         $job = Job::findOrFail($id);
-        $user = User::findOrFail($job->employerid);
+        $user = Auth::user();
 
-        if($user == Auth::user()){
+        if($job->employerid == $user->id){
             $this->validate($request, [
                 'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
                 'description' => 'required|string|max:255',

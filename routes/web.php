@@ -38,6 +38,8 @@ Route::get('/terms', function (){
 
 Route::get('/job/edit/{id}', 'JobController@indexEdit')->name('displayEditJob');
 
+Route::get('/job/delete/{id}', 'JobController@indexDelete')->name('displayDeleteJob');
+
 Route::get('/job/{id}/applicants', 'ApplicationController@index')->name('applicants');
 
 Route::get('/jobs', 'JobController@indexJobs')->name('jobs');
