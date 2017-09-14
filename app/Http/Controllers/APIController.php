@@ -30,7 +30,10 @@ class APIController extends Controller{
         /* Populate array of job seekers by ID from $applications. */
         $applicants = array();
         foreach($applications as $application){
-            array_push($applicants, JobSeeker::findOrFail($application->userid));
+            $jobseeker = JobSeeker::findOrFail($application->userid);
+            $jobseeker->message = $application->message;
+
+            array_push($applicants, $jobseeker);
         }
 
         return $applicants;
