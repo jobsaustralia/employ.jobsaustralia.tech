@@ -24,7 +24,7 @@ class JobController extends Controller{
     protected function create(Request $request){
         $this->validate($request, [
             'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string',
 			'term' => 'required|string|in:fixed,permanent',
             'hours' => 'required|string|in:fulltime,parttime',
             'salary' => 'required|integer|min:0|max:20000000',
@@ -141,7 +141,7 @@ class JobController extends Controller{
         if($job->employerid == $user->id){
             $this->validate($request, [
                 'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
-                'description' => 'required|string|max:255',
+                'description' => 'required|string',
 				'term' => 'required|string|in:fixed,permanent', 
                 'hours' => 'required|string|in:fulltime,parttime',
                 'salary' => 'required|integer|min:0|max:20000000',
