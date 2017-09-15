@@ -31,6 +31,7 @@ class APIController extends Controller{
         $applicants = array();
         foreach($applications as $application){
             $jobseeker = JobSeeker::findOrFail($application->userid);
+            $jobseeker->applicationid = $application->id;
             $jobseeker->message = $application->message;
 
             array_push($applicants, $jobseeker);
