@@ -20,10 +20,6 @@ function printApplicant(name, message, percentageMatch){
 
     var hr1 = document.createElement("hr");
 
-    // Additional attributes go here.
-
-    //var hr2 = document.createElement("hr");
-
     var p6 = document.createElement("p");
 
     var apply = document.createElement("a");
@@ -36,7 +32,6 @@ function printApplicant(name, message, percentageMatch){
     heading.append(match);
     body.append(p1);
     body.append(hr1);
-    //body.append(hr2);
     body.append(p6);
     p6.append(apply);
     display.appendChild(panel);
@@ -63,6 +58,9 @@ function match(){
     
     /* Array of percentage matches. */
     var percentageMatch = [];
+
+    /* Array to store applicant for later use. */
+    var app = [];
     
     /* Get job. */
     $.getJSON("/api/job/" + jobID, function(job){
@@ -80,9 +78,15 @@ function match(){
 
         /* Get applicants to job. */
         $.getJSON("/api/applicants/job/" + jobID, function(applicants){
+            
+
             /* Populate values into appIndex, appMatch and percentageMatch arrays. */
             var i;
             for(i = 0; i < applicants.length; i++){
+
+                /* Store applicant to storage array. */
+                app[i] = applicants[i];
+
                 appIndex[i] = i;
                 appMatch[i] = [applicants[i].java, applicants[i].python, applicants[i].c, applicants[i].csharp, applicants[i].cplus, applicants[i].php, applicants[i].html, applicants[i].css, applicants[i].javascript, applicants[i].sql, applicants[i].unix, applicants[i].winserver, applicants[i].windesktop, applicants[i].linuxdesktop, applicants[i].macosdesktop, applicants[i].pearl, applicants[i].bash, applicants[i].batch, applicants[i].cisco, applicants[i].office, applicants[i].r, applicants[i].go, applicants[i].ruby, applicants[i].asp, applicants[i].scala];
                 
@@ -103,7 +107,7 @@ function match(){
                 /* Calculate percentage match. */
                 percentageMatch[i] = (count / bitCheck.length) * 100;
             }
-            
+
             /* Bubble sort. */
             var swapped;
             
@@ -134,19 +138,18 @@ function match(){
         .then(function(){
 
             /* Display applicants. */
-            $.getJSON("/api/applicants/job/" + jobID, function(app){
-                if(app.length > 0){
-                    var i;
-                    for(i = 0; i < app.length; i++){
-                        var order = appIndex[i];
-                        printApplicant(app[order].name, app[order].message, Math.round(percentageMatch[i]));
-                    }
+            if(app.length > 0){
+                var i;
+                for(i = 0; i < app.length; i++){
+                    var order = appIndex[i];
+                    printApplicant(app[order].name, app[order].message, Math.round(percentageMatch[i]));
                 }
-                else{
-                    document.getElementById("loading").style.display = "none";
-                    document.getElementById("noapplicants").style.display = "block";
-                }
-            });
+            }
+            else{
+                console.log(app[0]);
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("noapplicants").style.display = "block";
+            }
         });
     });
 }
