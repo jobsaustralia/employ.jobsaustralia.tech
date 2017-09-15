@@ -30,7 +30,7 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                    <textarea id="description" name="description" rows="5" cols="30" class="form-control" value="{{ old('description') }}" required>
+                                    <textarea id="description" name="description" rows="5" cols="30" maxlength="1000" class="form-control" value="{{ old('description') }}" required>
                                     </textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -39,8 +39,8 @@
                                 @endif
                             </div>
                         </div>
-						
-						<!-- Term -->
+                        
+                        <!-- Term -->
                         <div class="form-group{{ $errors->has('term') ? ' has-error' : '' }}">
                             <label for="term" class="col-md-4 control-label">Term</label>
 
@@ -78,6 +78,28 @@
                             </div>
                         </div>
 
+                        <!-- Rate -->
+                        <div class="form-group{{ $errors->has('rate') ? ' has-error' : '' }}">
+                            <label for="rate" class="col-md-4 control-label">Rate</label>
+
+                            <div class="col-md-6">
+                                <select id="rate" name="rate" class="form-control" value="{{ old('rate') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+                                    <option value="hourly">Hourly</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="fortnightly">Fortnightly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="annually">Annually</option>
+                                </select>
+
+                                @if ($errors->has('rate'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rate') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <!-- Salary -->
                         <div class="form-group{{ $errors->has('salary') ? ' has-error' : '' }}">
                             <label for="salary" class="col-md-4 control-label">Salary</label>
@@ -92,29 +114,8 @@
                                 @endif
                             </div>
                         </div>
-
-                        <!-- Rate -->
-                        <div class="form-group{{ $errors->has('rate') ? ' has-error' : '' }}">
-                            <label for="rate" class="col-md-4 control-label">Rate</label>
-
-                            <div class="col-md-6">
-                                <select id="rate" name="rate" class="form-control" value="{{ old('rate') }}" required>
-                                    <option disabled selected value>Please select an option</option>
-									<option value="week">Week</option>
-                                    <option value="fortnight">Fortnight</option>
-									<option value="month">Month</option>
-                                    <option value="year">Year</option>
-                                </select>
-
-                                @if ($errors->has('rate'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('rate') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-						
-						<!-- Start Date -->
+                        
+                        <!-- Start Date -->
                         <div class="form-group{{ $errors->has('startdate') ? ' has-error' : '' }}">
                             <label for="startdate" class="col-md-4 control-label">Start Date</label>
 

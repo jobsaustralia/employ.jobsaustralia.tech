@@ -24,11 +24,11 @@ class JobController extends Controller{
     protected function create(Request $request){
         $this->validate($request, [
             'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
-            'description' => 'required|string',
-			'term' => 'required|string|in:fixed,permanent',
+            'description' => 'required|string|max:1000',
+            'term' => 'required|string|in:fixed,permanent', 
             'hours' => 'required|string|in:fulltime,parttime',
+            'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
             'salary' => 'required|integer|min:0|max:20000000',
-			'rate' => 'required|string|in:week,fortnight,month,year',
             'startdate' => 'required|string|min:10|max:10',
             'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
             'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
@@ -56,17 +56,17 @@ class JobController extends Controller{
             'go' =>'required|boolean',
             'ruby' => 'required|boolean',
             'asp' => 'required|boolean',
-            'scala' => 'required|boolean',
+            'scala' => 'required|boolean'
         ]);
 
         Job::create([
             'id' => Uuid::generate(),
             'title' => $request['title'],
             'description' => $request['description'],
-			'term' => $request['term'],
+            'term' => $request['term'],
             'hours' => $request['hours'],
+            'rate' => $request['rate'],
             'salary' => $request['salary'],
-			'rate' => $request['rate'],
             'startdate' => $request['startdate'],
             'state' => $request['state'],
             'city' => $request['city'],
@@ -141,11 +141,11 @@ class JobController extends Controller{
         if($job->employerid == $user->id){
             $this->validate($request, [
                 'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
-                'description' => 'required|string',
-				'term' => 'required|string|in:fixed,permanent', 
+                'description' => 'required|string|max:1000',
+                'term' => 'required|string|in:fixed,permanent', 
                 'hours' => 'required|string|in:fulltime,parttime',
+                'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
                 'salary' => 'required|integer|min:0|max:20000000',
-				'rate' => 'required|string|in:week,fortnight,month,year',
                 'startdate' => 'required|string|min:10|max:10',
                 'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
                 'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
@@ -179,10 +179,10 @@ class JobController extends Controller{
             $job->update([
                 'title'=>$request->title,
                 'description'=>$request->description,
-				'term' =>$request->term,
+                'term' =>$request->term,
                 'hours' =>$request->hours,
+                'rate' => $request->rate,
                 'salary' => $request->salary,
-				'rate' => $request->rate,
                 'startdate' =>$request->startdate,
                 'state' =>$request->state,
                 'city' =>$request->city,

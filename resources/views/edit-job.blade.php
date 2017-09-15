@@ -32,11 +32,29 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                    <textarea id="description" name="description" rows="5" cols="30" class="form-control" required>{{{$job->description}}}
+                                    <textarea id="description" name="description" rows="5" cols="30" maxlength="1000" class="form-control" required>{{{$job->description}}}
                                     </textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Term -->
+                        <div class="form-group{{ $errors->has('term') ? ' has-error' : '' }}">
+                            <label for="term" class="col-md-4 control-label">Term</label>
+
+                            <div class="col-md-6">
+                                <select id="term" name="term" class="form-control" value="{{ old('term') }}" required>
+                                    <option value="fixed" @if ($job->term == "fixed") selected @endif >Fixed</option>
+                                    <option value="permanent" @if ($job->term == "permanent") selected @endif >Permanent</option>
+                                </select>
+
+                                @if ($errors->has('term'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('term') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -56,6 +74,27 @@
                                 @if ($errors->has('hours'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('hours') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Rate -->
+                        <div class="form-group{{ $errors->has('rate') ? ' has-error' : '' }}">
+                            <label for="rate" class="col-md-4 control-label">Rate</label>
+
+                            <div class="col-md-6">
+                                <select id="rate" name="rate" class="form-control" value="{{ old('rate') }}" required>
+                                    <option value="hourly" @if ($job->rate == "hourly") selected @endif >Hourly</option>
+                                    <option value="weekly" @if ($job->rate == "weekly") selected @endif >Weekly</option>
+                                    <option value="fortnightly" @if ($job->rate == "fortnightly") selected @endif >Fortnightly</option>
+                                    <option value="monthly" @if ($job->rate == "monthly") selected @endif >Monthly</option>
+                                    <option value="annually" @if ($job->rate == "annually") selected @endif >Annually</option>
+                                </select>
+
+                                @if ($errors->has('rate'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rate') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -551,39 +590,6 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">Delete job</div>
-                <div class="panel-body">
-                    <p align="center">
-                        <strong>Deleting a job will delete the job listing, and all current applications to the job.</strong>
-                    </p>
-
-                    <p align="center">
-                        <strong>It is impossible to recover a job, and it's applications, after deletion!</strong>
-                    </p>
-
-                    <br>
-
-                    <p align="center">
-                        <button id="delete-job" class="btn btn-danger">
-                            Delete job
-                        </button>
-                    </p>
-
-                    <br>
-
-                    <p id="delete-job-content" style="display: none;" align="center">
-                        Confirm deletion: <a class="text-danger" href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">I really want to delete this job.</a>
-                    </p>
-
-                    <form id="delete-form" action="{{ route('deleteJob') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-
-                        <input type="hidden" name="id" value="{{ $job->id }}" />
                     </form>
                 </div>
             </div>
