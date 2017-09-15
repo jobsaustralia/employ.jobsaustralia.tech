@@ -1,5 +1,5 @@
 /* Function to print applicant to panel in view. */
-function printApplicant(name, message, percentageMatch){
+function printApplicant(id, name, message, percentageMatch){
     var display = document.getElementById("applicants");
 
     var panel = document.createElement("div");
@@ -24,7 +24,7 @@ function printApplicant(name, message, percentageMatch){
 
     var apply = document.createElement("a");
     apply.className = "btn btn-primary";
-    //apply.href = "/job/" + id;
+    apply.href = "/application/" + id;
     apply.innerHTML = "View";
 
     panel.appendChild(heading);
@@ -78,62 +78,63 @@ function match(){
 
         /* Get applicants to job. */
         $.getJSON("/api/applicants/job/" + jobID, function(applicants){
-            
 
-            /* Populate values into appIndex, appMatch and percentageMatch arrays. */
-            var i;
-            for(i = 0; i < applicants.length; i++){
-
-                /* Store applicant to storage array. */
-                app[i] = applicants[i];
-
-                appIndex[i] = i;
-                appMatch[i] = [applicants[i].java, applicants[i].python, applicants[i].c, applicants[i].csharp, applicants[i].cplus, applicants[i].php, applicants[i].html, applicants[i].css, applicants[i].javascript, applicants[i].sql, applicants[i].unix, applicants[i].winserver, applicants[i].windesktop, applicants[i].linuxdesktop, applicants[i].macosdesktop, applicants[i].pearl, applicants[i].bash, applicants[i].batch, applicants[i].cisco, applicants[i].office, applicants[i].r, applicants[i].go, applicants[i].ruby, applicants[i].asp, applicants[i].scala];
-                
-                /* Match counter. */
-                var count = 0;
-                
-                /* Checks only the values in the positions stored in bitCheck.
-                Increases count if non-zero (i.e. there is a match). */
-                var j; 
-                for(j = 0; j < bitCheck.length; j++){
-                    var position = bitCheck[j];
-                    
-                    if(appMatch[i][position] == 1){
-                        count++;
-                    }
-                }
-                
-                /* Calculate percentage match. */
-                percentageMatch[i] = (count / bitCheck.length) * 100;
-            }
-
-            /* Bubble sort. */
-            var swapped;
-            
-            do{
-                swapped = false;
-
+            if(applicants.length > 0){
+                /* Populate values into appIndex, appMatch and percentageMatch arrays. */
                 var i;
-                for(i = 0; i < appIndex.length-1; i++){
-                    if(percentageMatch[i] < percentageMatch[i+1]){
-                        var tempPer = percentageMatch[i];
-                        percentageMatch[i] = percentageMatch[i+1];
-                        percentageMatch[i+1] = tempPer;
+                for(i = 0; i < applicants.length; i++){
 
-                        var tempId = appIndex[i];
-                        appIndex[i] = appIndex[i+1];
-                        appIndex[i+1] = tempId;
+                    /* Store applicant to storage array. */
+                    app[i] = applicants[i];
 
-                        var tempApp = appMatch[i];
-                        appMatch[i] = appMatch[i+1];
-                        appMatch[i+1] = tempApp;
+                    appIndex[i] = i;
+                    appMatch[i] = [applicants[i].java, applicants[i].python, applicants[i].c, applicants[i].csharp, applicants[i].cplus, applicants[i].php, applicants[i].html, applicants[i].css, applicants[i].javascript, applicants[i].sql, applicants[i].unix, applicants[i].winserver, applicants[i].windesktop, applicants[i].linuxdesktop, applicants[i].macosdesktop, applicants[i].pearl, applicants[i].bash, applicants[i].batch, applicants[i].cisco, applicants[i].office, applicants[i].r, applicants[i].go, applicants[i].ruby, applicants[i].asp, applicants[i].scala];
+                    
+                    /* Match counter. */
+                    var count = 0;
+                    
+                    /* Checks only the values in the positions stored in bitCheck.
+                    Increases count if non-zero (i.e. there is a match). */
+                    var j; 
+                    for(j = 0; j < bitCheck.length; j++){
+                        var position = bitCheck[j];
+                        
+                        if(appMatch[i][position] == 1){
+                            count++;
+                        }
+                    }
+                    
+                    /* Calculate percentage match. */
+                    percentageMatch[i] = (count / bitCheck.length) * 100;
+                }
 
-                        swapped = true;
+                /* Bubble sort. */
+                var swapped;
+                
+                do{
+                    swapped = false;
+
+                    var i;
+                    for(i = 0; i < appIndex.length-1; i++){
+                        if(percentageMatch[i] < percentageMatch[i+1]){
+                            var tempPer = percentageMatch[i];
+                            percentageMatch[i] = percentageMatch[i+1];
+                            percentageMatch[i+1] = tempPer;
+
+                            var tempId = appIndex[i];
+                            appIndex[i] = appIndex[i+1];
+                            appIndex[i+1] = tempId;
+
+                            var tempApp = appMatch[i];
+                            appMatch[i] = appMatch[i+1];
+                            appMatch[i+1] = tempApp;
+
+                            swapped = true;
+                        }
                     }
                 }
+                while(swapped);
             }
-            while(swapped);
         })
         .then(function(){
 
@@ -142,15 +143,22 @@ function match(){
                 var i;
                 for(i = 0; i < app.length; i++){
                     var order = appIndex[i];
-                    printApplicant(app[order].name, app[order].message, Math.round(percentageMatch[i]));
+                    printApplicant(app[order].applicationid, app[order].name, app[order].message, Math.round(percentageMatch[i]));
                 }
             }
             else{
-                console.log(app[0]);
                 document.getElementById("loading").style.display = "none";
                 document.getElementById("noapplicants").style.display = "block";
             }
+        })
+        .fail(function(){
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("error").style.display = "block";
         });
+    })
+    .fail(function(){
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("error").style.display = "block";
     });
 }
 
