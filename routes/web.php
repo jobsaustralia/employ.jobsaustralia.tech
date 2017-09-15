@@ -73,20 +73,8 @@ Auth::routes();
 
 /* API Routes */
 
-/* Return currently authenticated user. */
-Route::get('/api/user', 'APIController@getUser')->name('getUser');
-
 /* Return any job seeker by ID. */
 Route::get('/api/jobseeker/{id}', 'APIController@getJobSeeker')->name('getJobSeeker');
-
-/* Return any job seeker's experience by user ID. */
-Route::get('/api/jobseeker/{id}/experience', 'APIController@getExperience')->name('getExperience');
-
-/* Return an application's message by ID. */
-Route::get('/api/application/{id}/message', 'APIController@getMessage')->name('getMessage');
-
-/* Return jobs by state. */
-Route::get('/api/jobs/{state}', 'APIController@getJobs')->name('getJobs');
 
 /* Return job by ID. */
 Route::get('/api/job/{id}', 'APIController@getJob')->name('getJob');

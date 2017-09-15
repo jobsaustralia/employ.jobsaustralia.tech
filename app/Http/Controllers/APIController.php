@@ -39,13 +39,6 @@ class APIController extends Controller{
         return $applicants;
     }
 
-    /* Get all Jobs by state. */
-    public function getJobs($state){
-        $jobs = Job::where('state', $state)->get();
-
-        return $jobs;
-    }
-
     /* Get a specific Job by ID, if authorised. */
     public function getJob($id){
 
@@ -59,11 +52,6 @@ class APIController extends Controller{
         if(User::findOrFail($job->employerid) == $employer){
             return $job;
         }
-    }
-
-    /* Get currently authenticated user. */
-    public function getUser(){
-        return Auth::user();
     }
 
     /* Get Job Seeker by ID, if authorised. */
@@ -82,38 +70,5 @@ class APIController extends Controller{
         if($applications > 0){
             return $jobseeker;
         }  
-    }
-
-    /* Get the experience of a Job Seeker by ID, if authorised. */
-    public function getExperience($id){
-
-        /* Get employer from currently authenticated user. */
-        $employer = Auth::user();
-
-        /* Get job seeker by ID. */
-        $jobseeker = JobSeeker::findOrFail($id);
-
-        /* Count applications where userid matches the job seeker and employerid matches the employer. */
-        $applications = Application::where('userid', $jobseeker->id)->where('employerid', $employer->id)->get()->count();
-
-        /* Return job seeker experience if applications count exceed zero (eg. job seeker has applied to job owned by employer). */
-        if($applications > 0){
-            return $jobseeker->experience;
-        }
-    }
-
-    /* Get the message on an Application by ID, if authorised. */
-    public function getMessage($id){
-
-        /* Get employer from currently authenticated user. */
-        $employer = Auth::user();
-
-        /* Get application by ID. */
-        $application = Application::findOrFail($id);
-
-        /* Return message if application was to employer. */
-        if($application->employerid == $employer->id){
-            return $application->message;
-        }
     }
 }
