@@ -73,11 +73,8 @@ Auth::routes();
 
 /* API Routes */
 
-/* Return any job seeker by ID. */
-Route::get('/api/jobseeker/{id}', 'APIController@getJobSeeker')->name('getJobSeeker');
-
 /* Return job by ID. */
-Route::get('/api/job/{id}', 'APIController@getJob')->name('getJob');
+Route::get('/api/job/{id}/token/{token}', 'APIController@getJob')->name('getJob');
 
 /* Return applicants to a job by job ID. */
-Route::get('/api/applicants/job/{id}', 'APIController@getApplicants')->name('getApplicants');
+Route::get('/api/applicants/job/{id}/token/{token}', 'APIController@getApplicants')->name('getApplicants');

@@ -43,27 +43,30 @@ function printApplicant(id, name, message, percentageMatch){
 function match(){
     /* Get ID of job from document. */
     var jobID = document.getElementById("jobID").value;
-    
+
+    /* Get CSRF token from document. */
+    var token = document.getElementsByName("csrf-token")[0].content;
+
     /* Input array (needs to be grabbed from job). */
     var input;
-    
+
     /* Array of positions of interest. */
     var bitCheck = [];
-    
+
     /* Array of applicant indexes. */
     var appIndex = [];
-    
+
     /* Array of arrays to compare. */
     var appMatch = [];
-    
+
     /* Array of percentage matches. */
     var percentageMatch = [];
 
     /* Array to store applicant for later use. */
     var app = [];
-    
+
     /* Get job. */
-    $.getJSON("/api/job/" + jobID, function(job){
+    $.getJSON("/api/job/" + jobID + "/token/" + token, function(job){
         input = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.unix, job.winserver, job.windesktop, job.linuxdesktop, job.macosdesktop, job.pearl, job.bash, job.batch, job.cisco, job.office, job.r, job.go, job.ruby, job.asp, job.scala];
         
         /* Determine which bits are non-zero and stores into bitcheck array. */
@@ -77,7 +80,7 @@ function match(){
     .then(function(){
 
         /* Get applicants to job. */
-        $.getJSON("/api/applicants/job/" + jobID, function(applicants){
+        $.getJSON("/api/applicants/job/" + jobID + "/token/" + token, function(applicants){
 
             if(applicants.length > 0){
                 /* Populate values into appIndex, appMatch and percentageMatch arrays. */
@@ -92,7 +95,7 @@ function match(){
                     
                     /* Match counter. */
                     var count = 0;
-                    
+
                     /* Checks only the values in the positions stored in bitCheck.
                     Increases count if non-zero (i.e. there is a match). */
                     var j; 
@@ -103,14 +106,14 @@ function match(){
                             count++;
                         }
                     }
-                    
+
                     /* Calculate percentage match. */
                     percentageMatch[i] = (count / bitCheck.length) * 100;
                 }
 
                 /* Bubble sort. */
                 var swapped;
-                
+
                 do{
                     swapped = false;
 
