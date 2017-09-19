@@ -50,6 +50,8 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
 
+Route::get('/application/{id}', 'ApplicationController@displayApplication')->name('displayApplication');
+
 
 /* POST Controller Routes */
 

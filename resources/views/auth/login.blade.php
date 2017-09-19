@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    You're using JobsAustralia.tech as an <em>Employer</em>. <a href="https://jobsaustralia.tech/login">Change to Job Seeker</a>.
+                    You're using JobsAustralia.tech as an <em>Employer</em>. <a href="{{ explode('://employ.', Request::url())[0] . '://' . explode('://employ.', Request::url())[1] }}">Change to Job Seeker</a>.
                 </div>
             </div>
             <div class="panel panel-default">
