@@ -64,6 +64,63 @@ function submitForm(){
     document.getElementById(event.target.id + "-form").submit();
 }
 
+/* Salary logic */
+	function applySalaryLogic(){
+	var hours = document.getElementById("hours");
+	var rate = document.getElementById("rate");
+	var salary = document.getElementById("salary");
+
+    if(hours.value == "parttime" && rate.value == "hourly"){
+    salary.min = "18";
+    salary.max = "1000";
+    }
+	
+    else if(hours.value == "parttime" && rate.value == "weekly"){
+    salary.min = "200";
+	salary.max = "2000";
+    }
+	
+	else if(hours.value == "parttime" && rate.value == "fortnightly"){
+    salary.min = "500";
+	salary.max = "3000";
+    }
+	
+	else if(hours.value == "parttime" && rate.value == "monthly"){
+    salary.min = "1000";
+	salary.max = "4000";
+    }
+	
+	else if(hours.value == "parttime" && rate.value == "annually"){
+    salary.min = "10000";
+	salary.max = "40000";
+    }
+	
+	else if(hours.value == "fulltime" && rate.value == "hourly"){
+    salary.min = "24";
+	salary.max = "1000";
+    }
+	
+	else if(hours.value == "fulltime" && rate.value == "weekly"){
+    salary.min = "1000";
+	salary.max = "2000";
+    }
+	
+	else if(hours.value == "fulltime" && rate.value == "fortnightly"){
+    salary.min = "2000";
+	salary.max = "4000";
+    }
+	
+	else if(hours.value == "fulltime" && rate.value == "monthly"){
+    salary.min = "3000";
+	salary.max = "5000";
+    }
+	
+	else if(hours.value == "fulltime" && rate.value == "annually"){
+    salary.min = "40000";
+	salary.max = "200000";
+    }
+}
+
 /* Add EventListeners depending on current page loaded. */
 if(document.getElementById("profile") !== null){
     document.getElementById("confirm-delete").addEventListener("click", toggleDisplay);
@@ -77,6 +134,11 @@ else if(document.getElementById("team") !== null){
 else if(document.getElementById("delete-job") !== null){
     document.getElementById("delete-job-button").addEventListener("click", toggleDisplay);
     document.getElementById("delete-job-confirm").addEventListener("click", submitForm);
+}
+
+else if(document.getElementById("post") !== null){
+    document.getElementById("hours").addEventListener("change", applySalaryLogic);
+    document.getElementById("rate").addEventListener("change", applySalaryLogic);
 }
 
 /* Add EventListener to logout link. */
