@@ -64,6 +64,127 @@ function submitForm(){
     document.getElementById(event.target.id + "-form").submit();
 }
 
+/* Function to verify the self-reported skills of a job seeker against their public GitHub repositories. */
+function gitHubVerifySkills(){
+
+    /* GitHub username. */
+    var username = "aghorler";
+
+    /* Full resource link to GitHub API. */
+    var resource = "https://api.github.com/users/" + username + "/repos";
+
+    /* CSRF token. */
+    var token = "null";
+
+    /* Job ID. */
+    var jobID = "9d2903c0-9cf8-11e7-a176-5d131407477b";
+
+    /* Array to be populated with programming skills. */
+    var skills;
+
+    /* Language count. */
+    var count = 0;
+
+    /* Function to print the count of matching repositories. */
+    function printGitHubVerify(count){
+        console.log("We found " + count + " repositories that match your listed skill requirements for this job.");
+        console.log("View all: " + "http://github.com/" + username + "?tab=repositories&type=source");
+    }
+
+    /* Get programming skills for job. */
+    $.getJSON("/api/job/" + jobID + "/token/" + token, function(job){
+        skills = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.pearl, job.bash, job.batch, job.r, job.go, job.ruby, job.asp, job.scala];
+    })
+    .then(function(){
+
+        /* Compare skills to list of repositories owned by the user. */
+        $.getJSON(resource, function(data){
+            var i;
+            for(i = 0; i < data.length; i++){
+                // Ignore repositories with no recognised language, and ignore forks.
+                if(data[i].language !== null && data[i].fork == false){
+
+                    if(skills[0] && data[i].language == "Java"){
+                        count++;
+                    }
+
+                    if(skills[1] && data[i].language == "Python"){
+                        count++;
+                    }
+
+                    if(skills[2] && data[i].language == "C"){
+                        count++;
+                    }
+
+                    if(skills[3] && data[i].language == "C#"){
+                        count++;
+                    }
+
+                    if(skills[4] && data[i].language == "C++"){
+                        count++;
+                    }
+
+                    if(skills[5] && data[i].language == "PHP"){
+                        count++;
+                    }
+
+                    if(skills[6] && data[i].language == "HTML"){
+                        count++;
+                    }
+
+                    if(skills[7] && data[i].language == "CSS"){
+                        count++;
+                    }
+
+                    if(skills[8] && data[i].language == "JavaScript"){
+                        count++;
+                    }
+
+                    if(skills[9] && data[i].language == "SQL"){
+                        count++;
+                    }
+
+                    if(skills[10] && data[i].language == "Pearl"){
+                        count++;
+                    }
+
+                    if(skills[11] && data[i].language == "Bash"){
+                        count++;
+                    }
+
+                    if(skills[12] && data[i].language == "Batch"){
+                        count++;
+                    }
+
+                    if(skills[13] && data[i].language == "R"){
+                        count++;
+                    }
+
+                    if(skills[14] && data[i].language == "Go"){
+                        count++;
+                    }
+
+                    if(skills[15] && data[i].language == "Ruby"){
+                        count++;
+                    }
+
+                    if(skills[16] && data[i].language == "ASP"){
+                        count++;
+                    }
+
+                    if(skills[17] && data[i].language == "Scala"){
+                        count++;
+                    }
+                }
+            }
+
+            if(count > 0){
+                printGitHubVerify(count);
+            }
+        });
+    });
+}
+
 /* Add EventListeners depending on current page loaded. */
 if(document.getElementById("profile") !== null){
     document.getElementById("confirm-delete").addEventListener("click", toggleDisplay);
@@ -73,6 +194,7 @@ if(document.getElementById("profile") !== null){
 }
 else if(document.getElementById("team") !== null){
     document.addEventListener('DOMContentLoaded', randomiseTeam);
+    document.addEventListener('DOMContentLoaded', gitHubVerifySkills);
 }
 else if(document.getElementById("delete-job") !== null){
     document.getElementById("delete-job-button").addEventListener("click", toggleDisplay);
