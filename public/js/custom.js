@@ -1,3 +1,4 @@
+/* Generic function to toggle the display of an element. */
 function toggleDisplay(){
     var element = document.getElementById(event.target.id + "-content");
     
@@ -9,15 +10,17 @@ function toggleDisplay(){
     }
 }
 
+/* Function to toggle the display of each team member on the about page. */
 function toggleTeamDisplay(){
+    document.getElementById("dennis-content").style.display = "none";
     document.getElementById("aaron-content").style.display = "none";
     document.getElementById("ozlem-content").style.display = "none";
     document.getElementById("kim-content").style.display = "none";
     document.getElementById("melissa-content").style.display = "none";
-    document.getElementById("dennis-content").style.display = "none";
     document.getElementById(event.target.id + "-content").style.display = "block";
 }
 
+/* Function to randomise the order of the team on the about page. */
 function randomiseTeam(){
     function shuffle(a){
         var j, x, i;
@@ -48,21 +51,35 @@ function randomiseTeam(){
 
     document.getElementById(team[0].split(",")[0] + "-content").style.display = "block";
 
-    document.getElementById("aaron").addEventListener("click", toggleTeamDisplay);
     document.getElementById("ozlem").addEventListener("click", toggleTeamDisplay);
-    document.getElementById("kim").addEventListener("click", toggleTeamDisplay);
-    document.getElementById("melissa").addEventListener("click", toggleTeamDisplay);
     document.getElementById("dennis").addEventListener("click", toggleTeamDisplay);
+    document.getElementById("melissa").addEventListener("click", toggleTeamDisplay);
+    document.getElementById("kim").addEventListener("click", toggleTeamDisplay);
+    document.getElementById("aaron").addEventListener("click", toggleTeamDisplay);
 }
 
+/* Function to submit POST data to server with form in the background. */
+function submitForm(){
+    event.preventDefault();
+    document.getElementById(event.target.id + "-form").submit();
+}
+
+/* Add EventListeners depending on current page loaded. */
 if(document.getElementById("profile") !== null){
     document.getElementById("confirm-delete").addEventListener("click", toggleDisplay);
     document.getElementById("really-confirm-delete").addEventListener("click", toggleDisplay);
     document.getElementById("change-password").addEventListener("click", toggleDisplay);
+    document.getElementById("delete").addEventListener("click", submitForm);
 }
 else if(document.getElementById("team") !== null){
     document.addEventListener('DOMContentLoaded', randomiseTeam);
 }
-else if(document.getElementById("job") !== null){
-    document.getElementById("delete-job").addEventListener("click", toggleDisplay);
+else if(document.getElementById("delete-job") !== null){
+    document.getElementById("delete-job-button").addEventListener("click", toggleDisplay);
+    document.getElementById("delete-job-confirm").addEventListener("click", submitForm);
+}
+
+/* Add EventListener to logout link. */
+if(document.getElementById("logout") !== null){
+    document.getElementById("logout").addEventListener("click", submitForm);
 }

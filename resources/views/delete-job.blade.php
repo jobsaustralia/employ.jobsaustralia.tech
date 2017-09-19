@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div id="job" class="col-md-8 col-md-offset-2">
+        <div id="delete-job" class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Delete job - {{ $job->title }}</div>
                 <div class="panel-body">
@@ -18,18 +18,18 @@
                     <br>
 
                     <p align="center">
-                        <button id="delete-job" class="btn btn-danger">
+                        <button id="delete-job-button" class="btn btn-danger">
                             Delete job
                         </button>
                     </p>
 
                     <br>
 
-                    <p id="delete-job-content" style="display: none;" align="center">
-                        Confirm deletion: <a class="text-danger" href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">I really want to delete this job.</a>
+                    <p id="delete-job-button-content" style="display: none;" align="center">
+                        Confirm deletion: <a id="delete-job-confirm" class="text-danger" href="{{ route('delete') }}">I really want to delete this job.</a>
                     </p>
 
-                    <form id="delete-form" action="{{ route('deleteJob') }}" method="POST" style="display: none;">
+                    <form id="delete-job-confirm-form" action="{{ route('deleteJob') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="id" value="{{ $job->id }}" />

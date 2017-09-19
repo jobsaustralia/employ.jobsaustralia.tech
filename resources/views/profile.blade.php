@@ -49,7 +49,7 @@
                                 <strong>It is impossible to recover an account, or its data, after deletion!</strong>
                             </p>
                             <p>
-                                <a class="text-danger" title="Clicking this will delete your account without further prompt." href="{{ route('delete') }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">I am <strong>positively certain</strong> I want to delete my account.</a>
+                                <a id="delete" class="text-danger" title="Clicking this will delete your account without further prompt." href="{{ route('delete') }}">I am <strong>positively certain</strong> I want to delete my account.</a>
                             </p>
                         </div>
                     </div>
