@@ -45,7 +45,7 @@ class APIController extends Controller{
 
     /* Get a specific Job by ID, if authorised. */
     public function getJob($id, $token){
-        if(Session::token() == $token){
+        //if(Session::token() == $token){
             /* Get employer from currently authenticated user. */
             $employer = Auth::user();
 
@@ -56,6 +56,6 @@ class APIController extends Controller{
             if(User::findOrFail($job->employerid) == $employer){
                 return $job;
             }
-        }
+        //}
     }
 }
