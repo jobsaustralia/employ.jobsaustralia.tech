@@ -57,7 +57,67 @@ class JobController extends Controller{
             'ruby' => 'required|boolean',
             'asp' => 'required|boolean',
             'scala' => 'required|boolean'
-        ]);
+            ]);
+
+        if($request['hours'] == "parttime" && $request['rate'] == "hourly"){
+            if($request['salary'] <= 18 || $request['salary'] >= 1000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "parttime" && $request['rate'] == "weekly"){
+            if($request['salary'] <= 200 || $request['salary'] >= 2000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "parttime" && $request['rate'] == "fortnightly"){
+            if($request['salary'] <= 500 || $request['salary'] >= 3000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "parttime" && $request['rate'] == "monthly"){
+            if($request['salary'] <= 1000 || $request['salary'] >= 4000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "parttime" && $request['rate'] == "annually"){
+            if($request['salary'] <= 10000 || $request['salary'] >= 40000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "fulltime" && $request['rate'] == "hourly"){
+            if($request['salary'] <= 24 || $request['salary'] >= 1000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "fulltime" && $request['rate'] == "weekly"){
+            if($request['salary'] <= 1000 || $request['salary'] >= 2000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "fulltime" && $request['rate'] == "fortnightly"){
+            if($request['salary'] <= 2000 || $request['salary'] >= 4000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "fulltime" && $request['rate'] == "monthly"){
+            if($request['salary'] <= 3000 || $request['salary'] >= 5000){
+                exit();
+            }
+        }
+        
+        else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
+            if($request['salary'] <= 40000 || $request['salary'] >= 200000){
+                exit();
+            }
+        }
 
         Job::create([
             'id' => Uuid::generate(),
@@ -96,7 +156,7 @@ class JobController extends Controller{
             'asp' => $request['asp'],
             'scala' => $request['scala'],
             'employerid' => Auth::user()->id
-        ]);
+            ]);
 
         return Redirect::route('jobs');
     }
@@ -174,8 +234,68 @@ class JobController extends Controller{
                 'ruby' => 'required|boolean',
                 'asp' => 'required|boolean',
                 'scala' => 'required|boolean'
-            ]);
+                ]);
 
+            if($request['hours'] == "parttime" && $request['rate'] == "hourly"){
+                if($request['salary'] <= 18 || $request['salary'] >= 1000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "parttime" && $request['rate'] == "weekly"){
+                if($request['salary'] <= 200 || $request['salary'] >= 2000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "parttime" && $request['rate'] == "fortnightly"){
+                if($request['salary'] <= 500 || $request['salary'] >= 3000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "parttime" && $request['rate'] == "monthly"){
+                if($request['salary'] <= 1000 || $request['salary'] >= 4000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "parttime" && $request['rate'] == "annually"){
+                if($request['salary'] <= 10000 || $request['salary'] >= 40000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "fulltime" && $request['rate'] == "hourly"){
+                if($request['salary'] <= 24 || $request['salary'] >= 1000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "fulltime" && $request['rate'] == "weekly"){
+                if($request['salary'] <= 1000 || $request['salary'] >= 2000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "fulltime" && $request['rate'] == "fortnightly"){
+                if($request['salary'] <= 2000 || $request['salary'] >= 4000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "fulltime" && $request['rate'] == "monthly"){
+                if($request['salary'] <= 3000 || $request['salary'] >= 5000){
+                    exit();
+                }
+            }
+            
+            else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
+                if($request['salary'] <= 40000 || $request['salary'] >= 200000){
+                    exit();
+                }
+            }
+            
             $job->update([
                 'title'=>$request->title,
                 'description'=>$request->description,
@@ -211,7 +331,7 @@ class JobController extends Controller{
                 'ruby' =>$request->ruby,
                 'asp' =>$request->asp,
                 'scala' =>$request->scala
-            ]);
+                ]);
         }
 
         return Redirect::route('jobs');
