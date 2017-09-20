@@ -183,6 +183,7 @@ function gitHubVerifySkills(){
             }
         });
     });
+}
 
 /* Salary logic */
 	function applySalaryLogic(){
