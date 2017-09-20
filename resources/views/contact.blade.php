@@ -4,9 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h3><i class="fa fa-envelope" aria-hidden="true"></i> Contact</h3><br>
-            <p>Use the form below to contact the <a href="{{ route('about') }}">team</a>.</p>
-            <p>Please refer to the <a href="{{ route('support') }}">support page</a> before contacting us for support.</p><br>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                <h3><i class="fa fa-envelope" aria-hidden="true"></i> Contact</h3>
+                    <p>Use the form below to contact the <a href="{{ route('about') }}">team</a>.</p>
+                    <p>Please refer to the <a href="{{ route('support') }}">support page</a> before contacting us for support.</p>
+                </div>
+            </div>
 
             <div class="panel panel-default">
                 <div class="panel-heading">Contact Us</div>
@@ -21,9 +25,9 @@
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
@@ -35,9 +39,9 @@
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
@@ -46,12 +50,12 @@
                             <label for="message" class="col-md-4 control-label">Message</label>
 
                             <div class="col-md-6">
-                                    <textarea id="message" name="message" rows="5" cols="30" class="form-control" value="{{ old('message') }}" required autofocus>
-                                    </textarea>
+                                <textarea id="message" name="message" rows="5" cols="30" class="form-control" value="{{ old('message') }}" required autofocus>
+                                </textarea>
                                 @if ($errors->has('message'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('message') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('message') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>

@@ -4,7 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h3><i class="fa fa-life-ring" aria-hidden="true"></i> Support - Employers FAQ</h3><br>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                <h3><i class="fa fa-life-ring" aria-hidden="true"></i> Support - Employers FAQ</h3>
+                </div>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-heading">	Setting An Account</div>
                 <div class="panel-body">
@@ -26,7 +30,7 @@
             </div>
 
             <div class="panel panel-default">
-            <div class="panel-heading"> Technical Issues</div>
+                <div class="panel-heading"> Technical Issues</div>
                 <div class="panel-body">
                     <p><strong>Getting an error message or having trouble loading a page?</strong></p>
                     <p>Try clearing your browsing history following <a href="https://kb.iu.edu/d/ahic">these instructions</a></p>
