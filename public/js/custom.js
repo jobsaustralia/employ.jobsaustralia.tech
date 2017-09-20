@@ -68,16 +68,16 @@ function submitForm(){
 function gitHubVerifySkills(){
 
     /* GitHub username. */
-    var username = "aghorler";
+    var username =  document.getElementById("github").value;
 
     /* Full resource link to GitHub API. */
     var resource = "https://api.github.com/users/" + username + "/repos";
 
     /* CSRF token. */
-    var token = "null";
+    var token = document.getElementsByName("csrf-token")[0].content;
 
     /* Job ID. */
-    var jobID = "9d2903c0-9cf8-11e7-a176-5d131407477b";
+    var jobID = document.getElementById("jobID").value;
 
     /* Array to be populated with programming skills. */
     var skills;
@@ -250,7 +250,6 @@ if(document.getElementById("profile") !== null){
 }
 else if(document.getElementById("team") !== null){
     document.addEventListener('DOMContentLoaded', randomiseTeam);
-    document.addEventListener('DOMContentLoaded', gitHubVerifySkills);
 }
 else if(document.getElementById("delete-job") !== null){
     document.getElementById("delete-job-button").addEventListener("click", toggleDisplay);
@@ -260,6 +259,9 @@ else if(document.getElementById("delete-job") !== null){
 else if(document.getElementById("post") !== null){
     document.getElementById("hours").addEventListener("change", applySalaryLogic);
     document.getElementById("rate").addEventListener("change", applySalaryLogic);
+}
+else if(document.getElementById("application") !== null){
+    document.addEventListener('DOMContentLoaded', gitHubVerifySkills);
 }
 
 /* Add EventListener to logout link. */

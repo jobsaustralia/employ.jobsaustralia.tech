@@ -3,7 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div id="application" class="col-md-8 col-md-offset-2">
+
+            <!-- GitHub username for use by custom.js -->
+            <input id="github" type="hidden" value="{{ Auth::user()->github }}" />
+
+            <!-- Job ID for use by custom.js -->
+            <input id="jobID" type="hidden" value="{{ $id }}" />
+
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Application</strong></div>
 
@@ -17,6 +24,8 @@
 					<p><strong>Skills:</strong> @if ($java) Java @endif @if ($python) &bull; Python @endif @if ($c) &bull; C @endif @if ($csharp) &bull; C Sharp @endif @if ($cplus) &bull; C++ @endif @if ($php) &bull; PHP @endif @if ($html) &bull; HTML @endif @if ($css) &bull; CSS @endif @if ($javascript) &bull; JavaScript @endif @if ($sql) &bull; SQL @endif @if ($unix) &bull; Unix @endif 
 					@if ($winserver) &bull; Windows Server @endif @if ($windesktop) &bull; Windows Server @endif @if ($linuxdesktop) &bull; Linux Desktop @endif @if ($macosdesktop) &bull; MacOS Desktop @endif @if ($pearl) &bull; Pearl @endif @if ($bash) &bull; Bash @endif @if ($batch) &bull; Batch @endif @if ($cisco) &bull; Cisco @endif @if ($office) &bull; Office @endif @if ($r) &bull; R @endif @if ($go) &bull; Go @endif @if ($ruby) &bull; Ruby @endif @if ($asp) &bull; ASP @endif @if ($scala) &bull; Scala @endif</p>
 					<hr>
+
+
 					
 					<p>{{ $message }}</p>
                     
