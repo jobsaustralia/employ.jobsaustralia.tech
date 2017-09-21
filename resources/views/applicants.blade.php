@@ -33,7 +33,7 @@
                 </div>
             </div>
             <!-- No matches div. Used to display message when no matches are found. -->
-            <div id="nomatches" class="panel panel-default" style="display: none">
+            <div id="noapplicants" class="panel panel-default" style="display: none">
                 <div class="panel-heading"><strong>Notice</strong></div>
                 <div class="panel-body" align="center">
                     <br><br>

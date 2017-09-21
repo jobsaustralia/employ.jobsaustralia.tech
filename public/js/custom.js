@@ -217,6 +217,14 @@ function applySalaryLogic(){
     }
 }
 
+/* Moo. */
+function moo(){
+    if(this.checked){
+        var audio = new Audio('/audio/moo.opus');
+        audio.play();
+    }
+}
+
 /* Add EventListeners depending on current page loaded. */
 if(document.getElementById("profile") !== null){
     document.getElementById("confirm-delete").addEventListener("click", toggleDisplay);
@@ -231,10 +239,15 @@ else if(document.getElementById("delete-job") !== null){
     document.getElementById("delete-job-button").addEventListener("click", toggleDisplay);
     document.getElementById("delete-job-confirm").addEventListener("click", submitForm);
 }
-
 else if(document.getElementById("post") !== null){
     document.getElementById("hours").addEventListener("change", applySalaryLogic);
     document.getElementById("rate").addEventListener("change", applySalaryLogic);
+    document.getElementById("cow").addEventListener("change", moo);
+}
+else if(document.getElementById("edit-job") !== null){
+    document.getElementById("hours").addEventListener("change", applySalaryLogic);
+    document.getElementById("rate").addEventListener("change", applySalaryLogic);
+    document.getElementById("cow").addEventListener("change", moo);
 }
 else if(document.getElementById("application") !== null){
     document.addEventListener('DOMContentLoaded', gitHubVerifySkills);

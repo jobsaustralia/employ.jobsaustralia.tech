@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div id="job" class="col-md-8 col-md-offset-2">
+        <div id="edit-job" class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Edit job</div>
                 <div class="panel-body">
@@ -273,6 +273,22 @@
                                 @if ($errors->has('cplus'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('cplus') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Skill: COW -->
+                        <div class="form-group{{ $errors->has('cow') ? ' has-error' : '' }}">
+                            <label for="cow" class="col-md-4 control-label">COW</label>
+
+                            <div class="col-md-1">
+                                <input id="cow-hidden" type="hidden" class="form-control" name="cow" value="0">
+                                <input id="cow" type="checkbox" class="form-control" name="cow" value="{{ old('cow', 1) }}" @if ($job->cow) checked @endif >
+                            
+                                @if ($errors->has('cow'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('cow') }}</strong>
                                     </span>
                                 @endif
                             </div>

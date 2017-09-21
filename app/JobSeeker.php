@@ -10,7 +10,7 @@ class JobSeeker extends Model{
      *
      * @var array
      */
-    protected $fillable = ['id', 'name', 'email', 'title', 'sector', 'experience', 'state', 'city', 'java', 'python', 'c', 'csharp', 'cplus', 'php', 'html', 'css', 'javascript', 'sql', 'unix', 'winserver', 'windesktop', 'linuxdesktop', 'macosdesktop', 'pearl', 'bash', 'batch', 'cisco', 'office', 'r', 'go', 'ruby', 'asp', 'scala'];
+    protected $fillable = ['id', 'name', 'email', 'title', 'sector', 'experience', 'state', 'city', 'java', 'python', 'c', 'csharp', 'cplus', 'php', 'html', 'css', 'javascript', 'sql', 'unix', 'winserver', 'windesktop', 'linuxdesktop', 'macosdesktop', 'pearl', 'bash', 'batch', 'cisco', 'office', 'r', 'go', 'ruby', 'asp', 'scala', 'cow'];
 
     /**
      * The attributes that should be hidden for arrays.

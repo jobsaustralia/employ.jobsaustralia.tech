@@ -73,11 +73,12 @@ class ApplicationController extends Controller{
         $ruby = $user->ruby;
         $asp = $user->asp;
         $scala = $user->scala;
+        $cow = $user->cow;
         $message = $application->message;
         $jobid = $job->id;
         $userid = $user->id;
         $github = $user->github;
 
-        return view('application', ["name"=>$name, "email"=>$email, "title"=>$title, "sector"=>$sector, "experience"=>$experience, "state"=>$state, "city"=>$city, "java"=>$java, "python"=>$python, "c"=>$c, "csharp"=>$csharp, "cplus"=>$cplus, "php"=>$php, "html"=>$html, "css"=>$css, "javascript"=>$javascript, "sql"=>$sql, "unix"=>$unix, "winserver"=>$winserver, "windesktop"=>$windesktop, "linuxdesktop"=>$linuxdesktop, "macosdesktop"=>$macosdesktop, "pearl"=>$pearl, "bash"=>$bash, "batch"=>$batch, "cisco"=>$cisco, "office"=>$office, "r"=>$r, "go"=>$go, "ruby"=>$ruby, "asp"=>$asp, "scala"=>$scala, "message"=>$message, "jobid"=>$jobid, "github"=>$github, "userid"=>$userid]);
+        return view('application', ["name"=>$name, "email"=>$email, "title"=>$title, "sector"=>$sector, "experience"=>$experience, "state"=>$state, "city"=>$city, "java"=>$java, "python"=>$python, "c"=>$c, "csharp"=>$csharp, "cplus"=>$cplus, "php"=>$php, "html"=>$html, "css"=>$css, "javascript"=>$javascript, "sql"=>$sql, "unix"=>$unix, "winserver"=>$winserver, "windesktop"=>$windesktop, "linuxdesktop"=>$linuxdesktop, "macosdesktop"=>$macosdesktop, "pearl"=>$pearl, "bash"=>$bash, "batch"=>$batch, "cisco"=>$cisco, "office"=>$office, "r"=>$r, "go"=>$go, "ruby"=>$ruby, "asp"=>$asp, "scala"=>$scala, "cow"=>$cow, "message"=>$message, "jobid"=>$jobid, "github"=>$github, "userid"=>$userid]);
     }
 }
