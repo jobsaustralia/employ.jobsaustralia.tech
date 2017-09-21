@@ -138,16 +138,15 @@
 
                             <div class="col-md-6">
                                 <select id="state" name="state" class="form-control" value="{{ old('state') }}" required>
-                                    <option disabled selected value>Please select an option</option>
-                                    <option value="vic">Victoria</option>
-                                    <option value="nsw">New South Wales</option>
-                                    <option value="qld">Queensland</option>
-                                    <option value="wa">Western Australia</option>
-                                    <option value="sa">South Australia</option>
-                                    <option value="tas">Tasmania</option>
-                                    <option value="act">Australian Capital Territory</option>
-                                    <option value="nt">Northern Teritory</option>
-                                    <option value="oth">Other Australian Region</option>
+                                    <option value="vic" @if (Auth::user()->state == "vic") selected @endif >Victoria</option>
+                                    <option value="nsw" @if (Auth::user()->state == "nsw") selected @endif >New South Wales</option>
+                                    <option value="qld" @if (Auth::user()->state == "qld") selected @endif >Queensland</option>
+                                    <option value="wa" @if (Auth::user()->state == "wa") selected @endif >Western Australia</option>
+                                    <option value="sa" @if (Auth::user()->state == "sa") selected @endif >South Australia</option>
+                                    <option value="tas" @if (Auth::user()->state == "tas") selected @endif >Tasmania</option>
+                                    <option value="act" @if (Auth::user()->state == "act") selected @endif >Australian Capital Territory</option>
+                                    <option value="nt" @if (Auth::user()->state == "nt") selected @endif >Northern Teritory</option>
+                                    <option value="oth" @if (Auth::user()->state == "oth") selected @endif >Other Australian Region</option>
                                 </select>
 
                                 @if ($errors->has('state'))
@@ -163,7 +162,7 @@
                             <label for="city" class="col-md-4 control-label">City</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" pattern="[a-zA-Z ]+" value="{{ old('city') }}" required>
+                                <input id="city" type="text" class="form-control" name="city" pattern="[a-zA-Z ]+" value="{{ Auth::user()->city }}" required>
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -178,7 +177,8 @@
                         <h4 align="center">Skills</h4>
 
                         <p align="center">Please select the skills an employee must possess.</p>
-                        <hr>
+
+                        <hr class="skill-divider">
 
                         <h5 align="center">Languages</h5>
                         <!-- Skill: ASP.NET -->
@@ -421,7 +421,6 @@
                             </div>
                         </div>
                         
-                        
                         <!-- Skill: Ruby -->
                         <div class="form-group{{ $errors->has('ruby') ? ' has-error' : '' }}">
                             <label for="ruby" class="col-md-4 control-label">Ruby</label>
@@ -469,9 +468,11 @@
                                 @endif
                             </div>
                         </div>
-                        <hr>
+
+                        <hr class="skill-divider">
 
                         <h5 align="center">Operating Systems</h5>
+
                         <!-- Skill: Linux Desktop -->
                         <div class="form-group{{ $errors->has('linuxdesktop') ? ' has-error' : '' }}">
                             <label for="linuxdesktop" class="col-md-4 control-label">Linux Desktop</label>
@@ -551,9 +552,11 @@
                                 @endif
                             </div>
                         </div>
-                        <hr>
+
+                        <hr class="skill-divider">
 
                         <h5 align="center">Networking</h5>
+
                         <!-- Skill: Cisco Networking -->
                         <div class="form-group{{ $errors->has('cisco') ? ' has-error' : '' }}">
                             <label for="cisco" class="col-md-4 control-label">Cisco Networking</label>
@@ -569,9 +572,11 @@
                                 @endif
                             </div>
                         </div>
-                        <hr>
+
+                        <hr class="skill-divider">
                         
                         <h5 align="center">Others</h5>
+
                         <!-- Skill: Microsoft Office -->
                         <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
                             <label for="office" class="col-md-4 control-label">Microsoft Office</label>
@@ -586,7 +591,8 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>    
+                        </div>
+
                         <hr>
 
                         <div class="form-group">
