@@ -1,3 +1,4 @@
+/* Static footer. */
 footer {
     position: fixed;
     bottom: 0;
@@ -54,4 +55,11 @@ body {
 /* Nav bar hover colour. */
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: white;
+}
+
+/* Horizontal rule to divide skill categories. */
+hr.skill-divider {
+    margin-left: 75px;
+    margin-right: 75px;
+    border-top: 1px solid #f5f5f5;
 }
