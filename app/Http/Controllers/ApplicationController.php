@@ -78,24 +78,5 @@ class ApplicationController extends Controller{
 		"linuxdesktop"=>$linuxdesktop, "macosdesktop"=>$macosdesktop, "pearl"=>$pearl, "bash"=>$bash, "batch"=>$batch, "cisco"=>$cisco, "office"=>$office, "r"=>$r, "go"=>$go, "ruby"=>$ruby, "asp"=>$asp, "scala"=>$scala, "message"=>$message]);
     }
 
-    /* Display applicants resume. */
-    public function appResume($id){
-        $employer = Auth::user();
-        $job = Application::findOrFail($jobid);
-        $user = Application::findOrFail($userid);
-
-
-        if(Application::findOrFail($job->employerid) == $employer){
-            $headers = [
-          'Content-Type' => 'document/pdf',
-       ];
-
-    return response()->download(storage_path('storage/app/public/filename.pdf'), 'filename.pdf', $headers);
-        }
-        else{
-            return Redirect::route('jobs');
-        }
-    }
-
 
 }
