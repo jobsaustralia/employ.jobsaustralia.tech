@@ -52,6 +52,8 @@ Route::get('/profile/edit', 'ProfileController@editIndex')->name('editProfile');
 
 Route::get('/application/{id}', 'ApplicationController@displayApplication')->name('displayApplication');
 
+Route::get('/resume/{id}', 'ResumeController@view')->name('resume');
+
 
 /* POST Controller Routes */
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
 use App\Job;
 use App\User;
 
@@ -356,6 +357,6 @@ class JobController extends Controller{
             Job::destroy($id);
         }
 
-        return  Redirect::route('jobs');
+        return Redirect::route('jobs');
     }
 }
