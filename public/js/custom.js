@@ -163,9 +163,7 @@ function gitHubVerifySkills(){
                     }
                 }
 
-                if(count > 0){
-                    printGitHubVerify(count);
-                }
+                printGitHubVerify(count);
             });
         });
     }
