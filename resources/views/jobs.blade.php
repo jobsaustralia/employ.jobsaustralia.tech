@@ -4,7 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h3><i class="fa fa-briefcase" aria-hidden="true"></i> Your Jobs</h3><br>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p style="font-size: 145%"><strong><i class="fa fa-briefcase" aria-hidden="true"></i> Your Jobs</strong></p>
+                </div>
+            </div>
             @if (count($jobs) > 0)
             @foreach($jobs as $job)
             <div class="panel panel-default">
@@ -24,9 +28,17 @@
                     <hr>
 
                     <p>
-                        <a href="{{route('applicants', $job->id)}}" class="btn btn-primary">
-                            View applicants
-                        </a>
+                        @if (App\Application::where('jobid', $job->id)->get()->count() == 1)
+                            <a href="{{route('applicants', $job->id)}}" class="btn btn-primary">
+                                View {{ App\Application::where('jobid', $job->id)->get()->count() }} application
+                            </a>
+                        @elseif (App\Application::where('jobid', $job->id)->get()->count() > 1)
+                            <a href="{{route('applicants', $job->id)}}" class="btn btn-primary">
+                                View {{ App\Application::where('jobid', $job->id)->get()->count() }} applications
+                            </a>
+                        @else
+                            No applications received.
+                        @endif
                     </p>
 
                     <hr>
