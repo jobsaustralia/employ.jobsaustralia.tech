@@ -30,7 +30,7 @@
                 <div class="panel-body" align="center">
                     <p><i class="fa fa-github" aria-hidden="true" style="font-size: 100px"></i></p>
                     <p>JobsAustralia.tech optionally integrates with GitHub to detect the programming skillset of job seekers.</p>
-                    <p>We then report any relevant repositories with job seekers apply to your jobs.</p>
+                    <p>We then report any relevant repositories when job seekers apply to your jobs.</p>
                 </div>
             </div>
 
