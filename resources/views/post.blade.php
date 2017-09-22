@@ -105,7 +105,7 @@
                             <label for="salary" class="col-md-4 control-label">Salary</label>
 
                             <div class="col-md-6">
-                                <input id="salary" type="number" min="18" max="20000000" class="form-control" name="salary" value="{{ old('salary') }}" required>
+                                <input id="salary" type="number" min="18" max="200000" class="form-control" name="salary" value="{{ old('salary') }}" required>
 
                                 @if ($errors->has('salary'))
                                     <span class="help-block">

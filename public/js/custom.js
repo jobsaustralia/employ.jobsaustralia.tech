@@ -1,5 +1,7 @@
 /* Generic function to toggle the display of an element. */
 function toggleDisplay(){
+    event.preventDefault();
+
     var element = document.getElementById(event.target.id + "-content");
     
     if(element.style.display == "none"){
@@ -22,9 +24,10 @@ function toggleTeamDisplay(){
 
 /* Function to randomise the order of the team on the about page. */
 function randomiseTeam(){
+    /* https://stackoverflow.com/a/6274381 */
     function shuffle(a){
         var j, x, i;
-        for (i = a.length; i; i--){
+        for(i = a.length; i; i--){
             j = Math.floor(Math.random() * i);
             x = a[i - 1];
             a[i - 1] = a[j];
