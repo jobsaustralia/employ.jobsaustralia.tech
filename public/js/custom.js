@@ -217,6 +217,20 @@ function applySalaryLogic(){
     }
 }
 
+/* Function to (roughly) get the users location by their IP address using an external resource. */
+function getLocationByIP(){
+    /* This resource (freegeoip.net) may be blocked by some ad blocking and privacy software. In such a case, this will silently fail. */
+    var resource = "https://freegeoip.net/json/";
+
+    $.getJSON(resource, function(location){
+        /* Only autofill if country is detected as Australia. */
+        if(location.country_code == "AU"){
+            document.getElementById("state").value = location.region_code.toLowerCase();
+            document.getElementById("city").value = location.city;
+        }
+    });
+}
+
 /* Moo. */
 function moo(){
     if(this.checked){
@@ -251,6 +265,9 @@ else if(document.getElementById("edit-job") !== null){
 }
 else if(document.getElementById("application") !== null){
     document.addEventListener('DOMContentLoaded', gitHubVerifySkills);
+}
+else if(document.getElementById("register") !== null){
+    document.addEventListener('DOMContentLoaded', getLocationByIP);
 }
 
 /* Add EventListener to logout link. */
