@@ -23,13 +23,15 @@ class JobController extends Controller{
 
     /* Create job. */
     protected function create(Request $request){
+
+        /* Validate job. */
         $this->validate($request, [
             'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
             'description' => 'required|string|max:1000',
             'term' => 'required|string|in:fixed,permanent', 
             'hours' => 'required|string|in:fulltime,parttime',
             'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
-            'salary' => 'required|integer|min:0|max:20000000',
+            'salary' => 'required|integer|min:18|max:200000',
             'startdate' => 'required|string|min:10|max:10',
             'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
             'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
@@ -61,16 +63,21 @@ class JobController extends Controller{
             'cow' => 'required|boolean',
             'mineducation' => 'required|integer|min:0|max:5',
             'minexperience' => 'required|integer|min:0|max:100',
-            'mostimportant' => 'required|string',
-            'leastimportant' => 'required|string'
+            'mostimportant' => 'required|string|in:skills,education,experience',
+            'leastimportant' => 'required|string|in:skills,education,experience'
         ]);
 
+        /* Manually apply validation logic to most and least important fields. */
         if($request['mostimportant'] == "skills"){
             if($request['leastimportant'] == "education"){
                 $rankTwo = "experience";
             }
             else if($request['leastimportant'] == "experience"){
                 $rankTwo = "education";
+            }
+            else{
+                return Redirect::route('jobs');
+                exit();
             }
         }
         else if($request['mostimportant'] == "education"){
@@ -80,6 +87,10 @@ class JobController extends Controller{
             else if($request['leastimportant'] == "experience"){
                 $rankTwo = "skills";
             }
+            else{
+                return Redirect::route('jobs');
+                exit();
+            }
         }
         else if($request['mostimportant'] == "experience"){
             if($request['leastimportant'] == "skills"){
@@ -88,59 +99,75 @@ class JobController extends Controller{
             else if($request['leastimportant'] == "experience"){
                 $rankTwo = "skills";
             }
+            else{
+                return Redirect::route('jobs');
+                exit();
+            }
         }
 
+        /* Manually apply validation logic to salary field. */
         if($request['hours'] == "parttime" && $request['rate'] == "hourly"){
             if($request['salary'] <= 18 || $request['salary'] >= 1000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "weekly"){
             if($request['salary'] <= 200 || $request['salary'] >= 2000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "fortnightly"){
             if($request['salary'] <= 500 || $request['salary'] >= 3000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "monthly"){
             if($request['salary'] <= 1000 || $request['salary'] >= 4000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "annually"){
             if($request['salary'] <= 10000 || $request['salary'] >= 40000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "hourly"){
             if($request['salary'] <= 24 || $request['salary'] >= 1000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "weekly"){
             if($request['salary'] <= 1000 || $request['salary'] >= 2000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "fortnightly"){
             if($request['salary'] <= 2000 || $request['salary'] >= 4000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "monthly"){
             if($request['salary'] <= 3000 || $request['salary'] >= 5000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
             if($request['salary'] <= 40000 || $request['salary'] >= 200000){
+                return Redirect::route('jobs');
                 exit();
             }
         }
 
+        /* Finally, create job. */
         Job::create([
             'id' => Uuid::generate(),
             'title' => $request['title'],
@@ -189,7 +216,7 @@ class JobController extends Controller{
         return Redirect::route('jobs');
     }
 
-    /* Display post job page, if authorised. */
+    /* Display post job page. */
     public function indexPost(){
         return view('post');
     }
@@ -227,13 +254,14 @@ class JobController extends Controller{
         $user = Auth::user();
 
         if($job->employerid == $user->id){
+            /* Validate job. */
             $this->validate($request, [
                 'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
                 'description' => 'required|string|max:1000',
                 'term' => 'required|string|in:fixed,permanent', 
                 'hours' => 'required|string|in:fulltime,parttime',
                 'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
-                'salary' => 'required|integer|min:0|max:20000000',
+                'salary' => 'required|integer|min:18|max:200000',
                 'startdate' => 'required|string|min:10|max:10',
                 'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
                 'city' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
@@ -262,60 +290,114 @@ class JobController extends Controller{
                 'ruby' => 'required|boolean',
                 'asp' => 'required|boolean',
                 'scala' => 'required|boolean',
-                'cow' => 'required|boolean'
+                'cow' => 'required|boolean',
+                'mineducation' => 'required|integer|min:0|max:5',
+                'minexperience' => 'required|integer|min:0|max:100',
+                'mostimportant' => 'required|string|in:skills,education,experience',
+                'leastimportant' => 'required|string|in:skills,education,experience'
             ]);
+            
+            /* Manually apply validation logic to most and least important fields. */
+            if($request['mostimportant'] == "skills"){
+                if($request['leastimportant'] == "education"){
+                    $rankTwo = "experience";
+                }
+                else if($request['leastimportant'] == "experience"){
+                    $rankTwo = "education";
+                }
+                else{
+                    return Redirect::route('jobs');
+                    exit();
+                }
+            }
+            else if($request['mostimportant'] == "education"){
+                if($request['leastimportant'] == "skills"){
+                    $rankTwo = "experience";
+                }
+                else if($request['leastimportant'] == "experience"){
+                    $rankTwo = "skills";
+                }
+                else{
+                    return Redirect::route('jobs');
+                    exit();
+                }
+            }
+            else if($request['mostimportant'] == "experience"){
+                if($request['leastimportant'] == "skills"){
+                    $rankTwo = "education";
+                }
+                else if($request['leastimportant'] == "experience"){
+                    $rankTwo = "skills";
+                }
+                else{
+                    return Redirect::route('jobs');
+                    exit();
+                }
+            }
 
+            /* Manually apply validation logic to salary field. */
             if($request['hours'] == "parttime" && $request['rate'] == "hourly"){
                 if($request['salary'] <= 18 || $request['salary'] >= 1000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "weekly"){
                 if($request['salary'] <= 200 || $request['salary'] >= 2000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "fortnightly"){
                 if($request['salary'] <= 500 || $request['salary'] >= 3000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "monthly"){
                 if($request['salary'] <= 1000 || $request['salary'] >= 4000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "annually"){
                 if($request['salary'] <= 10000 || $request['salary'] >= 40000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "hourly"){
                 if($request['salary'] <= 24 || $request['salary'] >= 1000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "weekly"){
                 if($request['salary'] <= 1000 || $request['salary'] >= 2000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "fortnightly"){
                 if($request['salary'] <= 2000 || $request['salary'] >= 4000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "monthly"){
                 if($request['salary'] <= 3000 || $request['salary'] >= 5000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
                 if($request['salary'] <= 40000 || $request['salary'] >= 200000){
+                    return Redirect::route('jobs');
                     exit();
                 }
             }
-            
+
+            /* Finally, update job. */
             $job->update([
                 'title'=>$request->title,
                 'description'=>$request->description,
