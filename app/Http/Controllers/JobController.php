@@ -58,8 +58,37 @@ class JobController extends Controller{
             'ruby' => 'required|boolean',
             'asp' => 'required|boolean',
             'scala' => 'required|boolean',
-            'cow' => 'required|boolean'
+            'cow' => 'required|boolean',
+            'mineducation' => 'required|integer|min:0|max:5',
+            'minexperience' => 'required|integer|min:0|max:100',
+            'mostimportant' => 'required|string',
+            'leastimportant' => 'required|string'
         ]);
+
+        if($request['mostimportant'] == "skills"){
+            if($request['leastimportant'] == "education"){
+                $rankTwo = "experience";
+            }
+            else if($request['leastimportant'] == "experience"){
+                $rankTwo = "education";
+            }
+        }
+        else if($request['mostimportant'] == "education"){
+            if($request['leastimportant'] == "skills"){
+                $rankTwo = "experience";
+            }
+            else if($request['leastimportant'] == "experience"){
+                $rankTwo = "skills";
+            }
+        }
+        else if($request['mostimportant'] == "experience"){
+            if($request['leastimportant'] == "skills"){
+                $rankTwo = "education";
+            }
+            else if($request['leastimportant'] == "experience"){
+                $rankTwo = "skills";
+            }
+        }
 
         if($request['hours'] == "parttime" && $request['rate'] == "hourly"){
             if($request['salary'] <= 18 || $request['salary'] >= 1000){
@@ -149,6 +178,11 @@ class JobController extends Controller{
             'asp' => $request['asp'],
             'scala' => $request['scala'],
             'cow' => $request['cow'],
+            'rankone' => $request['mostimportant'],
+            'ranktwo' => $rankTwo,
+            'rankthree' => $request['leastimportant'],
+            'mineducation' => $request['mineducation'],
+            'minexperience' => $request['minexperience'],
             'employerid' => Auth::user()->id
         ]);
 
