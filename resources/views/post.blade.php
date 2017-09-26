@@ -217,7 +217,7 @@
                             <label for="mostimportant" class="col-md-4 control-label">Most Important</label>
 
                             <div class="col-md-6">
-                                <select id="minducation" name="mostimportant" class="form-control" value="{{ old('mostimportant') }}" required>
+                                <select id="mostimportant" name="mostimportant" class="form-control" value="{{ old('mostimportant') }}" required>
                                     <option disabled selected value>Please select an option</option>
                                     <option value="skills">Skills</option>
                                     <option value="education">Education</option>
