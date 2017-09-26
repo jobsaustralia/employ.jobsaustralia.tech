@@ -59,6 +59,31 @@
                     </form>
                 </div>
             </div>
+			
+			<div class="panel panel-default">
+                <div class="panel-heading">Notifications</div>
+
+                <div class="panel-body">
+                    <p>Please tick the email notifications you would like to receive.</p>
+						<hr>
+						<form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('editProfile') }}">
+                        {{ csrf_field() }}
+						<div class="form-group{{ $errors->has('applied') ? ' has-error' : '' }}">
+                            <label for="applied" class="col-md-4 control-label">Notify me when someone applies to a job</label>
+
+                            <div class="col-md-1">
+                                <input id="applied-hidden" type="hidden" class="form-control" name="applied" value="0">
+                                <input id="applied" type="checkbox" class="form-control" name="applied" value="{{ old('applied', 1) }}">
+                            
+                                @if ($errors->has('applied'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('applied') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                      </div>
+					 </div></div>
+			</form>		
         </div>
     </div>
 </div>
