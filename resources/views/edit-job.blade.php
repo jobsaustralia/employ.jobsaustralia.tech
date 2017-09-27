@@ -171,6 +171,86 @@
                                 @endif
                             </div>
                         </div>
+
+                        <hr>
+
+                        <!-- Minimum Education Level -->
+                        <div class="form-group{{ $errors->has('mineducation') ? ' has-error' : '' }}">
+                            <label for="mineducation" class="col-md-4 control-label">Minimum Education Level</label>
+
+                            <div class="col-md-6">
+                                <select id="minducation" name="mineducation" class="form-control" value="{{ old('mineducation') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+                                    <option value="0" @if($job->mineducation == 0) selected @endif >TAFE</option>
+                                    <option value="1" @if($job->mineducation == 1) selected @endif >Diploma</option>
+                                    <option value="2" @if($job->mineducation == 2) selected @endif >Associate degree</option>
+                                    <option value="3" @if($job->mineducation == 3) selected @endif >Bachelor degree</option>
+                                    <option value="4" @if($job->mineducation == 4) selected @endif >Master degree</option>
+                                    <option value="5" @if($job->mineducation == 5) selected @endif >PhD</option>
+                                </select>
+
+                                @if ($errors->has('mineducation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mineducation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Minimum Education Level -->
+                        <div class="form-group{{ $errors->has('minexperience') ? ' has-error' : '' }}">
+                            <label for="minexperience" class="col-md-4 control-label">Minimum Experience</label>
+
+                            <div class="col-md-6">
+                                <input id="minexperience" type="number" min="0" max="100" class="form-control" name="minexperience" value="{{ $job->minexperience }}" required>
+
+                                @if ($errors->has('minexperience'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('minexperience') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Ranking: Most Important -->
+                        <div class="form-group{{ $errors->has('mostimportant') ? ' has-error' : '' }}">
+                            <label for="mostimportant" class="col-md-4 control-label">Most Important</label>
+
+                            <div class="col-md-6">
+                                <select id="mostimportant" name="mostimportant" class="form-control" value="{{ old('mostimportant') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+                                    <option value="skills" @if($job->rankone == "skills") selected @endif >Skills</option>
+                                    <option value="education" @if($job->rankone == "education") selected @endif >Education</option>
+                                    <option value="experience" @if($job->rankone == "experience") selected @endif >Experience</option>
+                                </select>
+
+                                @if ($errors->has('mostimportant'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mostimportant') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Ranking: Least Important -->
+                        <div class="form-group{{ $errors->has('leastimportant') ? ' has-error' : '' }}">
+                            <label for="leastimportant" class="col-md-4 control-label">Least Important</label>
+
+                            <div class="col-md-6">
+                                <select id="leastimportant" name="leastimportant" class="form-control" value="{{ old('leastimportant') }}" required>
+                                    <option disabled selected value>Please select an option</option>
+                                    <option value="skills" @if($job->rankthree == "skills") selected @endif >Skills</option>
+                                    <option value="education" @if($job->rankthree == "education") selected @endif >Education</option>
+                                    <option value="experience" @if($job->rankthree == "experience") selected @endif >Experience</option>
+                                </select>
+
+                                @if ($errors->has('leastimportant'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('leastimportant') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         
                         <hr>
 
