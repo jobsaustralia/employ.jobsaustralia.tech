@@ -11,8 +11,8 @@ class ContactController extends Controller{
     /* Send an email. */
     function send(Request $request){
         Mail::raw($request['message'], function($message){
-        $message->subject('This is a test.');
-        $message->to('s3491115@student.rmit.edu.au');
-		});
+            $message->subject('This is a test.');
+            $message->to('s3491115@student.rmit.edu.au');
+        });
     }
 }
