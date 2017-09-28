@@ -1,5 +1,5 @@
 /* Generic function to toggle the display of an element. */
-function toggleDisplay(){
+function toggleDisplay(event){
     event.preventDefault();
 
     var element = document.getElementById(event.target.id + "-content");
@@ -13,7 +13,7 @@ function toggleDisplay(){
 }
 
 /* Function to toggle the display of each team member on the about page. */
-function toggleTeamDisplay(){
+function toggleTeamDisplay(event){
     document.getElementById("dennis-content").style.display = "none";
     document.getElementById("aaron-content").style.display = "none";
     document.getElementById("ozlem-content").style.display = "none";
@@ -62,7 +62,7 @@ function randomiseTeam(){
 }
 
 /* Function to submit POST data to server with form in the background. */
-function submitForm(){
+function submitForm(event){
     event.preventDefault();
     document.getElementById(event.target.id + "-form").submit();
 }
