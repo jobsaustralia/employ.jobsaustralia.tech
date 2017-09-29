@@ -1,5 +1,5 @@
 /* Generic function to toggle the display of an element. */
-function toggleDisplay(){
+function toggleDisplay(event){
     event.preventDefault();
 
     var element = document.getElementById(event.target.id + "-content");
@@ -13,7 +13,7 @@ function toggleDisplay(){
 }
 
 /* Function to toggle the display of each team member on the about page. */
-function toggleTeamDisplay(){
+function toggleTeamDisplay(event){
     document.getElementById("dennis-content").style.display = "none";
     document.getElementById("aaron-content").style.display = "none";
     document.getElementById("ozlem-content").style.display = "none";
@@ -62,7 +62,7 @@ function randomiseTeam(){
 }
 
 /* Function to submit POST data to server with form in the background. */
-function submitForm(){
+function submitForm(event){
     event.preventDefault();
     document.getElementById(event.target.id + "-form").submit();
 }
@@ -220,6 +220,40 @@ function applySalaryLogic(){
     }
 }
 
+/* Importance logic. */
+function applyImportanceLoic(){
+    if(this.id == "mostimportant"){
+        document.getElementById("leastimportant").children[1].disabled = null;
+        document.getElementById("leastimportant").children[2].disabled = null;
+        document.getElementById("leastimportant").children[3].disabled = null;
+
+        if(this.value == "skills"){
+            document.getElementById("leastimportant").children[1].disabled = "disabled";
+        }
+        else if(this.value == "education"){
+            document.getElementById("leastimportant").children[2].disabled = "disabled";
+        }
+        else if(this.value == "experience"){
+            document.getElementById("leastimportant").children[3].disabled = "disabled";
+        }
+    }
+    else if(this.id == "leastimportant"){
+        document.getElementById("mostimportant").children[1].disabled = null;
+        document.getElementById("mostimportant").children[2].disabled = null;
+        document.getElementById("mostimportant").children[3].disabled = null;
+
+        if(this.value == "skills"){
+            document.getElementById("mostimportant").children[1].disabled = "disabled";
+        }
+        else if(this.value == "education"){
+            document.getElementById("mostimportant").children[2].disabled = "disabled";
+        }
+        else if(this.value == "experience"){
+            document.getElementById("mostimportant").children[3].disabled = "disabled";
+        }
+    }
+}
+
 /* Function to (roughly) get the users location by their IP address using an external resource. */
 function getLocationByIP(){
     /* Respect do-not-track setting. */
@@ -263,11 +297,15 @@ else if(document.getElementById("delete-job") !== null){
 else if(document.getElementById("post") !== null){
     document.getElementById("hours").addEventListener("change", applySalaryLogic);
     document.getElementById("rate").addEventListener("change", applySalaryLogic);
+    document.getElementById("mostimportant").addEventListener("change", applyImportanceLoic);
+    document.getElementById("leastimportant").addEventListener("change", applyImportanceLoic);
     document.getElementById("cow").addEventListener("change", moo);
 }
 else if(document.getElementById("edit-job") !== null){
     document.getElementById("hours").addEventListener("change", applySalaryLogic);
     document.getElementById("rate").addEventListener("change", applySalaryLogic);
+    document.getElementById("mostimportant").addEventListener("change", applyImportanceLoic);
+    document.getElementById("leastimportant").addEventListener("change", applyImportanceLoic);
     document.getElementById("cow").addEventListener("change", moo);
 }
 else if(document.getElementById("application") !== null){

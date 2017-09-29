@@ -19,7 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @if(Request::getHttpHost() == "employ.jobsaustralia.tech")
+        <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
+    @else
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @endif
     <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('vendor/icomoon/style.css') }}" rel="stylesheet" type="text/css">
 
@@ -28,8 +32,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#1d272c">
 </head>
 <body>
     <div id="app">
@@ -113,9 +116,17 @@
     </div>                       
          <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
-    @if(substr(Request::path(), -10) == "applicants")
-        <script src="{{ asset('js/match.js') }}"></script>
+    @if(Request::getHttpHost() == "employ.jobsaustralia.tech")
+        <script src="{{ asset('js/custom.min.js') }}"></script>
+    @else
+        <script src="{{ asset('js/custom.js') }}"></script>
+    @endif
+    @if(Request::path() === 'matches' || substr(Request::path(), 0, 8) === 'employer')
+        @if(Request::getHttpHost() == "employ.jobsaustralia.tech")
+            <script src="{{ asset('js/match.min.js') }}"></script>
+        @else
+            <script src="{{ asset('js/match.js') }}"></script>
+        @endif
     @endif
 </body>
 </html>
