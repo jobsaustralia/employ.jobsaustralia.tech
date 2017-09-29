@@ -14,6 +14,10 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
     # Redirect /home to root
     RedirectMatch 301 ^/home$ /
 
@@ -32,12 +36,8 @@
         Header set Cache-Control "max-age=1209600, public"
     </filesMatch>
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
     # CSP for internal testing purposes only.
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.github.com https://freegeoip.net"
+    Header always set Content-Security-Policy "default-src 'none'; child-src 'none'; connect-src 'self' https://api.github.com https://freegeoip.net; font-src 'self' https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; img-src 'self'; manifest-src 'self'; media-src 'self'; object-src 'none'; sandbox allow-forms allow-popups allow-same-origin allow-scripts; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com"
 
     # Force HTTPS
     RewriteCond %{HTTPS} off
