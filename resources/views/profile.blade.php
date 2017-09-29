@@ -25,7 +25,7 @@
                         </button>
                     </p>
 
-                    <p id="change-password-content" style="display: none;">
+                    <p id="change-password-content" class="default-hide">
                         To change your password, Logout and select "Forgot Your Password".
                     </p>
 
@@ -35,12 +35,12 @@
                         </button>
                     </p>
 
-                    <div id="confirm-delete-content" style="display: none;">
+                    <div id="confirm-delete-content" class="default-hide">
                         <p>
                             Confirm deletion: <a id="really-confirm-delete" class="text-danger" href="#">I really want to delete my account.</a>
                         </p>
 
-                        <div id="really-confirm-delete-content" style="display: none;">
+                        <div id="really-confirm-delete-content" class="default-hide">
                             <p>
                                 <strong>Deleting your account will delete your current active jobs, and any active job applications.</strong>
                             </p>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <form id="delete-form" action="{{ route('delete') }}" method="POST" style="display: none;">
+                    <form id="delete-form" class="default-hide" action="{{ route('delete') }}" method="POST">
                         {{ csrf_field() }}
                     </form>
                 </div>

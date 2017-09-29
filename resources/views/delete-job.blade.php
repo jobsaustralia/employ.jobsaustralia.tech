@@ -25,11 +25,11 @@
 
                     <br>
 
-                    <p id="delete-job-button-content" style="display: none;" align="center">
+                    <p id="delete-job-button-content" class="default-hide" align="center">
                         Confirm deletion: <a id="delete-job-confirm" class="text-danger" href="{{ route('delete') }}">I really want to delete this job.</a>
                     </p>
 
-                    <form id="delete-job-confirm-form" action="{{ route('deleteJob') }}" method="POST" style="display: none;">
+                    <form id="delete-job-confirm-form" class="default-hide" action="{{ route('deleteJob') }}" method="POST">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="id" value="{{ $job->id }}" />

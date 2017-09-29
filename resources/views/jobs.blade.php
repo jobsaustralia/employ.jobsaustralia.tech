@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p style="font-size: 145%"><strong><i class="fa fa-briefcase" aria-hidden="true"></i> Your Jobs</strong></p>
+                    <p class="page-heading"><strong><i class="fa fa-briefcase" aria-hidden="true"></i> Your Jobs</strong></p>
                 </div>
             </div>
             @if (count($jobs) > 0)
@@ -61,7 +61,7 @@
                 <div class="panel-body">
                     <div align="center">
                         <br><br>
-                        <p><i style="font-size: 200px" class="fa fa-ship " aria-hidden="true"></i></p>
+                        <p class="panel-notice-icon"><i class="fa fa-ship " aria-hidden="true"></i></p>
                         <br>
                         <h2>No Jobs Found.</h2>
                         <p>This page will display your active jobs.</p>
