@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Match-making for employers in the Australian IT sector.">
+    <meta name="description" content="Matchmaking for employers in the Australian IT sector.">
     <meta name="author" content="Aaron Horler, Ozlem Kirmizi, Kim Luu, Melissa Nguyen, and Dennis Mihalache.">
-    <meta name="url" content="https://employ.jobsaustralia.tech">
+    <meta name="url" content="{{ Request::url() }}">
 
     <!-- Privacy -->
     <meta name="referrer" content="no-referrer">
@@ -28,10 +28,10 @@
     <link href="{{ asset('vendor/icomoon/style.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
     <meta name="theme-color" content="#1d272c">
 </head>
 <body>
@@ -49,8 +49,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <span class="icon-jobsaustralia-logo"></span>  JobsAustralia.tech Employers
+                    <a class="navbar-brand" href="{{ asset('/') }}">
+                        <span class="icon-jobsaustralia-logo"></span> JobsAustralia.tech Employers
                     </a>
                 </div>
 
@@ -113,9 +113,11 @@
         <footer>
             <p>Copyright © JobsAustralia.tech 2017 &bull; <i class="fa fa-github" aria-hidden="true"></i> <a href="https://github.com/jobsaustralia/">GitHub</a> &bull; <a href="{{ route('terms') }}">Legal</a></p>
         </footer>
-    </div>                       
-         <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/bootstrap.min.js') }}"></script>
     @if(Request::getHttpHost() == "employ.jobsaustralia.tech")
         <script src="{{ asset('js/custom.min.js') }}"></script>
     @else
