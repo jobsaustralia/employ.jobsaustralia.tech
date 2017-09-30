@@ -15,6 +15,7 @@
                 <div class="panel-heading">{{ $job->title }}</div>
 
                 <div class="panel-body">
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>{{ $job->city }}, @if ($job->state == "vic") Victoria @elseif ($job->state == "nsw") New South Wales @elseif ($job->state == "qld") Queensland @elseif ($job->state == "wa") Western Australia @elseif ($job->state == "sa") South Australia @elseif ($job->state == "tas") Tasmania @elseif ($job->state == "act") Australian Capital Territory @elseif ($job->state == "nt") Northern Territory @elseif ($job->state == "oth") Other Australian Region @endif</strong></p>
 
                     <p>{{ $job->description }}</p>
 
@@ -23,7 +24,6 @@
                     <p><strong>Hours:</strong> @if ($job->hours == "fulltime") Full time @elseif ($job->hours == "parttime") Part time @endif</p>
                     <p><strong>Salary:</strong> &#36;{{ number_format($job->salary) }} @if ($job->rate == "hourly") per hour @elseif ($job->rate == "weekly") per week @elseif ($job->rate == "fortnightly") per fortnight @elseif ($job->rate == "monthly") per month @elseif ($job->rate == "annually") per annum @endif </p>
                     <p><strong>Start Date:</strong> {{ $job->startdate }}</p>
-                    <p><strong>Location:</strong> {{ $job->city }}, @if ($job->state == "vic") Victoria @elseif ($job->state == "nsw") New South Wales @elseif ($job->state == "qld") Queensland @elseif ($job->state == "wa") Western Australia @elseif ($job->state == "sa") South Australia @elseif ($job->state == "tas") Tasmania @elseif ($job->state == "act") Australian Capital Territory @elseif ($job->state == "nt") Northern Territory @elseif ($job->state == "oth") Other Australian Region @endif </p>
 
                     <hr>
 

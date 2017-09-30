@@ -4,7 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h3><i class="fa fa-briefcase" aria-hidden="true"></i> Applicants for <strong> {{ $title }} </strong></h3><br>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p class="page-heading"><strong><i class="fa fa-briefcase" aria-hidden="true"></i> Applicants for {{ $title }}</strong></p>
+                </div>
+            </div>
 
             <!-- Job ID for use by match.js -->
             <input id="jobID" type="hidden" value="{{ $id }}" />
