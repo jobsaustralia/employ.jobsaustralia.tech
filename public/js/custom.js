@@ -97,7 +97,7 @@ function gitHubVerifySkills(){
 
         /* Get programming skills for job. */
         $.getJSON("/api/job/" + jobID + "/token/" + token, function(job){
-            skills = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.pearl, job.bash, job.batch, job.r, job.go, job.ruby, job.asp, job.scala];
+            skills = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.perl, job.bash, job.batch, job.r, job.go, job.ruby, job.asp, job.scala];
         })
         .then(function(){
 
@@ -139,7 +139,7 @@ function gitHubVerifySkills(){
                         else if(skills[9] && data[i].language == "SQL"){
                             count++;
                         }
-                        else if(skills[10] && data[i].language == "Pearl"){
+                        else if(skills[10] && data[i].language == "Perl"){
                             count++;
                         }
                         else if(skills[11] && data[i].language == "Bash"){
