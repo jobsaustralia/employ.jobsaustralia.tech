@@ -97,7 +97,7 @@ function gitHubVerifySkills(){
 
         /* Get programming skills for job. */
         $.getJSON("/api/job/" + jobID + "/token/" + token, function(job){
-            skills = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.perl, job.bash, job.batch, job.r, job.go, job.ruby, job.asp, job.scala];
+            skills = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.perl, job.bash, job.batch, job.r, job.go, job.ruby, job.asp, job.scala, job.actionscript, job.assembly, job.autohotkey, job.coffeescript, job.d, job.fsharp, job.haskell, job.matlab, job.objectivec, job.objectivecplus, job.pascal, job.powershell, job.rust, job.swift, job.typescript, job.vue, job.webassembly, job.apache, job.docker, job.nginx, job.dns];
         })
         .then(function(){
 
@@ -142,10 +142,10 @@ function gitHubVerifySkills(){
                         else if(skills[10] && data[i].language == "Perl"){
                             count++;
                         }
-                        else if(skills[11] && data[i].language == "Bash"){
+                        else if(skills[11] && data[i].language == "Shell"){
                             count++;
                         }
-                        else if(skills[12] && data[i].language == "Batch"){
+                        else if(skills[12] && data[i].language == "Batchfile"){
                             count++;
                         }
                         else if(skills[13] && data[i].language == "R"){
@@ -163,64 +163,67 @@ function gitHubVerifySkills(){
                         else if(skills[17] && data[i].language == "Scala"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "ActionScript"){
+                        else if(skills[18] && data[i].language == "ActionScript"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "AutoHotkey"){
+                        else if(skills[19] && data[i].language == "WebAssembly"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "CoffeeScript"){
+                        else if(skills[20] && data[i].language == "AutoHotkey"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "D"){
+                        else if(skills[21] && data[i].language == "CoffeeScript"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "F#"){
+                        else if(skills[22] && data[i].language == "D"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Haskell"){
+                        else if(skills[23] && data[i].language == "F#"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Matlab"){
+                        else if(skills[24] && data[i].language == "Haskell"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Objective-C"){
+                        else if(skills[25] && data[i].language == "Matlab"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Objective-C++"){
+                        else if(skills[26] && data[i].language == "Objective-C"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Pascal"){
+                        else if(skills[27] && data[i].language == "Objective-C++"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "PowerShell"){
+                        else if(skills[28] && data[i].language == "Pascal"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Rust"){
+                        else if(skills[29] && data[i].language == "PowerShell"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Swift"){
+                        else if(skills[30] && data[i].language == "Rust"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "TypeScript"){
+                        else if(skills[31] && data[i].language == "Swift"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Vue"){
+                        else if(skills[32] && data[i].language == "TypeScript"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "WebAssembly"){
+                        else if(skills[33] && data[i].language == "Vue"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "ApacheConf"){
+                        else if(skills[34] && data[i].language == "WebAssembly"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Dockerfile"){
+                        else if(skills[35] && data[i].language == "ApacheConf"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "Nginx"){
+                        else if(skills[36] && data[i].language == "Dockerfile"){
                             count++;
                         }
-                        else if(skills[17] && data[i].language == "DNS Zone"){
+                        else if(skills[37] && data[i].language == "Nginx"){
+                            count++;
+                        }
+                        else if(skills[38] && data[i].language == "DNS Zone"){
                             count++;
                         }
                     }
