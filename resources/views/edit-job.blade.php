@@ -439,7 +439,6 @@
                             </div>
                         </div>
 
-
                         <!-- Skill: CSS -->
                         <div class="form-group{{ $errors->has('css') ? ' has-error' : '' }}">
                             <label for="css" class="col-md-4 control-label">CSS</label>
@@ -744,7 +743,6 @@
                             </div>
                         </div>
 
-
                         <!-- Skill: Scala -->
                         <div class="form-group{{ $errors->has('scala') ? ' has-error' : '' }}">
                             <label for="scala" class="col-md-4 control-label">Scala</label>
@@ -826,14 +824,14 @@
                         </div>
 
                         <!-- Skill: WebAssembly -->
-                        <div class="form-group{{ $errors->has('webassmbly') ? ' has-error' : '' }}">
-                            <label for="webassmbly" class="col-md-4 control-label">WebAssembly</label>
+                        <div class="form-group{{ $errors->has('webassembly') ? ' has-error' : '' }}">
+                            <label for="webassembly" class="col-md-4 control-label">WebAssembly</label>
 
                             <div class="col-md-1">
-                                <input id="webassmbly-hidden" type="hidden" class="form-control" name="webassmbly" value="0">
-                                <input id="webassmbly" type="checkbox" class="form-control" name="webassmbly" value="{{ old('webassmbly-hidden', 1) }}" @if ($job->webassembly) checked @endif >
+                                <input id="webassembly-hidden" type="hidden" class="form-control" name="webassembly" value="0">
+                                <input id="webassembly" type="checkbox" class="form-control" name="webassembly" value="{{ old('webassembly-hidden', 1) }}" @if ($job->webassembly) checked @endif >
 
-                                @if ($errors->has('webassemblh'))
+                                @if ($errors->has('webassembly'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('webassembly') }}</strong>
                                     </span>
@@ -1061,27 +1059,6 @@
                             </div>
                         </div>
 
-                        <!-- Skill: SaaS -->
-                        <div class="form-group{{ $errors->has('saas') ? ' has-error' : '' }}">
-                            <label for="saas" class="col-md-4 control-label">SaaS</label>
-
-                            <div class="col-md-1">
-                                <input id="saas-hidden" type="hidden" class="form-control" name="saas" value="0">
-                                <input id="saas" type="checkbox" class="form-control" name="saas" value="{{ old('saas', 1) }}" @if ($job->saas) checked @endif >
-
-                                @if ($errors->has('saas'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('saas') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
-                        <hr class="skill-divider">
-                        
-                        <h5 align="center">Others</h5>
-
                         <!-- Skill: Microsoft Office -->
                         <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
                             <label for="office" class="col-md-4 control-label">Microsoft Office</label>
@@ -1093,6 +1070,22 @@
                                 @if ($errors->has('office'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('office') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Skill: SaaS -->
+                        <div class="form-group{{ $errors->has('saas') ? ' has-error' : '' }}">
+                            <label for="saas" class="col-md-4 control-label">SaaS</label>
+
+                            <div class="col-md-1">
+                                <input id="saas-hidden" type="hidden" class="form-control" name="saas" value="0">
+                                <input id="saas" type="checkbox" class="form-control" name="saas" value="{{ old('saas', 1) }}" @if ($job->saas) checked @endif >
+
+                                @if ($errors->has('saas'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('saas') }}</strong>
                                     </span>
                                 @endif
                             </div>

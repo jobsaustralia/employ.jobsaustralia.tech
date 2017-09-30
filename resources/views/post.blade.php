@@ -30,8 +30,7 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                    <textarea id="description" name="description" rows="5" cols="30" maxlength="1000" class="form-control" value="{{ old('description') }}" required>
-                                    </textarea>
+                                    <textarea id="description" name="description" rows="5" cols="30" maxlength="1000" class="form-control" value="{{ old('description') }}" required></textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
@@ -268,7 +267,7 @@
 
                             <div class="col-md-1">
                                 <input id="actionscript-hidden" type="hidden" class="form-control" name="actionscript" value="0">
-                                <input id="actionscript" type="checkbox" class="form-control" name="actionscript" value="{{ old('actionscript', 1) }}" 
+                                <input id="actionscript" type="checkbox" class="form-control" name="actionscript" value="{{ old('actionscript', 1) }}"> 
 
                                 @if ($errors->has('actionscript'))
                                     <span class="help-block">
@@ -284,7 +283,7 @@
 
                             <div class="col-md-1">
                                 <input id="assembly-hidden" type="hidden" class="form-control" name="assembly" value="0">
-                                <input id="assembly" type="checkbox" class="form-control" name="assembly" value="{{ old('assembly', 1) }}" 
+                                <input id="assembly" type="checkbox" class="form-control" name="assembly" value="{{ old('assembly', 1) }}"> 
 
                                 @if ($errors->has('assembly'))
                                     <span class="help-block">
@@ -300,7 +299,7 @@
 
                             <div class="col-md-1">
                                 <input id="autohotkey-hidden" type="hidden" class="form-control" name="autohotkey" value="0">
-                                <input id="autohotkey" type="checkbox" class="form-control" name="autohotkey" value="{{ old('autohotkey', 1) }}" 
+                                <input id="autohotkey" type="checkbox" class="form-control" name="autohotkey" value="{{ old('autohotkey', 1) }}"> 
 
                                 @if ($errors->has('autohotkey'))
                                     <span class="help-block">
@@ -317,7 +316,7 @@
 
                             <div class="col-md-1">
                                 <input id="asp-hidden" type="hidden" class="form-control" name="asp" value="0">
-                                <input id="asp" type="checkbox" class="form-control" name="asp" value="{{ old('asp', 1) }}" 
+                                <input id="asp" type="checkbox" class="form-control" name="asp" value="{{ old('asp', 1) }}"> 
                                 @if ($errors->has('asp'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('asp') }}</strong>
@@ -332,7 +331,7 @@
 
                             <div class="col-md-1">
                                 <input id="batch-hidden" type="hidden" class="form-control" name="batch" value="0">
-                                <input id="batch" type="checkbox" class="form-control" name="batch" value="{{ old('batch', 1) }}" 
+                                <input id="batch" type="checkbox" class="form-control" name="batch" value="{{ old('batch', 1) }}"> 
 
                                 @if ($errors->has('batch'))
                                     <span class="help-block">
@@ -348,7 +347,7 @@
 
                             <div class="col-md-1">
                                 <input id="bash-hidden" type="hidden" class="form-control" name="bash" value="0">
-                                <input id="bash" type="checkbox" class="form-control" name="bash" value="{{ old('bash', 1) }}" 
+                                <input id="bash" type="checkbox" class="form-control" name="bash" value="{{ old('bash', 1) }}"> 
 
                                 @if ($errors->has('bash'))
                                     <span class="help-block">
@@ -364,7 +363,7 @@
 
                             <div class="col-md-1">
                                 <input id="c-hidden" type="hidden" class="form-control" name="c" value="0">
-                                <input id="c" type="checkbox" class="form-control" name="c" value="{{ old('c', 1) }}" 
+                                <input id="c" type="checkbox" class="form-control" name="c" value="{{ old('c', 1) }}"> 
 
                                 @if ($errors->has('c'))
                                     <span class="help-block">
@@ -380,7 +379,7 @@
 
                             <div class="col-md-1">
                                 <input id="csharp-hidden" type="hidden" class="form-control" name="csharp" value="0">
-                                <input id="csharp" type="checkbox" class="form-control" name="csharp" value="{{ old('csharp', 1) }}"  >
+                                <input id="csharp" type="checkbox" class="form-control" name="csharp" value="{{ old('csharp', 1) }}">
 
                                 @if ($errors->has('csharp'))
                                     <span class="help-block">
@@ -396,7 +395,7 @@
 
                             <div class="col-md-1">
                                 <input id="cplus-hidden" type="hidden" class="form-control" name="cplus" value="0">
-                                <input id="cplus" type="checkbox" class="form-control" name="cplus" value="{{ old('cplus', 1) }}" 
+                                <input id="cplus" type="checkbox" class="form-control" name="cplus" value="{{ old('cplus', 1) }}"> 
 
                                 @if ($errors->has('cplus'))
                                     <span class="help-block">
@@ -412,7 +411,7 @@
 
                             <div class="col-md-1">
                                 <input id="cow-hidden" type="hidden" class="form-control" name="cow" value="0">
-                                <input id="cow" type="checkbox" class="form-control" name="cow" value="{{ old('cow', 1) }}" 
+                                <input id="cow" type="checkbox" class="form-control" name="cow" value="{{ old('cow', 1) }}"> 
                             
                                 @if ($errors->has('cow'))
                                     <span class="help-block">
@@ -428,7 +427,7 @@
 
                             <div class="col-md-1">
                                 <input id="coffeescript-hidden" type="hidden" class="form-control" name="coffeescript" value="0">
-                                <input id="coffeescript" type="checkbox" class="form-control" name="coffeescript" value="{{ old('coffeescript', 1) }}" 
+                                <input id="coffeescript" type="checkbox" class="form-control" name="coffeescript" value="{{ old('coffeescript', 1) }}"> 
                             
                                 @if ($errors->has('coffeescript'))
                                     <span class="help-block">
@@ -445,7 +444,7 @@
 
                             <div class="col-md-1">
                                 <input id="css-hidden" type="hidden" class="form-control" name="css" value="0">
-                                <input id="css" type="checkbox" class="form-control" name="css" value="{{ old('css', 1) }}" 
+                                <input id="css" type="checkbox" class="form-control" name="css" value="{{ old('css', 1) }}"> 
 
                                 @if ($errors->has('css'))
                                     <span class="help-block">
@@ -461,7 +460,7 @@
 
                             <div class="col-md-1">
                                 <input id="d-hidden" type="hidden" class="form-control" name="d" value="0">
-                                <input id="d" type="checkbox" class="form-control" name="d" value="{{ old('d', 1) }}" 
+                                <input id="d" type="checkbox" class="form-control" name="d" value="{{ old('d', 1) }}"> 
                             
                                 @if ($errors->has('d'))
                                     <span class="help-block">
@@ -477,7 +476,7 @@
 
                             <div class="col-md-1">
                                 <input id="fsharp-hidden" type="hidden" class="form-control" name="fsharp" value="0">
-                                <input id="fsharp" type="checkbox" class="form-control" name="fsharp" value="{{ old('f#', 1) }}" 
+                                <input id="fsharp" type="checkbox" class="form-control" name="fsharp" value="{{ old('f#', 1) }}"> 
                             
                                 @if ($errors->has('fsharp'))
                                     <span class="help-block">
@@ -493,7 +492,7 @@
 
                             <div class="col-md-1">
                                 <input id="go-hidden" type="hidden" class="form-control" name="go" value="0">
-                                <input id="go" type="checkbox" class="form-control" name="go" value="{{ old('go', 1) }}" 
+                                <input id="go" type="checkbox" class="form-control" name="go" value="{{ old('go', 1) }}"> 
 
                                 @if ($errors->has('go'))
                                     <span class="help-block">
@@ -509,7 +508,7 @@
 
                             <div class="col-md-1">
                                 <input id="haskell-hidden" type="hidden" class="form-control" name="haskell" value="0">
-                                <input id="haskell" type="checkbox" class="form-control" name="haskell" value="{{ old('haskell', 1) }}"  
+                                <input id="haskell" type="checkbox" class="form-control" name="haskell" value="{{ old('haskell', 1) }}">  
                             
                                 @if ($errors->has('haskell'))
                                     <span class="help-block">
@@ -525,7 +524,7 @@
                             <label for="html" class="col-md-4 control-label">HTML</label>
 
                             <div class="col-md-1">
-                                <input id="html" type="checkbox" class="form-control" name="html" value="{{ old('html', 1) }}" 
+                                <input id="html" type="checkbox" class="form-control" name="html" value="{{ old('html', 1) }}"> 
 
                                 @if ($errors->has('html'))
                                     <span class="help-block">
@@ -541,7 +540,7 @@
 
                             <div class="col-md-1">
                                 <input id="java-hidden" type="hidden" class="form-control" name="java" value="0">
-                                <input id="java" type="checkbox" class="form-control" name="java" value="{{ old('java', 1) }}" 
+                                <input id="java" type="checkbox" class="form-control" name="java" value="{{ old('java', 1) }}"> 
 
                                 @if ($errors->has('java'))
                                     <span class="help-block">
@@ -557,7 +556,7 @@
 
                             <div class="col-md-1">
                                 <input id="javascript-hidden" type="hidden" class="form-control" name="javascript" value="0">
-                                <input id="javascript" type="checkbox" class="form-control" name="javascript" value="{{ old('javascript', 1) }}" 
+                                <input id="javascript" type="checkbox" class="form-control" name="javascript" value="{{ old('javascript', 1) }}"> 
 
                                 @if ($errors->has('javascript'))
                                     <span class="help-block">
@@ -573,7 +572,7 @@
 
                             <div class="col-md-1">
                                 <input id="matlab-hidden" type="hidden" class="form-control" name="matlab" value="0">
-                                <input id="matlab" type="checkbox" class="form-control" name="matlab" value="{{ old('matlab', 1) }}" 
+                                <input id="matlab" type="checkbox" class="form-control" name="matlab" value="{{ old('matlab', 1) }}"> 
                             
                                 @if ($errors->has('matlab'))
                                     <span class="help-block">
@@ -589,7 +588,7 @@
 
                             <div class="col-md-1">
                                 <input id="objectivec-hidden" type="hidden" class="form-control" name="objectivec" value="0">
-                                <input id="objectivec" type="checkbox" class="form-control" name="objectivec" value="{{ old('objectivec', 1) }}" 
+                                <input id="objectivec" type="checkbox" class="form-control" name="objectivec" value="{{ old('objectivec', 1) }}"> 
                             
                                 @if ($errors->has('objectivec'))
                                     <span class="help-block">
@@ -605,7 +604,7 @@
 
                             <div class="col-md-1">
                                 <input id="objectivecplus-hidden" type="hidden" class="form-control" name="objectivecplus" value="0">
-                                <input id="objectivecplus" type="checkbox" class="form-control" name="objectivecplus" value="{{ old('objectivecplus', 1) }}" 
+                                <input id="objectivecplus" type="checkbox" class="form-control" name="objectivecplus" value="{{ old('objectivecplus', 1) }}"> 
                             
                                 @if ($errors->has('objectivecplus'))
                                     <span class="help-block">
@@ -621,7 +620,7 @@
 
                             <div class="col-md-1">
                                 <input id="pascal-hidden" type="hidden" class="form-control" name="pascal" value="0">
-                                <input id="pascal" type="checkbox" class="form-control" name="pascal" value="{{ old('pascal', 1) }}" 
+                                <input id="pascal" type="checkbox" class="form-control" name="pascal" value="{{ old('pascal', 1) }}"> 
                             
                                 @if ($errors->has('pascal'))
                                     <span class="help-block">
@@ -637,7 +636,7 @@
 
                             <div class="col-md-1">
                                 <input id="perl-hidden" type="hidden" class="form-control" name="perl" value="0">
-                                <input id="perl" type="checkbox" class="form-control" name="perl" value="{{ old('perl', 1) }}" 
+                                <input id="perl" type="checkbox" class="form-control" name="perl" value="{{ old('perl', 1) }}"> 
 
                                 @if ($errors->has('perl'))
                                     <span class="help-block">
@@ -653,7 +652,7 @@
 
                             <div class="col-md-1">
                                 <input id="powershell-hidden" type="hidden" class="form-control" name="powershell" value="0">
-                                <input id="powershell" type="checkbox" class="form-control" name="powershell" value="{{ old('powershell', 1) }}" 
+                                <input id="powershell" type="checkbox" class="form-control" name="powershell" value="{{ old('powershell', 1) }}"> 
                             
                                 @if ($errors->has('powershell'))
                                     <span class="help-block">
@@ -669,7 +668,7 @@
 
                             <div class="col-md-1">
                                 <input id="php-hidden" type="hidden" class="form-control" name="php" value="0">
-                                <input id="php" type="checkbox" class="form-control" name="php" value="{{ old('php', 1) }}" 
+                                <input id="php" type="checkbox" class="form-control" name="php" value="{{ old('php', 1) }}"> 
 
                                 @if ($errors->has('php'))
                                     <span class="help-block">
@@ -685,7 +684,7 @@
 
                             <div class="col-md-1">
                                 <input id="python-hidden" type="hidden" class="form-control" name="python" value="0">
-                                <input id="python" type="checkbox" class="form-control" name="python" value="{{ old('python', 1) }}" 
+                                <input id="python" type="checkbox" class="form-control" name="python" value="{{ old('python', 1) }}"> 
 
                                 @if ($errors->has('python'))
                                     <span class="help-block">
@@ -701,7 +700,7 @@
 
                             <div class="col-md-1">
                                 <input id="r-hidden" type="hidden" class="form-control" name="r" value="0">
-                                <input id="r" type="checkbox" class="form-control" name="r" value="{{ old('r', 1) }}" 
+                                <input id="r" type="checkbox" class="form-control" name="r" value="{{ old('r', 1) }}"> 
 
                                 @if ($errors->has('r'))
                                     <span class="help-block">
@@ -717,7 +716,7 @@
 
                             <div class="col-md-1">
                                 <input id="ruby-hidden" type="hidden" class="form-control" name="ruby" value="0">
-                                <input id="ruby" type="checkbox" class="form-control" name="ruby" value="{{ old('ruby', 1) }}" 
+                                <input id="ruby" type="checkbox" class="form-control" name="ruby" value="{{ old('ruby', 1) }}"> 
 
                                 @if ($errors->has('ruby'))
                                     <span class="help-block">
@@ -733,7 +732,7 @@
 
                             <div class="col-md-1">
                                 <input id="rust-hidden" type="hidden" class="form-control" name="rust" value="0">
-                                <input id="rust" type="checkbox" class="form-control" name="rust" value="{{ old('rust', 1) }}" 
+                                <input id="rust" type="checkbox" class="form-control" name="rust" value="{{ old('rust', 1) }}"> 
 
                                 @if ($errors->has('rust'))
                                     <span class="help-block">
@@ -743,14 +742,13 @@
                             </div>
                         </div>
 
-
                         <!-- Skill: Scala -->
                         <div class="form-group{{ $errors->has('scala') ? ' has-error' : '' }}">
                             <label for="scala" class="col-md-4 control-label">Scala</label>
 
                             <div class="col-md-1">
                                 <input id="scala-hidden" type="hidden" class="form-control" name="scala" value="0">
-                                <input id="scala" type="checkbox" class="form-control" name="scala" value="{{ old('scala', 1) }}" 
+                                <input id="scala" type="checkbox" class="form-control" name="scala" value="{{ old('scala', 1) }}"> 
 
                                 @if ($errors->has('scala'))
                                     <span class="help-block">
@@ -766,7 +764,7 @@
 
                             <div class="col-md-1">
                                 <input id="sql-hidden" type="hidden" class="form-control" name="sql" value="0">
-                                <input id="sql" type="checkbox" class="form-control" name="sql" value="{{ old('sql', 1) }}" 
+                                <input id="sql" type="checkbox" class="form-control" name="sql" value="{{ old('sql', 1) }}"> 
 
                                 @if ($errors->has('sql'))
                                     <span class="help-block">
@@ -782,7 +780,7 @@
 
                             <div class="col-md-1">
                                 <input id="swift-hidden" type="hidden" class="form-control" name="swift" value="0">
-                                <input id="swift" type="checkbox" class="form-control" name="swift" value="{{ old('swift', 1) }}" 
+                                <input id="swift" type="checkbox" class="form-control" name="swift" value="{{ old('swift', 1) }}"> 
 
                                 @if ($errors->has('swift'))
                                     <span class="help-block">
@@ -798,7 +796,7 @@
 
                             <div class="col-md-1">
                                 <input id="typescript-hidden" type="hidden" class="form-control" name="typescript" value="0">
-                                <input id="typescript" type="checkbox" class="form-control" name="typescript" value="{{ old('typescript', 1) }}" 
+                                <input id="typescript" type="checkbox" class="form-control" name="typescript" value="{{ old('typescript', 1) }}"> 
 
                                 @if ($errors->has('typescript'))
                                     <span class="help-block">
@@ -814,7 +812,7 @@
 
                             <div class="col-md-1">
                                 <input id="vue-hidden" type="hidden" class="form-control" name="vue" value="0">
-                                <input id="vue" type="checkbox" class="form-control" name="vue" value="{{ old('ruby', 1) }}" 
+                                <input id="vue" type="checkbox" class="form-control" name="vue" value="{{ old('ruby', 1) }}"> 
 
                                 @if ($errors->has('vue'))
                                     <span class="help-block">
@@ -825,14 +823,14 @@
                         </div>
 
                         <!-- Skill: WebAssembly -->
-                        <div class="form-group{{ $errors->has('webassmbly') ? ' has-error' : '' }}">
-                            <label for="webassmbly" class="col-md-4 control-label">WebAssembly</label>
+                        <div class="form-group{{ $errors->has('webassembly') ? ' has-error' : '' }}">
+                            <label for="webassembly" class="col-md-4 control-label">WebAssembly</label>
 
                             <div class="col-md-1">
-                                <input id="webassmbly-hidden" type="hidden" class="form-control" name="webassmbly" value="0">
-                                <input id="webassmbly" type="checkbox" class="form-control" name="webassmbly" value="{{ old('webassmbly-hidden', 1) }}" 
+                                <input id="webassembly-hidden" type="hidden" class="form-control" name="webassembly" value="0">
+                                <input id="webassembly" type="checkbox" class="form-control" name="webassembly" value="{{ old('webassembly-hidden', 1) }}"> 
 
-                                @if ($errors->has('webassemblh'))
+                                @if ($errors->has('webassembly'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('webassembly') }}</strong>
                                     </span>
@@ -850,7 +848,7 @@
 
                             <div class="col-md-1">
                                 <input id="linuxdesktop-hidden" type="hidden" class="form-control" name="linuxdesktop" value="0">
-                                <input id="linuxdesktop" type="checkbox" class="form-control" name="linuxdesktop" value="{{ old('linuxdesktop', 1) }}" 
+                                <input id="linuxdesktop" type="checkbox" class="form-control" name="linuxdesktop" value="{{ old('linuxdesktop', 1) }}"> 
 
                                 @if ($errors->has('linuxdesktop'))
                                     <span class="help-block">
@@ -866,7 +864,7 @@
 
                             <div class="col-md-1">
                                 <input id="macosdesktop-hidden" type="hidden" class="form-control" name="macosdesktop" value="0">
-                                <input id="macosdesktop" type="checkbox" class="form-control" name="macosdesktop" value="{{ old('macosdesktop', 1) }}" 
+                                <input id="macosdesktop" type="checkbox" class="form-control" name="macosdesktop" value="{{ old('macosdesktop', 1) }}"> 
 
                                 @if ($errors->has('macosdesktop'))
                                     <span class="help-block">
@@ -882,7 +880,7 @@
 
                             <div class="col-md-1">
                                 <input id="unix-hidden" type="hidden" class="form-control" name="unix" value="0">
-                                <input id="unix" type="checkbox" class="form-control" name="unix" value="{{ old('unix', 1) }}" 
+                                <input id="unix" type="checkbox" class="form-control" name="unix" value="{{ old('unix', 1) }}"> 
 
                                 @if ($errors->has('unix'))
                                     <span class="help-block">
@@ -898,7 +896,7 @@
 
                             <div class="col-md-1">
                                 <input id="windesktop-hidden" type="hidden" class="form-control" name="windesktop" value="0">
-                                <input id="windesktop" type="checkbox" class="form-control" name="windesktop" value="{{ old('windesktop', 1) }}" 
+                                <input id="windesktop" type="checkbox" class="form-control" name="windesktop" value="{{ old('windesktop', 1) }}"> 
 
                                 @if ($errors->has('windesktop'))
                                     <span class="help-block">
@@ -914,7 +912,7 @@
 
                             <div class="col-md-1">
                                 <input id="winserver-hidden" type="hidden" class="form-control" name="winserver" value="0">
-                                <input id="winserver" type="checkbox" class="form-control" name="winserver" value="{{ old('winserver', 1) }}" 
+                                <input id="winserver" type="checkbox" class="form-control" name="winserver" value="{{ old('winserver', 1) }}"> 
 
                                 @if ($errors->has('winserver'))
                                     <span class="help-block">
@@ -934,7 +932,7 @@
 
                             <div class="col-md-1">
                                 <input id="dns-hidden" type="hidden" class="form-control" name="dns" value="0">
-                                <input id="dns" type="checkbox" class="form-control" name="dns" value="{{ old('ipv4', 1) }}" 
+                                <input id="dns" type="checkbox" class="form-control" name="dns" value="{{ old('ipv4', 1) }}"> 
 
                                 @if ($errors->has('dns'))
                                     <span class="help-block">
@@ -950,7 +948,7 @@
 
                             <div class="col-md-1">
                                 <input id="cisco-hidden" type="hidden" class="form-control" name="cisco" value="0">
-                                <input id="cisco" type="checkbox" class="form-control" name="cisco" value="{{ old('cisco', 1) }}" 
+                                <input id="cisco" type="checkbox" class="form-control" name="cisco" value="{{ old('cisco', 1) }}"> 
 
                                 @if ($errors->has('cisco'))
                                     <span class="help-block">
@@ -966,7 +964,7 @@
 
                             <div class="col-md-1">
                                 <input id="ipv4-hidden" type="hidden" class="form-control" name="ipv4" value="0">
-                                <input id="ipv4" type="checkbox" class="form-control" name="ipv4" value="{{ old('ipv4', 1) }}" 
+                                <input id="ipv4" type="checkbox" class="form-control" name="ipv4" value="{{ old('ipv4', 1) }}"> 
 
                                 @if ($errors->has('ipv4'))
                                     <span class="help-block">
@@ -982,7 +980,7 @@
 
                             <div class="col-md-1">
                                 <input id="ipv6-hidden" type="hidden" class="form-control" name="ipv6" value="0">
-                                <input id="ipv6" type="checkbox" class="form-control" name="ipv6" value="{{ old('ipv6', 1) }}" 
+                                <input id="ipv6" type="checkbox" class="form-control" name="ipv6" value="{{ old('ipv6', 1) }}"> 
 
                                 @if ($errors->has('ipv6'))
                                     <span class="help-block">
@@ -1002,7 +1000,7 @@
 
                             <div class="col-md-1">
                                 <input id="apache-hidden" type="hidden" class="form-control" name="apache" value="0">
-                                <input id="apache" type="checkbox" class="form-control" name="apache" value="{{ old('apache', 1) }}" 
+                                <input id="apache" type="checkbox" class="form-control" name="apache" value="{{ old('apache', 1) }}"> 
 
                                 @if ($errors->has('apache'))
                                     <span class="help-block">
@@ -1018,7 +1016,7 @@
 
                             <div class="col-md-1">
                                 <input id="aws-hidden" type="hidden" class="form-control" name="aws" value="0">
-                                <input id="aws" type="checkbox" class="form-control" name="aws" value="{{ old('aws', 1) }}" 
+                                <input id="aws" type="checkbox" class="form-control" name="aws" value="{{ old('aws', 1) }}"> 
 
                                 @if ($errors->has('aws'))
                                     <span class="help-block">
@@ -1034,7 +1032,7 @@
 
                             <div class="col-md-1">
                                 <input id="docker-hidden" type="hidden" class="form-control" name="docker" value="0">
-                                <input id="docker" type="checkbox" class="form-control" name="docker" value="{{ old('apache', 1) }}" 
+                                <input id="docker" type="checkbox" class="form-control" name="docker" value="{{ old('apache', 1) }}">
 
                                 @if ($errors->has('docker'))
                                     <span class="help-block">
@@ -1050,11 +1048,27 @@
 
                             <div class="col-md-1">
                                 <input id="nginx-hidden" type="hidden" class="form-control" name="nginx" value="0">
-                                <input id="nginx" type="checkbox" class="form-control" name="nginx" value="{{ old('nginx', 1) }}" 
+                                <input id="nginx" type="checkbox" class="form-control" name="nginx" value="{{ old('nginx', 1) }}"> 
 
                                 @if ($errors->has('nginx'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nginx') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Skill: Microsoft Office -->
+                        <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
+                            <label for="office" class="col-md-4 control-label">Microsoft Office</label>
+
+                            <div class="col-md-1">
+                                <input id="office-hidden" type="hidden" class="form-control" name="office" value="0">
+                                <input id="office" type="checkbox" class="form-control" name="office" value="{{ old('office', 1) }}"> 
+
+                                @if ($errors->has('office'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('office') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -1066,32 +1080,11 @@
 
                             <div class="col-md-1">
                                 <input id="saas-hidden" type="hidden" class="form-control" name="saas" value="0">
-                                <input id="saas" type="checkbox" class="form-control" name="saas" value="{{ old('saas', 1) }}" 
+                                <input id="saas" type="checkbox" class="form-control" name="saas" value="{{ old('saas', 1) }}"> 
 
                                 @if ($errors->has('saas'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('saas') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
-                        <hr class="skill-divider">
-                        
-                        <h5 align="center">Others</h5>
-
-                        <!-- Skill: Microsoft Office -->
-                        <div class="form-group{{ $errors->has('office') ? ' has-error' : '' }}">
-                            <label for="office" class="col-md-4 control-label">Microsoft Office</label>
-
-                            <div class="col-md-1">
-                                <input id="office-hidden" type="hidden" class="form-control" name="office" value="0">
-                                <input id="office" type="checkbox" class="form-control" name="office" value="{{ old('office', 1) }}" 
-
-                                @if ($errors->has('office'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('office') }}</strong>
                                     </span>
                                 @endif
                             </div>
