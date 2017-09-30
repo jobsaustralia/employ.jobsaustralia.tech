@@ -81,8 +81,8 @@ function match(){
 
     /* Get job. */
     $.getJSON("/api/job/" + jobID + "/token/" + token, function(job){
-        input = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.unix, job.winserver, job.windesktop, job.linuxdesktop, job.macosdesktop, job.pearl, job.bash, job.batch, job.cisco, job.office, job.r, job.go, job.ruby, job.asp, job.scala];
-        
+        input = [job.java, job.python, job.c, job.csharp, job.cplus, job.php, job.html, job.css, job.javascript, job.sql, job.unix, job.winserver, job.windesktop, job.linuxdesktop, job.macosdesktop, job.pearl, job.bash, job.batch, job.cisco, job.office, job.r, job.go, job.ruby, job.asp, job.scala, job.cow, job.actionscript, job.assembly, job.autohotkey, job.coffeescript, job.d, job.fsharp, job.haskell, job.matlab, job.objectivec, job.objectivecplus, job.pascal, job.powershell, job.rust, job.swift, job.typescript, job.vue, job.webassembly, job.apache, job.aws, job.docker, job.nginx, job.saas, job.ipv4, job.ipv6, job.dns];
+
         /* Determine which bits are non-zero and stores into bitcheck array. */
         var i;
         for(var i = 0; i < input.length; i++){
@@ -90,13 +90,13 @@ function match(){
                 bitCheck.push(i);
             }
         }
-        
+
         /* Get min. number of years experience for job. */
         expJob = job.minexperience;
-        
+
         /* Get min. education level for job. */
         eduJob = job.mineducation;
-        
+
         /* Populate ranking array. */
         ranking[0] = job.rankone;
         ranking[1] = job.ranktwo;
@@ -116,14 +116,14 @@ function match(){
                     app[i] = applicants[i];
 
                     appIndex[i] = i;
-                    appMatch[i] = [applicants[i].java, applicants[i].python, applicants[i].c, applicants[i].csharp, applicants[i].cplus, applicants[i].php, applicants[i].html, applicants[i].css, applicants[i].javascript, applicants[i].sql, applicants[i].unix, applicants[i].winserver, applicants[i].windesktop, applicants[i].linuxdesktop, applicants[i].macosdesktop, applicants[i].pearl, applicants[i].bash, applicants[i].batch, applicants[i].cisco, applicants[i].office, applicants[i].r, applicants[i].go, applicants[i].ruby, applicants[i].asp, applicants[i].scala];
-                    
+                    appMatch[i] = [applicants[i].java, applicants[i].python, applicants[i].c, applicants[i].csharp, applicants[i].cplus, applicants[i].php, applicants[i].html, applicants[i].css, applicants[i].javascript, applicants[i].sql, applicants[i].unix, applicants[i].winserver, applicants[i].windesktop, applicants[i].linuxdesktop, applicants[i].macosdesktop, applicants[i].pearl, applicants[i].bash, applicants[i].batch, applicants[i].cisco, applicants[i].office, applicants[i].r, applicants[i].go, applicants[i].ruby, applicants[i].asp, applicants[i].scala, applicants[i].cow, applicants[i].actionscript, applicants[i].assembly, applicants[i].autohotkey, applicants[i].coffeescript, applicants[i].d, applicants[i].fsharp, applicants[i].haskell, applicants[i].matlab, applicants[i].objectivec, applicants[i].objectivecplus, applicants[i].pascal, applicants[i].powershell, applicants[i].rust, applicants[i].swift, applicants[i].typescript, applicants[i].vue, applicants[i].webassembly, applicants[i].apache, applicants[i].aws, applicants[i].docker, applicants[i].nginx, applicants[i].saas, applicants[i].ipv4, applicants[i].ipv6, applicants[i].dns];
+
                     /* Get applicant's number of years experience. */
                     var expApp = applicants[i].experience;
-                    
+
                     /* Get applicant's education level. */
                     var eduApp = applicants[i].education;
-                    
+
                     /* Determine expMatch. */
                     if(expApp >= expJob)
                     {
@@ -133,7 +133,7 @@ function match(){
                     {
                         expMatch = 0;
                     }
-                    
+
                     /* Determine eduMatch. */
                     if(eduApp >= eduJob)
                     {
@@ -143,7 +143,7 @@ function match(){
                     {
                         eduMatch = 0;
                     }
-                    
+
                     /* Skill match counter. */
                     var count = 0;
 
@@ -157,19 +157,19 @@ function match(){
                             count++;
                         }
                     }
-                    
+
                     /* Calculate skillMatch. */
                     var skillMatch = (count / bitCheck.length);
-                    
+
                     /* Copy of ranking array. */
                     var rankCopy = [];
-                    
+
                     var k;
                     for(k = 0; k < ranking.length; k++)
                     {
                         rankCopy[k] = ranking[k];
                     }
-                    
+
                     /* Calculate percentage match. */
                     var l;
                     for(l = 0; l < rankCopy.length; l++)
@@ -187,7 +187,7 @@ function match(){
                             rankCopy[l] = skillMatch;
                         }
                     }
-                    
+
                     percentageMatch[i] = ((rankCopy[0] * weightOne) + (rankCopy[1] * weightTwo) + (rankCopy[2] * weightThree)) * 100;
                 }
 
