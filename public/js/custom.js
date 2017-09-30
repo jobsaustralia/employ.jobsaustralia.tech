@@ -163,6 +163,66 @@ function gitHubVerifySkills(){
                         else if(skills[17] && data[i].language == "Scala"){
                             count++;
                         }
+                        else if(skills[17] && data[i].language == "ActionScript"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "AutoHotkey"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "CoffeeScript"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "D"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "F#"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Haskell"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Matlab"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Objective-C"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Objective-C++"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Pascal"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "PowerShell"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Rust"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Swift"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "TypeScript"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Vue"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "WebAssembly"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "ApacheConf"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Dockerfile"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "Nginx"){
+                            count++;
+                        }
+                        else if(skills[17] && data[i].language == "DNS Zone"){
+                            count++;
+                        }
                     }
                 }
 
