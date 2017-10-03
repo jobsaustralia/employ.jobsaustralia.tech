@@ -113,7 +113,7 @@ class ApplicationController extends Controller{
         $application = Application::findOrFail($id);
 		
 		if(User::findOrFail($application->employerid) == $employer){
-            $application->rejected->1;
+            $application->rejected = 1;
         }
 	}
 }
