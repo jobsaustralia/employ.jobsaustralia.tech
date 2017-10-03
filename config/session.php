@@ -45,7 +45,7 @@ if(isset($_SERVER['SERVER_NAME']) &&  $_SERVER['SERVER_NAME'] == "employ.jobsaus
         |
         */
 
-        'encrypt' => false,
+        'encrypt' => true,
 
         /*
         |--------------------------------------------------------------------------
