@@ -79,3 +79,9 @@ hr.skill-divider {
 .index-ad-panel {
     font-size: 100px;
 }
+
+.expired {
+    background-image: url("/img/expiredred.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
