@@ -50,4 +50,16 @@ class ProfileController extends Controller{
 
         return  Redirect::route('index');
     }
+
+    /* Update a user's notification settings. */
+    public function updateNotificationSettings(Request $request){
+        $user = Auth::user();
+
+        $user->notifymarketing = $request['marketing'];
+        $user->notifyapply = $request['newjob'];
+
+        $user->save();
+
+        return Redirect::route('profile');
+    }
 }
