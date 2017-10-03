@@ -81,7 +81,7 @@ hr.skill-divider {
 }
 
 .expired {
-    background-image: url("/img/expiredred.png");
+    background-image: url("/img/expired.png");
     background-repeat: no-repeat;
     background-position: center;
 }
