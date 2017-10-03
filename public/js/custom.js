@@ -373,6 +373,7 @@ else if(document.getElementById("edit-job") !== null){
 }
 else if(document.getElementById("application") !== null){
     document.addEventListener('DOMContentLoaded', gitHubVerifySkills);
+	document.getElementById("reject").addEventListener("click", submitForm);
 }
 else if(document.getElementById("register") !== null){
     document.addEventListener('DOMContentLoaded', getLocationByIP);

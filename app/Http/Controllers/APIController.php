@@ -35,8 +35,10 @@ class APIController extends Controller{
                 $jobseeker = JobSeeker::findOrFail($application->userid);
                 $jobseeker->applicationid = $application->id;
                 $jobseeker->message = $application->message;
-
-                array_push($applicants, $jobseeker);
+				
+				if($application->rejected == 0){
+					array_push($applicants, $jobseeker);
+				}
             }
 
             return $applicants;

@@ -76,6 +76,8 @@ Route::post('/submit', 'JobController@create')->name('post-submit');
 
 Route::post('/update', 'ProfileController@update')->name('update');
 
+Route::post('/reject', 'ApplicationController@rejectApplication')->name('reject');
+
 
 /* Authentication Routes */
 

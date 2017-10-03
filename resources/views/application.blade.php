@@ -37,9 +37,13 @@
                     <hr>
 
                     <p>
-                        <button type="submit" class="btn btn-danger">
+                        <button type="submit" id="reject" class="btn btn-danger">
                             Reject
                         </button>
+						
+						<form id="reject-form" class="default-hide" action="{{ route('reject') }}" method="POST">
+							{{ csrf_field() }}
+                        </form>
                     </p>
                 </div>
             </div>

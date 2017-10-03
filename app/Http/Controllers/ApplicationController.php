@@ -106,4 +106,14 @@ class ApplicationController extends Controller{
 
         return view('application', ["name"=>$name, "email"=>$email, "title"=>$title, "sector"=>$sector, "experience"=>$experience, "state"=>$state, "city"=>$city, "java"=>$java, "python"=>$python, "c"=>$c, "csharp"=>$csharp, "cplus"=>$cplus, "php"=>$php, "html"=>$html, "css"=>$css, "javascript"=>$javascript, "sql"=>$sql, "unix"=>$unix, "winserver"=>$winserver, "windesktop"=>$windesktop, "linuxdesktop"=>$linuxdesktop, "macosdesktop"=>$macosdesktop, "perl"=>$perl, "bash"=>$bash, "batch"=>$batch, "cisco"=>$cisco, "office"=>$office, "r"=>$r, "go"=>$go, "ruby"=>$ruby, "asp"=>$asp, "scala"=>$scala, "cow"=>$cow, "message"=>$message, "jobid"=>$jobid, "github"=>$github, "userid"=>$userid, "actionscript"=>$actionscript, "assembly"=>$assembly, "autohotkey"=>$autohotkey, "coffeescript"=>$coffeescript, "d"=>$d, "fsharp"=>$fsharp, "haskell"=>$haskell, "matlab"=>$matlab, "objectivec"=>$objectivec, "objectivecplus"=>$objectivecplus, "pascal"=>$pascal, "powershell"=>$powershell, "rust"=>$rust, "swift"=>$swift, "typescript"=>$typescript, "vue"=>$vue, "webassembly"=>$webassembly, "apache"=>$apache, "aws"=>$aws, "docker"=>$docker, "nginx"=>$nginx, "saas"=>$saas, "ipv4"=>$ipv4, "ipv6"=>$ipv6, "dns"=>$dns]);
     }
+	
+	/* Reject an application. */
+	public function rejectApplication($id){
+		$employer = Auth::user();
+        $application = Application::findOrFail($id);
+		
+		if(User::findOrFail($application->employerid) == $employer){
+            $application->rejected->1;
+        }
+	}
 }
