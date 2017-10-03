@@ -33,13 +33,6 @@ Route::get('/terms', function (){
     return view('terms');
 })->name('terms');
 
-/* Temporary demonstraton route for outgoing mail testing. */
-Route::get('mailtest', function(){
-    Mail::raw('This function demonstrates how to send outgoing emails to an address.', function($message){
-        $message->subject('This is a test.');
-        $message->to('s3491115@student.rmit.edu.au');
-    });
-});
 
 /* GET Controller Routes */
 
@@ -77,6 +70,8 @@ Route::post('/submit', 'JobController@create')->name('post-submit');
 Route::post('/update', 'ProfileController@update')->name('update');
 
 Route::post('/reject', 'ApplicationController@rejectApplication')->name('reject');
+
+Route::post('/profile/notifications/update', 'ProfileController@updateNotificationSettings')->name('updateNotificationSettings');
 
 
 /* Authentication Routes */
