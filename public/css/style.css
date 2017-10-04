@@ -68,6 +68,7 @@ hr.skill-divider {
 /* Font size for page headings. */
 .page-heading {
     font-size: 145%;
+    margin: 0 0;
 }
 
 /* Font size for notice icons. */
@@ -96,4 +97,29 @@ hr.skill-divider {
     background-image: url("/img/expired.png");
     background-repeat: no-repeat;
     background-position: center;
+}
+
+/* Adjust font size of navigation branding depending on device width. */
+@media (max-width: 370px) {
+    .navbar-brand {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 340px) {
+    .navbar-brand {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 310px) {
+    .navbar-brand {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 275px) {
+    .navbar-brand {
+        font-size: 10px;
+    }
 }
