@@ -58,7 +58,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading">Notifications</div>
 
@@ -67,7 +67,7 @@
 
                     <hr>
 
-                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('profile') }}">
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('updateNotificationSettings') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('applied') ? ' has-error' : '' }}">
@@ -75,7 +75,7 @@
 
                             <div class="col-md-1">
                                 <input id="applied-hidden" type="hidden" class="form-control" name="applied" value="0">
-                                <input id="applied" type="checkbox" class="form-control" name="applied" value="{{ old('applied', 1) }}">
+                                <input id="applied" type="checkbox" class="form-control" name="applied" value="1" @if(Auth::user()->notifyapply) checked @endif >
 
                                 @if ($errors->has('applied'))
                                     <span class="help-block">
@@ -84,14 +84,13 @@
                                 @endif
                             </div>
                         </div>
-                        
-                        
+
                         <div class="form-group{{ $errors->has('marketing') ? ' has-error' : '' }}">
                             <label for="marketing" class="col-md-4 control-label">Send me occasional marketing emails</label>
 
                             <div class="col-md-1">
                                 <input id="marketing-hidden" type="hidden" class="form-control" name="marketing" value="0">
-                                <input id="marketing" type="checkbox" class="form-control" name="marketing" value="{{ old('marketing', 1) }}">
+                                <input id="marketing" type="checkbox" class="form-control" name="marketing" value="1" @if(Auth::user()->notifymarketing) checked @endif >
 
                                 @if ($errors->has('marketing'))
                                     <span class="help-block">

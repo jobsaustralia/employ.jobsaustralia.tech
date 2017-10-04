@@ -56,7 +56,7 @@ class ProfileController extends Controller{
         $user = Auth::user();
 
         $user->notifymarketing = $request['marketing'];
-        $user->notifyapply = $request['newjob'];
+        $user->notifyapply = $request['applied'];
 
         $user->save();
 
