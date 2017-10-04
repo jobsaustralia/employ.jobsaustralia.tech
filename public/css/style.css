@@ -91,6 +91,7 @@ hr.skill-divider {
     color: green;
 }
 
+/* Expired stamp. */
 .expired {
     background-image: url("/img/expired.png");
     background-repeat: no-repeat;
