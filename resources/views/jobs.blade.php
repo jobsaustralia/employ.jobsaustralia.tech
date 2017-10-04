@@ -13,20 +13,21 @@
             @foreach($jobs as $job)
             <div class="panel panel-default">
                 <div class="panel-heading">{{ $job->title }}</div>
-				
+
                 <div @if(Carbon\Carbon::now()->format('Y-m-d') > $job->startdate) class="panel-body expired" @else class="panel-body" @endif>
-                    
-					<p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>{{ $job->city }}, @if ($job->state == "vic") Victoria @elseif ($job->state == "nsw") New South Wales @elseif ($job->state == "qld") Queensland @elseif ($job->state == "wa") Western Australia @elseif ($job->state == "sa") South Australia @elseif ($job->state == "tas") Tasmania @elseif ($job->state == "act") Australian Capital Territory @elseif ($job->state == "nt") Northern Territory @elseif ($job->state == "oth") Other Australian Region @endif</strong></p>
+
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>{{ $job->city }}, @if ($job->state == "vic") Victoria @elseif ($job->state == "nsw") New South Wales @elseif ($job->state == "qld") Queensland @elseif ($job->state == "wa") Western Australia @elseif ($job->state == "sa") South Australia @elseif ($job->state == "tas") Tasmania @elseif ($job->state == "act") Australian Capital Territory @elseif ($job->state == "nt") Northern Territory @elseif ($job->state == "oth") Other Australian Region @endif</strong></p>
 
                     <p>{{ $job->description }}</p>
 
-                    <hr>
+                    <br>
+
                     <p><strong>Term:</strong> @if ($job->term == "fixed") Fixed @elseif ($job->term == "permanent") Permanent @endif </p>
                     <p><strong>Hours:</strong> @if ($job->hours == "fulltime") Full time @elseif ($job->hours == "parttime") Part time @endif</p>
                     <p><strong>Salary:</strong> &#36;{{ number_format($job->salary) }} @if ($job->rate == "hourly") per hour @elseif ($job->rate == "weekly") per week @elseif ($job->rate == "fortnightly") per fortnight @elseif ($job->rate == "monthly") per month @elseif ($job->rate == "annually") per annum @endif </p>
                     <p><strong>Start Date:</strong> {{ $job->startdate }}</p>
 
-                    <hr>
+                    <br>
 
                     <p>
                         @if (App\Application::where('jobid', $job->id)->get()->count() == 1)
