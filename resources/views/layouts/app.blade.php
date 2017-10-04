@@ -123,7 +123,7 @@
     @else
         <script src="{{ asset('js/custom.js') }}"></script>
     @endif
-    @if(substr(Request::path(), 0, 3) === 'job')
+    @if(substr(Request::path(), 0, 4) === 'job/')
         @if(Request::getHttpHost() == "employ.jobsaustralia.tech")
             <script src="{{ asset('js/match.min.js') }}"></script>
         @else

@@ -16,7 +16,6 @@
 
                 <div class="panel-body">
                     <p><strong>Name:</strong> {{ $name }}</p>
-                    <p><strong>Email:</strong> {{ $email }}</p>
                     <p><strong>Job Title:</strong> {{ $title }}</p>
                     <p><strong>Sector:</strong> {{ $sector }}</p>
                     <p><strong>Experience:</strong> {{ $experience }} @if ($experience == 1) year @else years @endif</p>
@@ -37,12 +36,24 @@
                     <hr>
 
                     <p>
-                        <button type="submit" id="reject" class="btn btn-danger">
+                        <button type="submit" id="engage" class="btn btn-primary" @if($engaged || $rejected) disabled @endif >
+                            Discuss
+                        </button>
+
+                        <button type="submit" id="reject" class="btn btn-danger" @if($rejected || $engaged) disabled @endif >
                             Reject
                         </button>
-						
-						<form id="reject-form" class="default-hide" action="{{ route('reject') }}" method="POST">
-							{{ csrf_field() }}
+
+                        <form id="reject-form" class="default-hide" action="{{ route('reject') }}" method="POST">
+                            {{ csrf_field() }}
+
+                            <input id="id" name="id" type="hidden" value="{{ $id }}" />
+                        </form>
+
+                        <form id="engage-form" class="default-hide" action="{{ route('engage') }}" method="POST">
+                            {{ csrf_field() }}
+
+                            <input id="id" name="id" type="hidden" value="{{ $id }}" />
                         </form>
                     </p>
                 </div>

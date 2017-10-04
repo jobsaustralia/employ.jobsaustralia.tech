@@ -35,10 +35,11 @@ class APIController extends Controller{
                 $jobseeker = JobSeeker::findOrFail($application->userid);
                 $jobseeker->applicationid = $application->id;
                 $jobseeker->message = $application->message;
-				
-				if($application->rejected == 0){
-					array_push($applicants, $jobseeker);
-				}
+                $jobseeker->engaged = $application->engaged;
+
+                if(!$application->rejected){
+                    array_push($applicants, $jobseeker);
+                }
             }
 
             return $applicants;
@@ -47,7 +48,7 @@ class APIController extends Controller{
 
     /* Get a specific Job by ID, if authorised. */
     public function getJob($id, $token){
-        //if(Session::token() == $token){
+        if(Session::token() == $token){
             /* Get employer from currently authenticated user. */
             $employer = Auth::user();
 
@@ -58,6 +59,6 @@ class APIController extends Controller{
             if(User::findOrFail($job->employerid) == $employer){
                 return $job;
             }
-        //}
+        }
     }
 }

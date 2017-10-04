@@ -1,5 +1,5 @@
 /* Function to print applicant to panel in view. */
-function printApplicant(id, name, message, percentageMatch){
+function printApplicant(id, name, message, engaged, percentageMatch){
     var display = document.getElementById("applicants");
 
     var panel = document.createElement("div");
@@ -14,6 +14,12 @@ function printApplicant(id, name, message, percentageMatch){
 
     var body = document.createElement("div");
     body.className = "panel-body";
+
+    if(engaged){
+        var p0 = document.createElement("p");
+        p0.className = "skill-match";
+        p0.innerHTML = "You have entered discussion with the job seeker."
+    }
 
     var p1 = document.createElement("p");
     p1.innerHTML = message;
@@ -30,6 +36,11 @@ function printApplicant(id, name, message, percentageMatch){
     panel.appendChild(heading);
     panel.appendChild(body);
     heading.append(match);
+    
+    if(engaged){
+        body.append(p0);
+    }
+
     body.append(p1);
     body.append(hr1);
     body.append(p6);
@@ -226,7 +237,7 @@ function match(){
                 var i;
                 for(i = 0; i < app.length; i++){
                     var order = appIndex[i];
-                    printApplicant(app[order].applicationid, app[order].name, app[order].message, Math.round(percentageMatch[i]));
+                    printApplicant(app[order].applicationid, app[order].name, app[order].message, app[order].engaged, Math.round(percentageMatch[i]));
                 }
             }
             else{
