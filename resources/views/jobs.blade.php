@@ -65,7 +65,7 @@
                         <br><br>
                         <p class="panel-notice-icon"><i class="fa fa-ship " aria-hidden="true"></i></p>
                         <br>
-                        <h2>No Jobs Found.</h2>
+                        <h2>You've posted no jobs.</h2>
                         <p>This page will display your active jobs.</p>
                         <br>
                         <p>
