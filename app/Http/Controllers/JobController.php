@@ -272,7 +272,7 @@ class JobController extends Controller{
         $skillCount = 0;
         $matchCount = 0;
         foreach($jobseekers as $jobseeker){
-            if($jobseeker->notifynewjob){
+            if($jobseeker->notifynewjob && substr($jobseeker->email, -4) !== ".dev"){
                 if($request['java']){
                     $skillCount++;
                     if($jobseeker->java){
