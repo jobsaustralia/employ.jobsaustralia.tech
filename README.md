@@ -34,7 +34,7 @@ The project requires an outgoing mail driver for basic functionality.
 
 `composer install`
 
-**Setup [jobsaustralia.tech](https://github.com/jobsaustralia/jobsaustralia.tech)**
+**Setup [jobsaustralia.tech](https://github.com/jobsaustralia/jobsaustralia.tech/tree/laravel-5.5)**
 
 Follow the setup instructions for the jobseeker site. 
 
