@@ -35,16 +35,16 @@ function printApplicant(id, name, message, engaged, percentageMatch){
 
     panel.appendChild(heading);
     panel.appendChild(body);
-    heading.append(match);
+    $(heading).append(match);
     
     if(engaged){
-        body.append(p0);
+        $(body).append(p0);
     }
 
-    body.append(p1);
-    body.append(hr1);
-    body.append(p6);
-    p6.append(apply);
+    $(body).append(p1);
+    $(body).append(hr1);
+    $(body).append(p6);
+    $(p6).append(apply);
     display.appendChild(panel);
 
     document.getElementById("loading").style.display = "none";
