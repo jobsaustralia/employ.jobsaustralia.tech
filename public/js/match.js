@@ -18,7 +18,7 @@ function printApplicant(id, name, message, engaged, percentageMatch){
     if(engaged){
         var p0 = document.createElement("p");
         p0.className = "skill-match";
-        p0.innerHTML = "You have entered discussion with the job seeker."
+        p0.innerHTML = "You have entered discussion with this job seeker."
     }
 
     var p1 = document.createElement("p");
