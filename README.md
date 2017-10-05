@@ -1,6 +1,6 @@
 # JobsAustralia.tech Employers
 
-Job matchmaking for employers in the Australian IT sector - written in Laravel 5.4.
+Job matchmaking for employers in the Australian IT sector - written in Laravel 5.5 (and [5.4](https://github.com/jobsaustralia/jobsaustralia.tech/tree/master)).
 
 ## Contributors
 
@@ -12,7 +12,7 @@ Job matchmaking for employers in the Australian IT sector - written in Laravel 5
 
 ## Setup instructions
 
-Setup your development environment following [the official requirements](https://laravel.com/docs/5.4/installation).
+Setup your development environment following [the official requirements](https://laravel.com/docs/5.5/installation).
 
 Our Linux deployment script is [here](https://github.com/jobsaustralia/scripts-conf-and-docs/blob/master/scripts/deploy.sh#L1). This script assumes you've setup the project before.
 
@@ -22,11 +22,11 @@ Our Linux deployment script is [here](https://github.com/jobsaustralia/scripts-c
 
 `cd employ.jobsaustralia.tech`
 
-**[Configure](https://laravel.com/docs/5.4/configuration#environment-configuration) your environment**
+**[Configure](https://laravel.com/docs/5.5/configuration#environment-configuration) your environment**
 
 `mv env.example .env`
 
-**Configure [mail](https://laravel.com/docs/5.4/mail)**
+**Configure [mail](https://laravel.com/docs/5.5/mail)**
 
 The project requires an outgoing mail driver for basic functionality.
 
