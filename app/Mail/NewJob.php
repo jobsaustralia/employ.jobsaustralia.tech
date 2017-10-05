@@ -7,20 +7,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Contact extends Mailable{
+class NewJob extends Mailable{
     use Queueable, SerializesModels;
 
-    protected $id;
+    protected $link;
     protected $title;
     protected $description;
 
-    public function __construct($id, $title, $description){
-        $this->id = $id;
+    public function __construct($link, $title, $description){
+        $this->link = $link;
         $this->title = $title;
         $this->description = $description;
     }
 
     public function build(){
-        return $this->view('emails.newjob')->with(['id' => $id, 'title' => $this->title, 'description' => $this->description]);
+        $this->subject("We found a new job that might interest you");
+        return $this->view('emails.newjob')->with(['link' => $this->link, 'title' => $this->title, 'description' => $this->description]);
     }
 }

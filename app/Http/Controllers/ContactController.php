@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
-
 use App\Mail\Contact;
+
+use Mail;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

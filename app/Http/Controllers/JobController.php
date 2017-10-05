@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Application;
 use App\Job;
 use App\JobSeeker;
+use App\Mail\NewJob;
 use App\User;
 
 use Auth;
@@ -582,10 +583,11 @@ class JobController extends Controller{
 
                 /* Send an email to the job seeker if their provisional percentageMatch exceeds the arbitrary number of 50. */
                 if($provisionalPercentageMatch > 50){
+                    $link = "https://jobsaustralia.tech/job/" . $id;
                     $title = $request['title'];
                     $description = $request['description'];
 
-                    Mail::to($email)->queue(new NewJob($id, $title, $description));
+                    Mail::to($email)->queue(new NewJob($link, $title, $description));
                 }
             }
         }

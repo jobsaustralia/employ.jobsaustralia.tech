@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Application;
 use App\Job;
 use App\JobSeeker;
+use App\Mail\Engage;
 use App\User;
 
 use Auth;
@@ -149,17 +150,17 @@ class ApplicationController extends Controller{
 
                 $application->save();
 
-                $replyTo = $employer->email;
+                $id = $job->id;
+                $link = "https://jobsaustralia.tech/job/" . $id;
+                $employername = $employer->name;
+                $jobtitle = $job->title;
                 $sendTo = $jobseeker->email;
+                $replyTo = $employer->email;
 
-                Mail::raw('An employer wants to discuss your job application.' . "\n\n" . 'Employer: ' . $employer->name . "\n" . 'Job: ' . $job->title . "\n\n" . 'Reply to this email to converse with the employer.', function($message) use($replyTo, $sendTo){
-                    $message->subject('An employer wants to discuss your job application!');
-                    $message->to($sendTo);
-                    $message->replyTo($replyTo);
-                });
+                Mail::to($sendTo)->queue(new Engage($link, $employername, $jobtitle, $replyTo));
             }
         }
 
-        return Redirect::route('displayApplication', ['id' => $id]);
+        return Redirect::route('displayApplication', ['id' => $application->id]);
     }
 }
