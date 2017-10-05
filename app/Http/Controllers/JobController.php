@@ -195,8 +195,10 @@ class JobController extends Controller{
         }
 
         /* Finally, create job. */
+        $id = Uuid::generate();
+
         Job::create([
-            'id' => Uuid::generate(),
+            'id' => $id,
             'title' => $request['title'],
             'description' => $request['description'],
             'term' => $request['term'],
@@ -272,7 +274,9 @@ class JobController extends Controller{
         $skillCount = 0;
         $matchCount = 0;
         foreach($jobseekers as $jobseeker){
-            if($jobseeker->notifynewjob && substr($jobseeker->email, -4) !== ".dev"){
+            $email = $jobseeker->email;
+
+            if($jobseeker->notifynewjob && substr($email, -4) !== ".dev"){
                 if($request['java']){
                     $skillCount++;
                     if($jobseeker->java){
@@ -578,12 +582,10 @@ class JobController extends Controller{
 
                 /* Send an email to the job seeker if their provisional percentageMatch exceeds the arbitrary number of 50. */
                 if($provisionalPercentageMatch > 50){
-                    $email = $jobseeker->email;
+                    $title = $request['title'];
+                    $description = $request['description'];
 
-                    Mail::raw('Job posted!', function($message) use($email){
-                        $message->subject('A job you might find interesting was just posted!');
-                        $message->to($email);
-                    });
+                    Mail::to($email)->queue(new NewJob($id, $title, $description));
                 }
             }
         }
