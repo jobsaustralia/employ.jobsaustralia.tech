@@ -1,6 +1,6 @@
 # JobsAustralia.tech Employers
 
-Job matchmaking for employers in the Australian IT sector - written in Laravel 5.5 (and [5.4](https://github.com/jobsaustralia/jobsaustralia.tech/tree/master)).
+Job matchmaking for employers in the Australian IT sector - written in Laravel 5.5 (and [5.4](https://github.com/jobsaustralia/employ.jobsaustralia.tech/tree/master)).
 
 ## Contributors
 
