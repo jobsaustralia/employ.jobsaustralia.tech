@@ -34,10 +34,6 @@ The project requires an outgoing mail driver for basic functionality.
 
 `composer install`
 
-**Migrate, and (optionally) seed**
-
-`php artisan migrate --seed`
-
 **Setup [jobsaustralia.tech](https://github.com/jobsaustralia/jobsaustralia.tech)**
 
 Follow the setup instructions for the jobseeker site. 
