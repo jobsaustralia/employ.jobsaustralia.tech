@@ -32,8 +32,7 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                    <textarea id="description" name="description" rows="5" cols="30" maxlength="1000" class="form-control" required>{{{$job->description}}}
-                                    </textarea>
+                                    <textarea id="description" name="description" rows="5" cols="30" maxlength="1000" class="form-control" required>{{{$job->description}}}</textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
