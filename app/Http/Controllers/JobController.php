@@ -579,15 +579,17 @@ class JobController extends Controller{
                     }
                 }
 
-                $provisionalPercentageMatch = ($matchCount/$skillCount)*100;
+                if($skillCount > 0){
+                    $provisionalPercentageMatch = ($matchCount/$skillCount)*100;
 
-                /* Send an email to the job seeker if their provisional percentageMatch exceeds the arbitrary number of 50. */
-                if($provisionalPercentageMatch > 50){
-                    $link = "https://jobsaustralia.tech/job/" . $id;
-                    $title = $request['title'];
-                    $description = $request['description'];
+                    /* Send an email to the job seeker if their provisional percentageMatch exceeds the arbitrary number of 50. */
+                    if($provisionalPercentageMatch > 50){
+                        $link = "https://jobsaustralia.tech/job/" . $id;
+                        $title = $request['title'];
+                        $description = $request['description'];
 
-                    Mail::to($email)->queue(new NewJob($link, $title, $description));
+                        Mail::to($email)->queue(new NewJob($link, $title, $description));
+                    }
                 }
             }
         }
