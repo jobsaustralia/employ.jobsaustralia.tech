@@ -135,61 +135,61 @@ class JobController extends Controller{
 
         /* Manually apply validation logic to salary field. */
         if($request['hours'] == "parttime" && $request['rate'] == "hourly"){
-            if($request['salary'] <= 18 || $request['salary'] >= 1000){
+            if($request['salary'] < 18 || $request['salary'] > 1000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "weekly"){
-            if($request['salary'] <= 200 || $request['salary'] >= 2000){
+            if($request['salary'] < 200 || $request['salary'] > 2000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "fortnightly"){
-            if($request['salary'] <= 500 || $request['salary'] >= 3000){
+            if($request['salary'] < 500 || $request['salary'] > 3000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "monthly"){
-            if($request['salary'] <= 1000 || $request['salary'] >= 4000){
+            if($request['salary'] < 1000 || $request['salary'] > 4000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "parttime" && $request['rate'] == "annually"){
-            if($request['salary'] <= 10000 || $request['salary'] >= 40000){
+            if($request['salary'] < 10000 || $request['salary'] > 40000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "hourly"){
-            if($request['salary'] <= 24 || $request['salary'] >= 1000){
+            if($request['salary'] < 24 || $request['salary'] > 1000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "weekly"){
-            if($request['salary'] <= 1000 || $request['salary'] >= 2000){
+            if($request['salary'] < 1000 || $request['salary'] > 2000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "fortnightly"){
-            if($request['salary'] <= 2000 || $request['salary'] >= 4000){
+            if($request['salary'] < 2000 || $request['salary'] > 4000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "monthly"){
-            if($request['salary'] <= 3000 || $request['salary'] >= 5000){
+            if($request['salary'] < 3000 || $request['salary'] > 5000){
                 return Redirect::route('jobs');
                 exit();
             }
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
-            if($request['salary'] <= 40000 || $request['salary'] >= 200000){
+            if($request['salary'] < 40000 || $request['salary'] > 200000){
                 return Redirect::route('jobs');
                 exit();
             }
@@ -741,61 +741,61 @@ class JobController extends Controller{
 
             /* Manually apply validation logic to salary field. */
             if($request['hours'] == "parttime" && $request['rate'] == "hourly"){
-                if($request['salary'] <= 18 || $request['salary'] >= 1000){
+                if($request['salary'] < 18 || $request['salary'] > 1000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "weekly"){
-                if($request['salary'] <= 200 || $request['salary'] >= 2000){
+                if($request['salary'] < 200 || $request['salary'] > 2000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "fortnightly"){
-                if($request['salary'] <= 500 || $request['salary'] >= 3000){
+                if($request['salary'] < 500 || $request['salary'] > 3000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "monthly"){
-                if($request['salary'] <= 1000 || $request['salary'] >= 4000){
+                if($request['salary'] < 1000 || $request['salary'] > 4000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "parttime" && $request['rate'] == "annually"){
-                if($request['salary'] <= 10000 || $request['salary'] >= 40000){
+                if($request['salary'] < 10000 || $request['salary'] > 40000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "hourly"){
-                if($request['salary'] <= 24 || $request['salary'] >= 1000){
+                if($request['salary'] < 24 || $request['salary'] > 1000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "weekly"){
-                if($request['salary'] <= 1000 || $request['salary'] >= 2000){
+                if($request['salary'] < 1000 || $request['salary'] > 2000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "fortnightly"){
-                if($request['salary'] <= 2000 || $request['salary'] >= 4000){
+                if($request['salary'] < 2000 || $request['salary'] > 4000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "monthly"){
-                if($request['salary'] <= 3000 || $request['salary'] >= 5000){
+                if($request['salary'] < 3000 || $request['salary'] > 5000){
                     return Redirect::route('jobs');
                     exit();
                 }
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
-                if($request['salary'] <= 40000 || $request['salary'] >= 200000){
+                if($request['salary'] < 40000 || $request['salary'] > 200000){
                     return Redirect::route('jobs');
                     exit();
                 }
