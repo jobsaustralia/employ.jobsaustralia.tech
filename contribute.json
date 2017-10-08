@@ -1,0 +1,20 @@
+{
+    "name": "JobsAustralia.tech Employers",
+    "description": "Matchmaking for employers in the Australian IT sector. ",
+    "repository": {
+        "url": "https://github.com/jobsaustralia/employ.jobsaustralia.tech",
+        "license": "MIT",
+        "type": "git"
+    },
+    "urls": {
+        "prod": "https://employ.jobsaustralia.tech"
+    },
+    "keywords": [
+        "laravel",
+        "php",
+        "html5",
+        "javascript",
+        "jquery",
+        "css"
+    ]
+}
