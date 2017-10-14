@@ -31,9 +31,9 @@ class JobController extends Controller{
         $this->validate($request, [
             'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
             'description' => 'required|string|max:1000',
-            'term' => 'required|string|in:fixed,permanent', 
+            'term' => 'required|string|in:fixed,permanent,contract', 
             'hours' => 'required|string|in:fulltime,parttime',
-            'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
+            'rate' => 'required|string|in:hourly,daily,weekly,fortnightly,monthly,annually',
             'salary' => 'required|integer|min:18|max:200000',
             'startdate' => 'required|string|min:10|max:10',
             'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
@@ -194,6 +194,12 @@ class JobController extends Controller{
                 exit();
             }
         }
+        else if($request['rate'] == "daily"){
+            if($request['salary'] < 50 || $request['salary'] > 2000){
+                return Redirect::route('jobs');
+                exit();
+            }
+        }
 
         /* Finally, create job. */
         $id = Uuid::generate();
@@ -268,327 +274,331 @@ class JobController extends Controller{
             'employerid' => Auth::user()->id
         ]);
 
-        /* Get all job seekers for email notification. */
-        $jobseekers = JobSeeker::all();
+        /* Check that mail is configured before attempting to send. */
+        if(env('MAIL_USERNAME') !== null){
 
-        /* Perform basic and provisional percentageMatch calculation for email notifications only. */
-        $skillCount = 0;
-        $matchCount = 0;
-        foreach($jobseekers as $jobseeker){
-            $email = $jobseeker->email;
+            /* Get all job seekers for email notification. */
+            $jobseekers = JobSeeker::all();
 
-            if($jobseeker->notifynewjob && substr($email, -4) !== ".dev"){
-                if($request['java']){
-                    $skillCount++;
-                    if($jobseeker->java){
-                        $matchCount++;
-                    }
-                }
-                if($request['python']){
-                    $skillCount++;
-                    if($jobseeker->python){
-                        $matchCount++;
-                    }
-                }
-                if($request['csharp']){
-                    $skillCount++;
-                    if($jobseeker->csharp){
-                        $matchCount++;
-                    }
-                }
-                if($request['cplus']){
-                    $skillCount++;
-                    if($jobseeker->cplus){
-                        $matchCount++;
-                    }
-                }
-                if($request['php']){
-                    $skillCount++;
-                    if($jobseeker->php){
-                        $matchCount++;
-                    }
-                }
-                if($request['html']){
-                    $skillCount++;
-                    if($jobseeker->html){
-                        $matchCount++;
-                    }
-                }
-                if($request['css']){
-                    $skillCount++;
-                    if($jobseeker->css){
-                        $matchCount++;
-                    }
-                }
-                if($request['javascript']){
-                    $skillCount++;
-                    if($jobseeker->javascript){
-                        $matchCount++;
-                    }
-                }
-                if($request['sql']){
-                    $skillCount++;
-                    if($jobseeker->sql){
-                        $matchCount++;
-                    }
-                }
-                if($request['unix']){
-                    $skillCount++;
-                    if($jobseeker->unix){
-                        $matchCount++;
-                    }
-                }
-                if($request['winserver']){
-                    $skillCount++;
-                    if($jobseeker->winserver){
-                        $matchCount++;
-                    }
-                }
-                if($request['windesktop']){
-                    $skillCount++;
-                    if($jobseeker->windesktop){
-                        $matchCount++;
-                    }
-                }
-                if($request['linuxdesktop']){
-                    $skillCount++;
-                    if($jobseeker->linuxdesktop){
-                        $matchCount++;
-                    }
-                }
-                if($request['macosdesktop']){
-                    $skillCount++;
-                    if($jobseeker->macosdesktop){
-                        $matchCount++;
-                    }
-                }
-                if($request['perl']){
-                    $skillCount++;
-                    if($jobseeker->perl){
-                        $matchCount++;
-                    }
-                }
-                if($request['bash']){
-                    $skillCount++;
-                    if($jobseeker->bash){
-                        $matchCount++;
-                    }
-                }
-                if($request['batch']){
-                    $skillCount++;
-                    if($jobseeker->batch){
-                        $matchCount++;
-                    }
-                }
-                if($request['cisco']){
-                    $skillCount++;
-                    if($jobseeker->cisco){
-                        $matchCount++;
-                    }
-                }
-                if($request['office']){
-                    $skillCount++;
-                    if($jobseeker->office){
-                        $matchCount++;
-                    }
-                }
-                if($request['r']){
-                    $skillCount++;
-                    if($jobseeker->r){
-                        $matchCount++;
-                    }
-                }
-                if($request['go']){
-                    $skillCount++;
-                    if($jobseeker->go){
-                        $matchCount++;
-                    }
-                }
-                if($request['ruby']){
-                    $skillCount++;
-                    if($jobseeker->ruby){
-                        $matchCount++;
-                    }
-                }
-                if($request['asp']){
-                    $skillCount++;
-                    if($jobseeker->asp){
-                        $matchCount++;
-                    }
-                }
-                if($request['scala']){
-                    $skillCount++;
-                    if($jobseeker->scala){
-                        $matchCount++;
-                    }
-                }
-                if($request['cow']){
-                    $skillCount++;
-                    if($jobseeker->cow){
-                        $matchCount++;
-                    }
-                }
-                if($request['actionscript']){
-                    $skillCount++;
-                    if($jobseeker->actionscript){
-                        $matchCount++;
-                    }
-                }
-                if($request['assembly']){
-                    $skillCount++;
-                    if($jobseeker->assembly){
-                        $matchCount++;
-                    }
-                }
-                if($request['autohotkey']){
-                    $skillCount++;
-                    if($jobseeker->autohotkey){
-                        $matchCount++;
-                    }
-                }
-                if($request['coffeescript']){
-                    $skillCount++;
-                    if($jobseeker->coffeescript){
-                        $matchCount++;
-                    }
-                }
-                if($request['d']){
-                    $skillCount++;
-                    if($jobseeker->d){
-                        $matchCount++;
-                    }
-                }
-                if($request['fsharp']){
-                    $skillCount++;
-                    if($jobseeker->fsharp){
-                        $matchCount++;
-                    }
-                }
-                if($request['haskell']){
-                    $skillCount++;
-                    if($jobseeker->haskell){
-                        $matchCount++;
-                    }
-                }
-                if($request['matlab']){
-                    $skillCount++;
-                    if($jobseeker->matlab){
-                        $matchCount++;
-                    }
-                }
-                if($request['objectivec']){
-                    $skillCount++;
-                    if($jobseeker->objectivec){
-                        $matchCount++;
-                    }
-                }
-                if($request['objectivecplus']){
-                    $skillCount++;
-                    if($jobseeker->objectivecplus){
-                        $matchCount++;
-                    }
-                }
-                if($request['pascal']){
-                    $skillCount++;
-                    if($jobseeker->pascal){
-                        $matchCount++;
-                    }
-                }
-                if($request['powershell']){
-                    $skillCount++;
-                    if($jobseeker->powershell){
-                        $matchCount++;
-                    }
-                }
-                if($request['rust']){
-                    $skillCount++;
-                    if($jobseeker->rust){
-                        $matchCount++;
-                    }
-                }
-                if($request['swift']){
-                    $skillCount++;
-                    if($jobseeker->swift){
-                        $matchCount++;
-                    }
-                }
-                if($request['typescript']){
-                    $skillCount++;
-                    if($jobseeker->typescript){
-                        $matchCount++;
-                    }
-                }
-                if($request['vue']){
-                    $skillCount++;
-                    if($jobseeker->vue){
-                        $matchCount++;
-                    }
-                }
-                if($request['webassembly']){
-                    $skillCount++;
-                    if($jobseeker->webassembly){
-                        $matchCount++;
-                    }
-                }
-                if($request['apache']){
-                    $skillCount++;
-                    if($jobseeker->apache){
-                        $matchCount++;
-                    }
-                }
-                if($request['aws']){
-                    $skillCount++;
-                    if($jobseeker->aws){
-                        $matchCount++;
-                    }
-                }
-                if($request['docker']){
-                    $skillCount++;
-                    if($jobseeker->docker){
-                        $matchCount++;
-                    }
-                }
-                if($request['nginx']){
-                    $skillCount++;
-                    if($jobseeker->nginx){
-                        $matchCount++;
-                    }
-                }
-                if($request['saas']){
-                    $skillCount++;
-                    if($jobseeker->saas){
-                        $matchCount++;
-                    }
-                }
-                if($request['ipv4']){
-                    $skillCount++;
-                    if($jobseeker->ipv4){
-                        $matchCount++;
-                    }
-                }
-                if($request['ipv6']){
-                    $skillCount++;
-                    if($jobseeker->ipv6){
-                        $matchCount++;
-                    }
-                }
-                if($request['dns']){
-                    $skillCount++;
-                    if($jobseeker->dns){
-                        $matchCount++;
-                    }
-                }
+            /* Perform basic and provisional percentageMatch calculation for email notifications only. */
+            $skillCount = 0;
+            $matchCount = 0;
+            foreach($jobseekers as $jobseeker){
+                $email = $jobseeker->email;
 
-                if($skillCount > 0){
-                    $provisionalPercentageMatch = ($matchCount/$skillCount)*100;
+                if($jobseeker->notifynewjob && substr($email, -4) !== ".dev"){
+                    if($request['java']){
+                        $skillCount++;
+                        if($jobseeker->java){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['python']){
+                        $skillCount++;
+                        if($jobseeker->python){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['csharp']){
+                        $skillCount++;
+                        if($jobseeker->csharp){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['cplus']){
+                        $skillCount++;
+                        if($jobseeker->cplus){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['php']){
+                        $skillCount++;
+                        if($jobseeker->php){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['html']){
+                        $skillCount++;
+                        if($jobseeker->html){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['css']){
+                        $skillCount++;
+                        if($jobseeker->css){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['javascript']){
+                        $skillCount++;
+                        if($jobseeker->javascript){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['sql']){
+                        $skillCount++;
+                        if($jobseeker->sql){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['unix']){
+                        $skillCount++;
+                        if($jobseeker->unix){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['winserver']){
+                        $skillCount++;
+                        if($jobseeker->winserver){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['windesktop']){
+                        $skillCount++;
+                        if($jobseeker->windesktop){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['linuxdesktop']){
+                        $skillCount++;
+                        if($jobseeker->linuxdesktop){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['macosdesktop']){
+                        $skillCount++;
+                        if($jobseeker->macosdesktop){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['perl']){
+                        $skillCount++;
+                        if($jobseeker->perl){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['bash']){
+                        $skillCount++;
+                        if($jobseeker->bash){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['batch']){
+                        $skillCount++;
+                        if($jobseeker->batch){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['cisco']){
+                        $skillCount++;
+                        if($jobseeker->cisco){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['office']){
+                        $skillCount++;
+                        if($jobseeker->office){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['r']){
+                        $skillCount++;
+                        if($jobseeker->r){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['go']){
+                        $skillCount++;
+                        if($jobseeker->go){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['ruby']){
+                        $skillCount++;
+                        if($jobseeker->ruby){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['asp']){
+                        $skillCount++;
+                        if($jobseeker->asp){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['scala']){
+                        $skillCount++;
+                        if($jobseeker->scala){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['cow']){
+                        $skillCount++;
+                        if($jobseeker->cow){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['actionscript']){
+                        $skillCount++;
+                        if($jobseeker->actionscript){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['assembly']){
+                        $skillCount++;
+                        if($jobseeker->assembly){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['autohotkey']){
+                        $skillCount++;
+                        if($jobseeker->autohotkey){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['coffeescript']){
+                        $skillCount++;
+                        if($jobseeker->coffeescript){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['d']){
+                        $skillCount++;
+                        if($jobseeker->d){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['fsharp']){
+                        $skillCount++;
+                        if($jobseeker->fsharp){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['haskell']){
+                        $skillCount++;
+                        if($jobseeker->haskell){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['matlab']){
+                        $skillCount++;
+                        if($jobseeker->matlab){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['objectivec']){
+                        $skillCount++;
+                        if($jobseeker->objectivec){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['objectivecplus']){
+                        $skillCount++;
+                        if($jobseeker->objectivecplus){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['pascal']){
+                        $skillCount++;
+                        if($jobseeker->pascal){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['powershell']){
+                        $skillCount++;
+                        if($jobseeker->powershell){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['rust']){
+                        $skillCount++;
+                        if($jobseeker->rust){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['swift']){
+                        $skillCount++;
+                        if($jobseeker->swift){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['typescript']){
+                        $skillCount++;
+                        if($jobseeker->typescript){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['vue']){
+                        $skillCount++;
+                        if($jobseeker->vue){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['webassembly']){
+                        $skillCount++;
+                        if($jobseeker->webassembly){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['apache']){
+                        $skillCount++;
+                        if($jobseeker->apache){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['aws']){
+                        $skillCount++;
+                        if($jobseeker->aws){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['docker']){
+                        $skillCount++;
+                        if($jobseeker->docker){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['nginx']){
+                        $skillCount++;
+                        if($jobseeker->nginx){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['saas']){
+                        $skillCount++;
+                        if($jobseeker->saas){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['ipv4']){
+                        $skillCount++;
+                        if($jobseeker->ipv4){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['ipv6']){
+                        $skillCount++;
+                        if($jobseeker->ipv6){
+                            $matchCount++;
+                        }
+                    }
+                    if($request['dns']){
+                        $skillCount++;
+                        if($jobseeker->dns){
+                            $matchCount++;
+                        }
+                    }
 
-                    /* Send an email to the job seeker if their provisional percentageMatch exceeds the arbitrary number of 50. */
-                    if($provisionalPercentageMatch > 50){
-                        $link = "https://jobsaustralia.tech/job/" . $id;
-                        $title = $request['title'];
-                        $description = $request['description'];
+                    if($skillCount > 0){
+                        $provisionalPercentageMatch = ($matchCount/$skillCount)*100;
 
-                        Mail::to($email)->queue(new NewJob($link, $title, $description));
+                        /* Send an email to the job seeker if their provisional percentageMatch exceeds the arbitrary number of 50. */
+                        if($provisionalPercentageMatch > 50){
+                            $link = "https://jobsaustralia.tech/job/" . $id;
+                            $title = $request['title'];
+                            $description = $request['description'];
+
+                            Mail::to($email)->queue(new NewJob($link, $title, $description));
+                        }
                     }
                 }
             }
@@ -639,9 +649,9 @@ class JobController extends Controller{
             $this->validate($request, [
                 'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
                 'description' => 'required|string|max:1000',
-                'term' => 'required|string|in:fixed,permanent', 
+                'term' => 'required|string|in:fixed,permanent,contract', 
                 'hours' => 'required|string|in:fulltime,parttime',
-                'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
+                'rate' => 'required|string|in:hourly,daily,weekly,fortnightly,monthly,annually',
                 'salary' => 'required|integer|min:18|max:200000',
                 'startdate' => 'required|string|min:10|max:10',
                 'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
@@ -798,6 +808,12 @@ class JobController extends Controller{
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
                 if($request['salary'] < 40000 || $request['salary'] > 200000){
+                    return Redirect::route('jobs');
+                    exit();
+                }
+            }
+            else if($request['rate'] == "daily"){
+                if($request['salary'] < 50 || $request['salary'] > 2000){
                     return Redirect::route('jobs');
                     exit();
                 }

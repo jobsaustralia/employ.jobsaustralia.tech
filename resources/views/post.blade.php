@@ -48,6 +48,7 @@
                                     <option disabled selected value>Please select an option</option>
                                     <option value="fixed">Fixed</option>
                                     <option value="permanent">Permanent</option>
+                                    <option value="contract">Contract</option>
                                 </select>
 
                                 @if ($errors->has('term'))
@@ -85,6 +86,7 @@
                                 <select id="rate" name="rate" class="form-control" value="{{ old('rate') }}" required>
                                     <option disabled selected value>Please select an option</option>
                                     <option value="hourly">Hourly</option>
+                                    <option value="daily">Daily</option>
                                     <option value="weekly">Weekly</option>
                                     <option value="fortnightly">Fortnightly</option>
                                     <option value="monthly">Monthly</option>
