@@ -150,14 +150,18 @@ class ApplicationController extends Controller{
 
                 $application->save();
 
-                $id = $job->id;
-                $link = "https://jobsaustralia.tech/job/" . $id;
-                $employername = $employer->name;
-                $jobtitle = $job->title;
-                $sendTo = $jobseeker->email;
-                $replyTo = $employer->email;
+                /* Check that mail is configured before attempting to send. */
+                if(env('MAIL_USERNAME') !== null){
+                    echo "done";
+                    $id = $job->id;
+                    $link = "https://jobsaustralia.tech/job/" . $id;
+                    $employername = $employer->name;
+                    $jobtitle = $job->title;
+                    $sendTo = $jobseeker->email;
+                    $replyTo = $employer->email;
 
-                Mail::to($sendTo)->queue(new Engage($link, $employername, $jobtitle, $replyTo));
+                    Mail::to($sendTo)->queue(new Engage($link, $employername, $jobtitle, $replyTo));
+                }
             }
         }
 
