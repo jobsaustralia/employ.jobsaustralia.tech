@@ -49,6 +49,7 @@
                                 <select id="term" name="term" class="form-control" value="{{ old('term') }}" required>
                                     <option value="fixed" @if ($job->term == "fixed") selected @endif >Fixed</option>
                                     <option value="permanent" @if ($job->term == "permanent") selected @endif >Permanent</option>
+                                    <option value="contract" @if ($job->term == "contract") selected @endif >Contract</option>
                                 </select>
 
                                 @if ($errors->has('term'))
@@ -85,6 +86,7 @@
                             <div class="col-md-6">
                                 <select id="rate" name="rate" class="form-control" value="{{ old('rate') }}" required>
                                     <option value="hourly" @if ($job->rate == "hourly") selected @endif >Hourly</option>
+                                    <option value="daily" @if ($job->rate == "daily") selected @endif >Daily</option>
                                     <option value="weekly" @if ($job->rate == "weekly") selected @endif >Weekly</option>
                                     <option value="fortnightly" @if ($job->rate == "fortnightly") selected @endif >Fortnightly</option>
                                     <option value="monthly" @if ($job->rate == "monthly") selected @endif >Monthly</option>

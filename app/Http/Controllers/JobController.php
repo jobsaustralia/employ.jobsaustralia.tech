@@ -31,9 +31,9 @@ class JobController extends Controller{
         $this->validate($request, [
             'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
             'description' => 'required|string|max:1000',
-            'term' => 'required|string|in:fixed,permanent', 
+            'term' => 'required|string|in:fixed,permanent,contract', 
             'hours' => 'required|string|in:fulltime,parttime',
-            'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
+            'rate' => 'required|string|in:hourly,daily,weekly,fortnightly,monthly,annually',
             'salary' => 'required|integer|min:18|max:200000',
             'startdate' => 'required|string|min:10|max:10',
             'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
@@ -190,6 +190,12 @@ class JobController extends Controller{
         }
         else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
             if($request['salary'] < 40000 || $request['salary'] > 200000){
+                return Redirect::route('jobs');
+                exit();
+            }
+        }
+        else if($request['rate'] == "daily"){
+            if($request['salary'] < 50 || $request['salary'] > 2000){
                 return Redirect::route('jobs');
                 exit();
             }
@@ -639,9 +645,9 @@ class JobController extends Controller{
             $this->validate($request, [
                 'title' => 'required|string|regex:/^[a-zA-Z ]+$/|max:255',
                 'description' => 'required|string|max:1000',
-                'term' => 'required|string|in:fixed,permanent', 
+                'term' => 'required|string|in:fixed,permanent,contract', 
                 'hours' => 'required|string|in:fulltime,parttime',
-                'rate' => 'required|string|in:hourly,weekly,fortnightly,monthly,annually',
+                'rate' => 'required|string|in:hourly,daily,weekly,fortnightly,monthly,annually',
                 'salary' => 'required|integer|min:18|max:200000',
                 'startdate' => 'required|string|min:10|max:10',
                 'state' => 'required|string|in:vic,nsw,qld,wa,sa,tas,act,nt,oth',
@@ -798,6 +804,12 @@ class JobController extends Controller{
             }
             else if($request['hours'] == "fulltime" && $request['rate'] == "annually"){
                 if($request['salary'] < 40000 || $request['salary'] > 200000){
+                    return Redirect::route('jobs');
+                    exit();
+                }
+            }
+            else if($request['rate'] == "daily"){
+                if($request['salary'] < 50 || $request['salary'] > 2000){
                     return Redirect::route('jobs');
                     exit();
                 }

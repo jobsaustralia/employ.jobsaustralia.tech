@@ -22,9 +22,9 @@
 
                     <br>
 
-                    <p><strong>Term:</strong> @if ($job->term == "fixed") Fixed @elseif ($job->term == "permanent") Permanent @endif </p>
+                    <p><strong>Term:</strong> @if ($job->term == "fixed") Fixed @elseif ($job->term == "permanent") Permanent @else Contract @endif </p>
                     <p><strong>Hours:</strong> @if ($job->hours == "fulltime") Full time @elseif ($job->hours == "parttime") Part time @endif</p>
-                    <p><strong>Salary:</strong> &#36;{{ number_format($job->salary) }} @if ($job->rate == "hourly") per hour @elseif ($job->rate == "weekly") per week @elseif ($job->rate == "fortnightly") per fortnight @elseif ($job->rate == "monthly") per month @elseif ($job->rate == "annually") per annum @endif </p>
+                    <p><strong>Salary:</strong> &#36;{{ number_format($job->salary) }} @if ($job->rate == "hourly") per hour @elseif ($job->rate == "daily") per day @elseif ($job->rate == "weekly") per week @elseif ($job->rate == "fortnightly") per fortnight @elseif ($job->rate == "monthly") per month @elseif ($job->rate == "annually") per annum @endif </p>
                     <p><strong>Start Date:</strong> {{ $job->startdate }}</p>
 
                     <br>
