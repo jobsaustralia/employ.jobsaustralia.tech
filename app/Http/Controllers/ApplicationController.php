@@ -152,7 +152,6 @@ class ApplicationController extends Controller{
 
                 /* Check that mail is configured before attempting to send. */
                 if(env('MAIL_USERNAME') !== null){
-                    echo "done";
                     $id = $job->id;
                     $link = "https://jobsaustralia.tech/job/" . $id;
                     $employername = $employer->name;
