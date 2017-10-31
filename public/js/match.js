@@ -56,7 +56,7 @@ function match(){
     var jobID = document.getElementById("jobID").value;
 
     /* Get CSRF token from document. */
-    var token = document.getElementsByName("csrf-token")[0].content;
+    const token = document.getElementsByName("csrf-token")[0].content;
 
     /* Input array (needs to be grabbed from job). */
     var input;
@@ -75,15 +75,15 @@ function match(){
 
     /* Array to store applicant for later use. */
     var app = [];
-    
+
     /* Array of ranking in order of importance. */
     var ranking = [];
-    
+
     /* Rank weightings. */
-    var weightOne = 0.4;
-    var weightTwo = 0.35;
-    var weightThree = 0.25;
-    
+    const weightOne = 0.4;
+    const weightTwo = 0.35;
+    const weightThree = 0.25;
+
     /* Min. number of years experience for job. */
     var expJob;
     
