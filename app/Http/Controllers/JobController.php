@@ -124,7 +124,7 @@ class JobController extends Controller{
             if($request['leastimportant'] == "skills"){
                 $rankTwo = "education";
             }
-            else if($request['leastimportant'] == "experience"){
+            else if($request['leastimportant'] == "education"){
                 $rankTwo = "skills";
             }
             else{
@@ -742,7 +742,7 @@ class JobController extends Controller{
                 if($request['leastimportant'] == "skills"){
                     $rankTwo = "education";
                 }
-                else if($request['leastimportant'] == "experience"){
+                else if($request['leastimportant'] == "education"){
                     $rankTwo = "skills";
                 }
                 else{
