@@ -7,7 +7,6 @@ Job matchmaking for employers in the Australian IT sector - written in Laravel 5
 * Aaron Horler
 * Ozlem Kirmizi
 * Kim Luu
-* D M
 * Melissa Nguyen
 
 ## Setup instructions
