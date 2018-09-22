@@ -14,7 +14,7 @@ function toggleDisplay(event){
 
 /* Function to toggle the display of each team member on the about page. */
 function toggleTeamDisplay(event){
-    document.getElementById("dennis-content").style.display = "none";
+    document.getElementById("redacted-content").style.display = "none";
     document.getElementById("aaron-content").style.display = "none";
     document.getElementById("ozlem-content").style.display = "none";
     document.getElementById("kim-content").style.display = "none";
@@ -35,7 +35,7 @@ function randomiseTeam(){
         }
     }
 
-    var team = ["aaron,Aaron Horler", "ozlem,Ozlem Kirmizi", "kim,Kim Luu", "melissa,Melissa Nguyen", "dennis,Dennis Mihalache"];
+    var team = ["aaron,Aaron Horler", "ozlem,Ozlem Kirmizi", "kim,Kim Luu", "melissa,Melissa Nguyen", "redacted,Redacted"];
     shuffle(team);
 
     var namesDiv = document.getElementById("names");
@@ -55,7 +55,7 @@ function randomiseTeam(){
     document.getElementById(team[0].split(",")[0] + "-content").style.display = "block";
 
     document.getElementById("ozlem").addEventListener("click", toggleTeamDisplay);
-    document.getElementById("dennis").addEventListener("click", toggleTeamDisplay);
+    document.getElementById("redacted").addEventListener("click", toggleTeamDisplay);
     document.getElementById("melissa").addEventListener("click", toggleTeamDisplay);
     document.getElementById("kim").addEventListener("click", toggleTeamDisplay);
     document.getElementById("aaron").addEventListener("click", toggleTeamDisplay);
